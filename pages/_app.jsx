@@ -3,7 +3,7 @@ import "../public/css/tippy.css";
 import "../public/css/customColors.css";
 import "tailwindcss/tailwind.css";
 import NProgress from "nprogress";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import Head from "next/head";
 
 import Header from "../components/Static/Header.jsx";
@@ -15,7 +15,7 @@ Router.onRouteChangeError = () => NProgress.done();
 
 import { ThemeProvider } from 'next-themes'
 
-export default function AwardApp({ Component, pageProps }) {
+export default function VotlApp({ Component, pageProps }) {
  
   const NavItems = [
     {
@@ -71,7 +71,7 @@ export default function AwardApp({ Component, pageProps }) {
       />
       <Head>
         <title>
-          Astra Bot
+          VOTL
         </title>
       </Head>
       <main className="transition-all duration-200 z-10 absolute inset-0 px-5 h-screen max-w-7xl w-full mx-auto">
