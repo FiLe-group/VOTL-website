@@ -1,5 +1,4 @@
 import "../public/css/global.css";
-import "../public/css/tippy.css";
 import "../public/css/customColors.css";
 import "tailwindcss/tailwind.css";
 import NProgress from "nprogress";
@@ -13,10 +12,9 @@ Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-import { ThemeProvider } from 'next-themes'
+import { ThemeProvider } from "next-themes";
 
 export default function VotlApp({ Component, pageProps }) {
- 
   const NavItems = [
     {
       link: true,
@@ -28,65 +26,55 @@ export default function VotlApp({ Component, pageProps }) {
     {
       link: true,
       name: "Commands",
-      icon: "fa fa-list-alt",
+      icon: "fal fa-list-alt",
       activeIcon: "fa fa-list-alt",
       href: "/commands",
     },
     {
-      link: true,
+      link: false,
       name: "Support",
       icon: "fab fa-discord",
       activeIcon: "fab fa-discord",
-      href: "http://example.com/",
+      href: "https://discord.gg/25K5S55wrU",
     },
     {
       link: true,
-      name: "Add Bot",
-      icon: "fal fa-robot",
-      activeIcon: "fab fa-robot",
-      href: "http://example.com/",
-    },
-       {
-      link: true,
-      name: "Vote",
-      icon: "fa fa-plus",
-      activeIcon: "fa fa-plus",
-      href: "http://example.com/",
-    },
-    {
-      link: true,
-      name: "Partners",
+      name: "UnionTeam's",
       icon: "fal fa-handshake",
       activeIcon: "fa fa-handshake",
       href: "/partners",
+    },
+    {
+      link: false,
+      name: "Translate",
+      icon: "fal fa-language",
+      activeIcon: "fal fa-language",
+      href: "https://crowdin.com/project/voice-of-the-lord/"
     }
-  ]
+  ];
 
   return (
-    <ThemeProvider defaultTheme='violet'>
-    <div className="h-screen relative border-t-4 border-amber-600">
-      <div
-        className="bg-gradient-to-b z-10 opacity-[25%] absolute top-0 w-full from-amber-600 to-transparent"
-        style={{ height: "500px" }}
-      />
-      <Head>
-        <title>
-          VOTL
-        </title>
-      </Head>
-      <main className="transition-all duration-200 z-10 absolute inset-0 px-5 h-screen max-w-7xl w-full mx-auto">
-        <Header NavItems={NavItems} />
-        <div className="block px-5 md:px-0">
-          <Component {...pageProps} />
+    <ThemeProvider defaultTheme="blue">
+      <div className="h-screen relative border-t-4 border-amber-600">
+        <div
+          className="bg-gradient-to-b z-10 opacity-[25%] absolute top-0 w-full from-amber-600 to-transparent"
+          style={{ height: "500px" }}
+        />
+        <Head>
+          <title>{`Voice of the Lord`}</title>
+        </Head>
+        <main className="transition-all duration-200 z-10 absolute inset-0 px-5 h-screen max-w-7xl w-full mx-auto">
+          <Header NavItems={NavItems} />
+          <div className="block px-5 md:px-0">
+            <Component {...pageProps} />
+          </div>
+          <Footer />
+        </main>
+        <div>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" />
+          <script src="/js/main.js?i=2" />
         </div>
-        <Footer />
-      </main>
-      <div>
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" />
-        <script src="/js/main.js?i=2" />
       </div>
-    </div>
     </ThemeProvider>
   );
 }
