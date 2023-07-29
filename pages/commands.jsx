@@ -39,6 +39,12 @@ const categories = [
     size: 0
   },
   {
+    name: "Verification",
+    value: "verification",
+    icon: "fa fa-badge-check",
+    size: 0
+  },
+  {
     name: "Owner",
     value: "owner",
     icon: "fa fa-screwdriver-wrench",
@@ -52,6 +58,21 @@ const categories = [
   }
 ]
 const languages = [{name: "en-GB", flag: "fi-gb"},{name:"ru",flag:"fi-ru"}]
+
+function CommandLevel(access) {
+  switch (access) {
+    case 1:
+      return 'fa-user-shield text-blue-500'
+    case 2:
+      return 'fa-user-shield text-yellow-400'
+    case 3:
+      return 'fa-crown text-yellow-600'
+    case 4:
+      return 'fa-gear text-red-500'
+    default:
+      return 'text-transparent'
+  }
+}
 
 function CollapsedCommand({name, value}) {
   const {getCollapseProps, getToggleProps, isExpanded} = useCollapse({
@@ -73,7 +94,7 @@ function CollapsedCommand({name, value}) {
             <span className="break-words">{value.description[name]}</span>
           </div>
           <div className="justify-end px-3 min-w-[56px] items-center">
-            <i className={`fa ${value.access === 1 ? 'fa-user-shield text-green-400' : (value.access === 4 ? 'fa-gear text-red-500' : (value.access >= 2 ? 'fa-user-shield text-yellow-500' : 'text-transparent'))}`} />
+            <i className={`fa ${CommandLevel(value.access)}`} />
           </div>
           <div className="justify-end">
             <i className={`fa fa-caret-down translation-transform duration-300 ease-out ${isExpanded ? 'rotate-180' : ''}`} />
