@@ -1,6 +1,6 @@
 # Discord Bot React Native Website & Next.js
 
-### WEBSITE LINK: https://votl.vercel.app/
+### WEBSITE LINK: https://votl.fileeditor.dev/
 
 Original repo: https://github.com/HelloAward/awardbot.me  
 
