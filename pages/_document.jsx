@@ -12,7 +12,7 @@ class MyDocument extends Document {
             content="Multipurpose Discord bot - custom voice channels, moderation, server management, tickets and more!"
           />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://votl.vercel.app" />
+          <meta property="og:url" content="https://votl.fileeditor.dev" />
           <meta property="og:title" content="VOTL" />
           <meta
             property="og:description"
@@ -23,7 +23,7 @@ class MyDocument extends Document {
           <meta property="og:locale" content="en_GB" />
           <meta property="og:site_name" content="Voice of the Lord" />
           <meta property="twitter:card" content="summary" />
-          <meta property="twitter:url" content="https://votl.vercel.app" />
+          <meta property="twitter:url" content="https://votl.fileeditor.dev" />
           <meta name="theme-color" content="#6108dd" />
           <link rel="icon" href="/img/logo.png" type="image/x-icon" />
           <link

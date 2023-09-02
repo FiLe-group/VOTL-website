@@ -12,7 +12,7 @@ export default function Privacy() {
       <div className="text-white text-opacity-60 mt-5">
         <p className="py-2">This privacy notice for FiLe group ('Company', 'we', 'us', or 'our'), describes how and why we might collect, store, use, and/or share ('process') your information when you use our services ('Services'), such as when you:</p>
         <ol className="py-2 list-disc pl-4">
-          <li>Visit our website <a className="text-white" href="https://votl.vercel.app/">votl.vercel.app</a>, or any website of ours that links to this privacy notice</li>
+          <li>Visit our website <a className="text-white" href="https://votl.fileeditor.dev/">votl.fileeditor.dev</a>, or any website of ours that links to this privacy notice</li>
           <li>Use our Discord bot application ('Voice of the Lord', 'Bot', or 'VOTL bot'), or any other application of ours that links to this privacy notice</li>
           <li>Participate in the same Discord server in which the Bot is operated</li>
         </ol>
