@@ -23,7 +23,7 @@ const categories = [
   {
     name: "Voice",
     value: "voice",
-    icon: "fa fa-phone-office",
+    icon: "fa fa-phone",
     size: 0
   },
   {
@@ -33,15 +33,27 @@ const categories = [
     size: 0
   },
   {
-    name: "Webhook",
-    value: "webhook",
-    icon: "fa fa-share-nodes",
+    name: "Roles",
+    value: "roles",
+    icon: "fa fa-users",
     size: 0
   },
   {
     name: "Verification",
     value: "verification",
     icon: "fa fa-badge-check",
+    size: 0
+  },
+  {
+    name: "Ticketing",
+    value: "ticketing",
+    icon: "fa fa-ticket",
+    size: 0
+  },
+  {
+    name: "Webhook",
+    value: "webhook",
+    icon: "fa fa-share-nodes",
     size: 0
   },
   {
@@ -62,12 +74,14 @@ const languages = [{name: "en-GB", flag: "fi-gb"},{name:"ru",flag:"fi-ru"}]
 function CommandLevel(access) {
   switch (access) {
     case 1:
-      return 'fa-user-shield text-blue-500'
+      return 'fa-user text-green-500'
     case 2:
+      return 'fa-user-shield text-blue-500'
+    case 5:
       return 'fa-user-shield text-yellow-400'
-    case 3:
+    case 8:
       return 'fa-crown text-yellow-600'
-    case 4:
+    case 10:
       return 'fa-gear text-red-500'
     default:
       return 'text-transparent'
