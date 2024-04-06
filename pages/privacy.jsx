@@ -8,22 +8,22 @@ export default function Privacy() {
       </Head>
 
       <h1 className="mt-4 text-white font-semibold text-3xl">Privacy Policy</h1>
-      <p className="text-sm text-white/30 mb-1">Last Update: 14/04/2023</p>
+      <p className="text-sm text-white/30 mb-1">Last Update: 06/04/2024</p>
       <div className="text-white text-opacity-60 mt-5">
-        <p className="py-2">This privacy notice for FiLe group ('Company', 'we', 'us', or 'our'), describes how and why we might collect, store, use, and/or share ('process') your information when you use our services ('Services'), such as when you:</p>
+        <p className="py-2">This privacy notice for FiLe group ('VOTL', 'we', 'us', or 'our'), describes how and why we might collect, store, use, and/or share ('process') your information when you use our services ('Services'), such as when you:</p>
         <ol className="py-2 list-disc pl-4">
           <li>Visit our website <a className="text-white" href="https://votl.fileeditor.dev/">votl.fileeditor.dev</a>, or any website of ours that links to this privacy notice</li>
-          <li>Use our Discord bot application ('Voice of the Lord', 'Bot', or 'VOTL bot'), or any other application of ours that links to this privacy notice</li>
+          <li>Use our Discord application ('Voice of the Lord', 'Bot', or 'VOTL Bot'), or any other Discord application of ours that links to this privacy notice</li>
           <li>Participate in the same Discord server in which the Bot is operated</li>
         </ol>
-        <p className="py-2"><b>Questions or concerns?</b> Reading this privacy notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <u>mrmaderat1@gmail.com</u>.</p>
+        <p className="py-2"><b>Questions or concerns?</b> Reading this privacy notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us by using the contact details provided in the section '<a className="text-white" href="#contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>' below.</p>
         <h3 className="mt-4 font-bold text-white">SUMMARY OF KEY POINTS</h3>
         <p className="italic font-medium py-2">This summary provides key points from our privacy notice, but you can find out more details about any of these topics by clicking the link following each key point.</p>
-        <p className="py-2"><b>What personal information do we process?</b> When you visit, use, or navigate our Services, we may process personal information depending on how you interact with FiLe group and the Services, the choices you make, and the products and features you use. Learn more about <a className="text-white" href="#personalinfo">personal information you disclose to us</a>.</p>
+        <p className="py-2"><b>What personal information do we process?</b> When you visit, use, or navigate our Services, we may process personal information depending on how you interact with us and the Services, the choices you make, and the products and features you use. Learn more about <a className="text-white" href="#personalinfo">personal information you disclose to us</a>.</p>
         <p className="py-2"><b>Do we process any sensitive personal information?</b> We do not process sensitive personal information.</p>
         <p className="py-2"><b>Do we receive any information from third parties?</b> We do not receive any information from third parties.</p>
-        <p className="py-2"><b>How do we process your information?</b>  We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so. Learn more about <a className="text-white" href="#infouse">how we process your information</a>.</p>
-        <p className="py-2"><b>In what situations and with which parties do we share personal information?</b>  We may share information in specific situations and with specific third parties. Learn more about <a className="text-white" href="#whoshare">when and with whom we share your personal information</a>.</p>
+        <p className="py-2"><b>How do we process your information?</b> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so. Learn more about <a className="text-white" href="#infouse">how we process your information</a>.</p>
+        <p className="py-2"><b>In what situations and with which parties do we share personal information?</b> We may share information in specific situations and with specific third parties. Learn more about <a className="text-white" href="#whoshare">when and with whom we share your personal information</a>.</p>
         <p className="py-2"><b>What are your rights?</b> Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information. Learn more about <a className="text-white" href="#privacyrights">your privacy rights</a>.</p>
         <p className="py-2"><b>How do you exercise your rights?</b> The easiest way to exercise your rights is by contacting us. We will consider and act upon any request in accordance with applicable data protection laws.</p>
         
@@ -31,14 +31,16 @@ export default function Privacy() {
         <h3 className="mt-3 font-bold text-white">Information we may collect using the Bot</h3>
         <p className="py-2">We collect personal information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us. The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make, and the products and features you use. The personal information we collect may include the following:</p>
         <ol className="py-2 list-disc pl-4">
-          <li>user Ids and tags</li>
-          <li>server Ids and names</li>
-          <li>channel Ids</li>
-          <li>role Ids</li>
-          <li>message Ids</li>
-          <li>any user supplied content that can include text</li>
+          <li>User IDs, tags and server usernames (for server logs and functionality)</li>
+          <li>Server IDs (for functionality)</li>
+          <li>Channel IDs (for functionality)</li>
+          <li>Role IDs (for functionality)</li>
+          <li>Webhook IDs and tokens (for functionality)</li>
+          <li>Message ID, it's content and attachment name (for server logs, maximum storage time of 1 week)</li>
+          <li>SteamIDs (Exclusively for UnionTeam's bot, provided via third-party; for functionality and server logs)</li>
+          <li>Any user supplied content that can include text (for functionality)</li>
         </ol>
-        <p className="py-2">We may message you thru Discord platform regarding information that you provided using our Services.</p>
+        <p className="py-2">We may send you a message through the Discord platform regarding information you have provided using our Services.</p>
 
         <h3 id="infouse" className="mt-4 font-bold text-white">2. HOW DO WE PROCESS YOUR INFORMATION?</h3>
         <p className="py-2">We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. Reasons include:</p>
@@ -76,9 +78,9 @@ export default function Privacy() {
         <p className="py-2">We may update this privacy notice from time to time. The updated version will be indicated by an updated 'Revised' date and the updated version will be effective as soon as it is accessible. If we make material changes to this privacy notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this privacy notice frequently to be informed of how we are protecting your information.</p>
 
         <h3 id="contact" className="mt-4 font-bold text-white">8. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h3>
-        <p className="py-2">If you have questions or comments about this notice, you may email us at <u>mrmaderat1@gmail.com</u>.</p>
+        <p className="py-2">If you have questions or comments about this notice, you may email us at <u>mrmaderat1@gmail.com</u> OR contact us thru Discord platform by messaging <u>@fileeditor</u>.</p>
 
-        <h3 id="contact" className="mt-4 font-bold text-white">9. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h3>
+        <h3 id="request" className="mt-4 font-bold text-white">9. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h3>
         <p className="py-2">You have the right to request access to the personal information we collect from you, change that information, or delete it. To request to review, update, or delete your personal information, please email us at <u>mrmaderat1@gmail.com</u>.</p>
         
       </div>
