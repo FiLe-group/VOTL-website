@@ -19,7 +19,7 @@ export default function Partners() {
           Garry's mod server developer team.
         </div>
         <div className="pt-2 text-lg text-center text-white">
-          Learn more at <a className="text-amber-400" href="https://unionteams.ru/">unionteams.ru</a>
+          Learn more at <a className="text-blue-400" href="https://unionteams.ru/">unionteams.ru</a>
         </div>
       </div>
       

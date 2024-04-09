@@ -9,7 +9,7 @@ const ErrorPage = ({ code, message }) => {
   return (
     <>
       <Head>
-        <title>{code} | VOTL Bot</title>
+        <title>{`${code} | VOTL Bot`}</title>
       </Head>
 
       <div className="max-w-7xl text-center py-20 mx-auto">
@@ -21,7 +21,7 @@ const ErrorPage = ({ code, message }) => {
           {message}
         </p>
         <button
-          className="w-42 shadow-lg mt-2 shadow-amber-600/20 rounded-xl py-2 font-medium px-7 text-zinc-900 bg-amber-400 hover:bg-opacity-50 transition duration-200"
+          className="w-42 shadow-lg mt-2 shadow-blue-600/20 rounded-xl py-2 font-medium px-7 text-zinc-900 bg-blue-400 hover:bg-opacity-50 transition duration-200"
           onClick={() => {
             setClicked(true);
             router.back();
