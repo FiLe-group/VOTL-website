@@ -1,16 +1,10 @@
 import "../public/css/global.css";
 import "../public/css/customColors.css";
 import "tailwindcss/tailwind.css";
-import NProgress from "nprogress";
-import Router from "next/router";
 import Head from "next/head";
 
 import Header from "../components/Static/Header.jsx";
 import Footer from "../components/Static/Footer.jsx";
-
-Router.onRouteChangeStart = () => NProgress.start();
-Router.onRouteChangeComplete = () => NProgress.done();
-Router.onRouteChangeError = () => NProgress.done();
 
 import { ThemeProvider } from "next-themes";
 
