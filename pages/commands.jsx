@@ -57,12 +57,6 @@ const categories = [
     size: 0
   },
   {
-    name: "Owner",
-    value: "owner",
-    icon: "fa fa-screwdriver-wrench",
-    size: 0
-  },
-  {
     name: "Other",
     value: "other",
     icon: "fa fa-circle-info",
@@ -255,13 +249,13 @@ export default function Commands() {
                     </div>
                   </div>
                 </button>
-                <section className="pb-2 px-4" {...getCollapseProps()}>
+                <section className="px-4" {...getCollapseProps()}>
                   <div className="mb-2 pt-1">
                     <div>Default prefix is <span className="code after:content-['\A0'] before:content-['\A0'] text-amber-400">/</span></div>
                     <hr className="mt-2 border-neutral-600"/>
                   </div>
                   <b>Syntax</b>
-                  <ul className="list-disc list-inside">
+                  <ul className="pb-2 list-disc list-inside">
                     <li>
                       <span className="code after:content-['\A0'] before:content-['\A0'] text-amber-400">{'<>'}</span> - Required parameter
                     </li>

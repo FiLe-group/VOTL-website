@@ -9,7 +9,7 @@ const ErrorPage = ({ code, message }) => {
   return (
     <>
       <Head>
-        <title>{code} | VOTL Bot</title>
+        <title>{`${code} | VOTL Bot`}</title>
       </Head>
 
       <div className="max-w-7xl text-center py-20 mx-auto">
