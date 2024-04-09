@@ -23,7 +23,7 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                amber: {
+                blue: {
                     ...tones,
                     900: 'var(--900)',
                     800: 'var(--800)',

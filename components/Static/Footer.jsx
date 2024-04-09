@@ -97,7 +97,7 @@ export default function Footer() {
             </div>
             <div className="text-white text-center sm:text-right text-opacity-50">
               <div>
-                Website hosted on <a className="text-amber-400" href="https://pages.dev/">Cloudflare</a>
+                Website hosted on <a className="text-blue-400" href="https://pages.dev/">Cloudflare</a>
               </div>
               By GreenLord#0593 (Fork <a className="underline" href="https://github.com/umutxyp/Discord-Bot-Website">Github</a>)
             </div>

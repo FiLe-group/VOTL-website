@@ -93,7 +93,7 @@ function CollapsedCommand({name, value}) {
       <button className="w-full px-6 py-3 rounded-lg cursor-pointer transition-all duration-200" {...getToggleProps()}>
         <div className="flex flex-row items-center">
           <div className="grow text-left break-words">
-            <span className="rounded-lg bg-amber-500/80 m-1 border-2 border-amber-500/80">
+            <span className="rounded-lg bg-blue-500/80 m-1 border-2 border-blue-500/80">
               <span className="px-2 height-auto">
                 {`/${value.name}`}
               </span>
@@ -113,7 +113,7 @@ function CollapsedCommand({name, value}) {
         <div className="pt-1 pb-3">
           <div>
             Module:
-            <span className="text-amber-400 pl-1">{value.module[name] === "" ? "-" : value.module[name]}</span>
+            <span className="text-blue-400 pl-1">{value.module[name] === "" ? "-" : value.module[name]}</span>
           </div>
           <div className="pt-2">
             Can be used in DM:
@@ -183,7 +183,7 @@ export default function Commands() {
 
       <div className="text-white">
         <p className="text-xl font-medium">
-          <i className="fal fa-cogs text-amber-400 mr-2" />
+          <i className="fal fa-cogs text-blue-400 mr-2" />
           Commands
         </p>
         <p className="text-sm text-white/50 mb-5">
@@ -251,19 +251,19 @@ export default function Commands() {
                 </button>
                 <section className="px-4" {...getCollapseProps()}>
                   <div className="mb-2 pt-1">
-                    <div>Default prefix is <span className="code after:content-['\A0'] before:content-['\A0'] text-amber-400">/</span></div>
+                    <div>Default prefix is <span className="code after:content-['\A0'] before:content-['\A0'] text-blue-400">/</span></div>
                     <hr className="mt-2 border-neutral-600"/>
                   </div>
                   <b>Syntax</b>
                   <ul className="pb-2 list-disc list-inside">
                     <li>
-                      <span className="code after:content-['\A0'] before:content-['\A0'] text-amber-400">{'<>'}</span> - Required parameter
+                      <span className="code after:content-['\A0'] before:content-['\A0'] text-blue-400">{'<>'}</span> - Required parameter
                     </li>
                     <li>
-                      <span className="code after:content-['\A0'] before:content-['\A0'] text-amber-400">{'[]'}</span> - Optional parameter
+                      <span className="code after:content-['\A0'] before:content-['\A0'] text-blue-400">{'[]'}</span> - Optional parameter
                     </li>
                     <li>
-                      <span className="code after:content-['\A0'] before:content-['\A0'] text-amber-400">{'A | B'}</span> - Required parameter
+                      <span className="code after:content-['\A0'] before:content-['\A0'] text-blue-400">{'A | B'}</span> - Required parameter
                     </li>
                   </ul>
                 </section>

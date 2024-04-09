@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { useEffect, useState, Fragment, useRef } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import { Menu, Transition } from "@headlessui/react";
-import { useTheme } from "next-themes";
 
 const MobileNavbar = ({ open, setOpen, NavItems }) => {
   const router = useRouter();
@@ -72,31 +70,7 @@ const MobileNavbar = ({ open, setOpen, NavItems }) => {
 };
 const Header = ({ $, NavItems }) => {
   const [open, setOpen] = useState(false);
-  const [colors, setColors] = useState(false);
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
-
-  const colorsThemes = [
-    { id: "blue", color: "blue", label: "Sky" },
-    { id: "rose", color: "rose", label: "Rose" },
-    { id: "amber", color: "amber", label: "Amber" },
-  ];
-
-  const ChangeColor = (id) => {
-    setTheme(id);
-  };
-
-  const [hue, setHue] = useState("");
-  const [banner, setBanner] = useState(false);
-  useEffect(() => {
-    if (typeof localStorage == "undefined") return;
-    const banner = localStorage.getItem("$Award_close_banner");
-    if (!banner) setBanner(true);
-    const theme = localStorage.getItem("theme");
-    if (theme === "blue") setHue("hue-rotate-[180deg]");
-    if (theme === "rose") setHue("hue-rotate-[330deg]");
-    if (theme === "amber") setHue("");
-  }, []);
 
   return (
     <>
@@ -110,9 +84,9 @@ const Header = ({ $, NavItems }) => {
                 width="48"
                 height="48"
               />
-              <p className="invisible md:visible text-xl text-white font-semibold">
+              <p className="invisible sm:visible text-xl text-white font-semibold">
                 <a href="/">
-                  <span className="text-amber-400">VOTL</span> Bot
+                  <span className="text-blue-400">VOTL</span> Bot
                 </a>
               </p>
             </div>
@@ -123,7 +97,7 @@ const Header = ({ $, NavItems }) => {
                     href={item.href}
                     className={`border-b-2 ${
                       router.asPath === item.href
-                        ? "text-amber-500 border-amber-500"
+                        ? "text-blue-500 border-blue-500"
                         : "border-black/0 text-white/75 hover:text-white"
                     } transition-all duration-200 font-medium pb-3`}
                   >
@@ -137,7 +111,7 @@ const Header = ({ $, NavItems }) => {
                     <div
                       className={`border-b-2 ${
                         router.asPath === item.href
-                          ? "text-amber-500 border-amber-500"
+                          ? "text-blue-500 border-blue-500"
                           : "border-black/0 text-white/75 hover:text-white"
                       } transition-all duration-200 font-medium`}
                     >
@@ -151,70 +125,13 @@ const Header = ({ $, NavItems }) => {
           <div className="flex items-center space-x-2 relative">
             <button
               onClick={() => setOpen(!open)}
-              className="bg-transparent py-2 px-3 text-white rounded-md text-center lg:hidden hover:bg-amber-400 hover:bg-opacity-20"
+              className="bg-transparent py-2 px-3 text-white rounded-md text-center lg:hidden hover:bg-blue-400 hover:bg-opacity-20"
             >
               <i className={`fa ${open ? "fa-times" : "fa-bars"} text-lg`} />
             </button>
-            <Menu as="div" className="relative text-left">
-              <div>
-                <Menu.Button>
-                  <div
-                    onClick={() => setColors(!colors)}
-                    className="bg-gradient-to-tl from-amber-500 to-amber-700 text-white w-11 h-11 rounded-xl hover:opacity-80 transition-all duration-200 relative"
-                  >
-                    <div className="flex w-full h-full items-center justify-center">
-                      <i className="far fa-swatchbook text-zin-900" />
-                    </div>
-                  </div>
-                </Menu.Button>
-              </div>
-              <Transition
-                show={colors}
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-              >
-                <Menu.Items
-                  className="absolute z-50 text-base right-0 p-1 w-56 mt-2 origin-top-right border bg-white border-black/10 dark:border-white/10 dark:bg-black rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  static
-                >
-                  <div className="px-1 py-2 space-y-1">
-                    {colorsThemes.map((th, thIdx) => (
-                      <Menu.Item key={thIdx}>
-                        <button
-                          onClick={() => {ChangeColor(th.id); setColors(!colors);}}
-                          className={`group flex rounded-md items-center w-full px-3 py-2 transition-all duration-150 ${
-                            theme === th.id
-                              ? `text-white bg-500 shadow-md shadow-amber-500/10`
-                              : "text-black/75 dark:text-white/75 hover:text-black/100 dark:hover:text-white/100 hover:bg-gray-100/50 dark:hover:bg-gray-800/20"
-                          } `}
-                        >
-                          <div className="w-full flex items-center justify-between">
-                            <span>{th.label} </span>
-                            <i
-                              className={`${
-                                theme === th.id
-                                  ? "border-white dark:border-black"
-                                  : "border-black/0"
-                              } border-2 rounded-full fad fa-circle text-500-${String(
-                                th.color
-                              )} mr-1`}
-                            />
-                          </div>
-                        </button>
-                      </Menu.Item>
-                    ))}
-                  </div>
-                </Menu.Items>
-              </Transition>
-            </Menu>
             <Link
-              href="https://discord.com/api/oauth2/authorize?client_id=916830010290085978&permissions=8&scope=bot%20applications.commands"
-              className="w-auto flex items-center justify-center shadow-lg gap-x-2 shadow-amber-600/20 rounded-xl py-2.5 font-medium px-7 bg-gradient-to-tl from-amber-500 to-amber-700 text-white hover:opacity-80 transition duration-200"
+              href="https://discord.com/oauth2/authorize?client_id=916830010290085978&permissions=8&scope=applications.commands+bot"
+              className="w-auto flex items-center justify-center shadow-lg gap-x-2 shadow-blue-600/20 rounded-xl py-2.5 font-medium px-10 bg-gradient-to-tl from-blue-500 to-blue-700 text-white hover:opacity-80 transition duration-200"
             >
               Invite
             </Link>

@@ -11,13 +11,13 @@ export default function Index() {
           Voice of the Lord
         </p>
         <p className="text-white text-opacity-50 text-center mt-5">
-          Discord bot with multipurpose features for server moderation, managment, team managment, ticketing and much more!
+          Discord bot with multipurpose features for server moderation, management, ticketing and much more!
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-4">
           <Link
-            href={"https://discord.com/api/oauth2/authorize?client_id=916830010290085978&permissions=8&scope=bot%20applications.commands"}
+            href={"https://discord.com/oauth2/authorize?client_id=916830010290085978&permissions=8&scope=applications.commands+bot"}
             className={
-              "flex items-center px-6 justify-center gap-x-2 shadow-lg shadow-amber-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-amber-700 to-amber-500 hover:opacity-80 transition duration-200 text-white "
+              "flex items-center px-6 justify-center gap-x-2 shadow-lg shadow-blue-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-blue-700 to-blue-500 hover:opacity-80 transition duration-200 text-white "
             }
           >
             Invite VOTL Bot
