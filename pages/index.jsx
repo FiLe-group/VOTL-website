@@ -5,7 +5,7 @@ export default function Index() {
     <>
       <div className="py-20 mb-30 max-w-3xl mx-auto">
         <div className="flex w-full justify-center pb-3">
-          <img width="200" className="brightness-125" src="/img/logo-old.png" />
+          <img width="400" className="brightness-125" src="/img/logo-mini.png" />
         </div>
         <p className="text-4xl font-extrabold text-center text-white">
           Voice of the Lord
