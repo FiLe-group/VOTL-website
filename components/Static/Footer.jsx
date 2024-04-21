@@ -99,7 +99,7 @@ export default function Footer() {
               <div>
                 Website hosted on <a className="text-blue-400" href="https://pages.dev/">Cloudflare</a>
               </div>
-              By GreenLord#0593 (Fork <a className="underline" href="https://github.com/umutxyp/Discord-Bot-Website">Github</a>)
+              By @fileeditor (Fork <a className="underline" href="https://github.com/umutxyp/Discord-Bot-Website">Github</a>)
             </div>
           </div>
         </div>

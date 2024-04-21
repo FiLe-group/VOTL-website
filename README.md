@@ -2,6 +2,6 @@
 
 ### WEBSITE LINK: https://votl.fileeditor.dev/
 
-Original repo: https://github.com/HelloAward/awardbot.me  
+Original repo: https://github.com/umutxyp/Discord-Bot-Website  
 
-Contact me via Discord: *GreenLord#0593*
+Contact me via Discord: *@fileeditor*
