@@ -26,6 +26,13 @@ export default function VotlApp({ Component, pageProps }) {
     },
     {
       link: false,
+      name: "Docs",
+      icon: "fal fa-circle-info",
+      activeIcon: "fal fa-circle-info",
+      href: "https://docs.votl.fileeditor.dev",
+    },
+    {
+      link: false,
       name: "Support",
       icon: "fab fa-discord",
       activeIcon: "fab fa-discord",
