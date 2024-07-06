@@ -29,8 +29,7 @@ export default function Tos() {
         <ol className="py-2 list-disc pl-4">
           <li>access the Services; and</li>
           <li>download or print a copy of any portion of the Content to which you have properly gained access.</li>
-        </ol>
-        <p className="py-2">download or print a copy of any portion of the Content to which you have properly gained access.</p>
+        </ol> 
         <p className="py-2">Except as set out in this section or elsewhere in our Legal Terms, no part of the Services and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.</p>
         <p className="py-2">We reserve all rights not expressly granted to you in and to the Services, Content, and Marks.</p>
         <p className="py-2">Any breach of these Intellectual Property Rights will constitute a material breach of our Legal Terms and your right to use our Services will terminate immediately.</p>

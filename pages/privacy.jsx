@@ -8,7 +8,7 @@ export default function Privacy() {
       </Head>
 
       <h1 className="mt-4 text-white font-semibold text-3xl">Privacy Policy</h1>
-      <p className="text-sm text-white/30 mb-1">Last Update: 06/04/2024</p>
+      <p className="text-sm text-white/30 mb-1">Last Update: 06/07/2024</p>
       <div className="text-white text-opacity-60 mt-5">
         <p className="py-2">This privacy notice for FiLe group ('VOTL', 'we', 'us', or 'our'), describes how and why we might collect, store, use, and/or share ('process') your information when you use our services ('Services'), such as when you:</p>
         <ol className="py-2 list-disc pl-4">
@@ -19,7 +19,7 @@ export default function Privacy() {
         <p className="py-2"><b>Questions or concerns?</b> Reading this privacy notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us by using the contact details provided in the section '<a className="text-white" href="#contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>' below.</p>
         <h3 className="mt-4 font-bold text-white">SUMMARY OF KEY POINTS</h3>
         <p className="italic font-medium py-2">This summary provides key points from our privacy notice, but you can find out more details about any of these topics by clicking the link following each key point.</p>
-        <p className="py-2"><b>What personal information do we process?</b> When you visit, use, or navigate our Services, we may process personal information depending on how you interact with us and the Services, the choices you make, and the products and features you use. Learn more about <a className="text-white" href="#personalinfo">personal information you disclose to us</a>.</p>
+        <p className="py-2"><b>What personal information do we process?</b> We do not process personal information.</p>
         <p className="py-2"><b>Do we process any sensitive personal information?</b> We do not process sensitive personal information.</p>
         <p className="py-2"><b>Do we receive any information from third parties?</b> We do not receive any information from third parties.</p>
         <p className="py-2"><b>How do we process your information?</b> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so. Learn more about <a className="text-white" href="#infouse">how we process your information</a>.</p>
@@ -29,18 +29,17 @@ export default function Privacy() {
         
         <h3 id="infocollect" className="mt-4 font-bold text-white">1. WHAT INFORMATION DO WE COLLECT?</h3>
         <h3 className="mt-3 font-bold text-white">Information we may collect using the Bot</h3>
-        <p className="py-2">We collect personal information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us. The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make, and the products and features you use. The personal information we collect may include the following:</p>
+        <p className="py-2">We collect information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us. We also collect information provided by Discord services about your interraction with our Services. The information we collect may include the following:</p>
         <ol className="py-2 list-disc pl-4">
-          <li>User IDs, tags and server usernames (for server logs and functionality)</li>
+          <li>User IDs, tags and usernames (for functionality)</li>
           <li>Server IDs (for functionality)</li>
           <li>Channel IDs (for functionality)</li>
           <li>Role IDs (for functionality)</li>
           <li>Webhook IDs and tokens (for functionality)</li>
-          <li>Message ID, it's content and attachment name (for server logs, maximum storage time of 1 week)</li>
-          <li>SteamIDs (Exclusively for UnionTeam's bot, provided via third-party; for functionality and server logs)</li>
+          <li>Message ID, it's content and attachment name (for functionality; is usually innaccesable, message contents is stored for maximum of 1 week)</li>
+          <li>SteamIDs (Exclusively for UnionTeam's bot, provided via third-party; for functionality)</li>
           <li>Any user supplied content that can include text (for functionality)</li>
         </ol>
-        <p className="py-2">We may send you a message through the Discord platform regarding information you have provided using our Services.</p>
 
         <h3 id="infouse" className="mt-4 font-bold text-white">2. HOW DO WE PROCESS YOUR INFORMATION?</h3>
         <p className="py-2">We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. Reasons include:</p>
@@ -52,6 +51,7 @@ export default function Privacy() {
           <li><b>To protect our Services.</b> We may process your information as part of our efforts to keep our Services safe and secure, including fraud monitoring and prevention.</li>
           <li><b>To save or protect an individual's vital interest.</b> We may process your information when necessary to save or protect an individual's vital interest, such as to prevent harm.</li>
         </ol>
+        <p className="py-2">We may send you a message through the Discord platform regarding information you have provided using our Services.</p>
 
         <h3 id="legalbases" className="mt-4 font-bold text-white">3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?</h3>
         <p className="py-2">We only process your personal information when we believe it is necessary and we have a valid legal reason (i.e. legal basis) to do so under applicable law, like with your consent, to comply with laws, to provide you with services to enter into or fulfil our contractual obligations, to protect your rights, or to fulfil our legitimate business interests.</p>

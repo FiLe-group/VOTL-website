@@ -1,4 +1,4 @@
-import { RadioGroup } from "@headlessui/react";
+import { Radio, RadioGroup } from "@headlessui/react";
 import Data from "../data/commandlist.json";
 import StickyBox from "react-sticky-box";
 import { useMemo, useState } from "react";
@@ -57,6 +57,12 @@ const categories = [
     size: 0
   },
   {
+    name: "Game",
+    value: "games",
+    icon: "fa fa-dice",
+    size: 0
+  },
+  {
     name: "Other",
     value: "other",
     icon: "fa fa-circle-info",
@@ -67,12 +73,14 @@ const languages = [{name: "en-GB", flag: "fi-gb"},{name:"ru",flag:"fi-ru"}]
 
 function CommandLevel(access) {
   switch (access) {
-    case 1:
-      return 'fa-user text-green-500'
     case 2:
+      return 'fa-user text-green-500'
+    case 3:
       return 'fa-user-shield text-blue-500'
     case 5:
       return 'fa-user-shield text-yellow-400'
+    case 7  :
+      return 'fa-crown text-yellow-600'
     case 8:
       return 'fa-crown text-yellow-600'
     case 10:
@@ -218,7 +226,7 @@ export default function Commands() {
             <StickyBox>
               <RadioGroup value={category} onChange={setCategory} className="rounded-sm bg-neutral-800/50 py-1">
                 {categories.map(cat => (
-                  <RadioGroup.Option key={cat.name} value={cat}>
+                  <Radio key={cat.name} value={cat}>
                     {({checked}) => (
                       <div className={`${checked ? 'bg-origin-padding bg-neutral-600/50 rounded-sm' : ''} hover:bg-neutral-600/30 px-3 mx-2 my-1 h-10 cursor-pointer`}>
                         <div className="flex flex-row h-full items-center">
@@ -234,7 +242,7 @@ export default function Commands() {
                         </div>
                       </div>
                     )}
-                  </RadioGroup.Option>
+                  </Radio>
                 ))}
               </RadioGroup>
               <div className="mt-4 rounded-sm bg-neutral-800/50">
