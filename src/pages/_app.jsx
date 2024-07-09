@@ -8,7 +8,7 @@ import Footer from "../components/Static/Footer.jsx";
 
 import { ThemeProvider } from "next-themes";
 
-export default function VotlApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   const NavItems = [
     {
       link: true,
