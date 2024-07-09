@@ -1,13 +1,15 @@
 import { Radio, RadioGroup } from "@headlessui/react";
-import Data from "../public/commandlist.json";
 import StickyBox from "react-sticky-box";
 import { useMemo, useState } from "react";
 import { useCollapse } from "react-collapsed";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 import Head from "next/head";
+import { Category, Command, LanguageData } from "@/utils/router";
+import Data from '@public/commandlist.json'
 
-const commands = Object.values( Data );
-const categories = [
+const commands = Data;
+
+const categories: Category[] = [
   {
     name: "All",
     value: "",
@@ -69,9 +71,18 @@ const categories = [
     size: 0
   }
 ]
-const languages = [{name: "en-GB", flag: "fi-gb"},{name:"ru",flag:"fi-ru"}]
+const languages: LanguageData[] = [
+  {
+    name: "en-GB",
+    flag: "fi-gb"
+  },
+  {
+    name:"ru",
+    flag:"fi-ru"
+  }
+]
 
-function CommandLevel(access) {
+function CommandLevel(access: number) {
   switch (access) {
     case 2:
       return 'fa-user text-green-500'
@@ -90,7 +101,7 @@ function CommandLevel(access) {
   }
 }
 
-function CollapsedCommand({name, value}) {
+function CollapsedCommand({ lang, cmd }: {lang: string, cmd: Command}) {
   const {getCollapseProps, getToggleProps, isExpanded} = useCollapse({
     easing: "cubic-bezier(0.3, 0.8, 0.5, 1)",
     duration: 300
@@ -103,14 +114,14 @@ function CollapsedCommand({name, value}) {
           <div className="grow text-left break-words">
             <span className="rounded-lg bg-blue-500/80 m-1 border-2 border-blue-500/80">
               <span className="px-2 height-auto">
-                {`/${value.name}`}
+                {`/${cmd.name}`}
               </span>
             </span>
             <span className="px-1">-</span>
-            <span className="break-words">{value.description[name]}</span>
+            <span className="break-words">{cmd.description[lang]}</span>
           </div>
           <div className="justify-end px-3 min-w-[56px] items-center">
-            <i className={`fa ${CommandLevel(value.access)}`} />
+            <i className={`fa ${CommandLevel(cmd.access)}`} />
           </div>
           <div className="justify-end">
             <i className={`fa fa-caret-down translation-transform duration-300 ease-out ${isExpanded ? 'rotate-180' : ''}`} />
@@ -121,31 +132,31 @@ function CollapsedCommand({name, value}) {
         <div className="pt-1 pb-3">
           <div>
             Module:
-            <span className="text-blue-400 pl-1">{value.module[name] === "" ? "-" : value.module[name]}</span>
+            <span className="text-blue-400 pl-1">{cmd.module[lang] === "" ? "-" : cmd.module[lang]}</span>
           </div>
           <div className="pt-2">
             Can be used in DM:
-            <i className={`pl-1 text-lg fa ${value.guildOnly ? 'text-red-400 fa-xmark' : 'text-green-400 fa-check'}`} />
+            <i className={`pl-1 text-lg fa ${cmd.guildOnly ? 'text-red-400 fa-xmark' : 'text-green-400 fa-check'}`} />
           </div>
           <div className="pt-2">
             <div className="font-bold pb-2">Usage:</div>
-            {value.child?.length === 0 ? (
+            {cmd.child.length === 0 ? (
               <span className="rounded-lg bg-neutral-700 mx-1 border-2 border-neutral-700">
                 <span className="px-2 height-auto font-mono">
-                  {`/${value.usage[name]}`}
+                  {`/${cmd.usage[lang]}`}
                 </span>
               </span>
             ) : (
-              value.child.map(child => (
+              cmd.child.map(child => (
                 <div className="pb-1">
                   <span className="rounded-lg bg-neutral-700 mx-1 border-2 border-neutral-700">
                     <span className="px-2 height-auto font-mono">
-                      {`/${value.name} ${child.usage[name]}`}
+                      {`/${cmd.name} ${child.usage[lang]}`}
                     </span>
                   </span>
                   <div className="pl-2">
                     <i className="fa fa-arrow-turn-down-right pr-2" />
-                    {child.description[name]}
+                    {child.description[lang]}
                   </div>
                 </div>
               ))
@@ -158,11 +169,11 @@ function CollapsedCommand({name, value}) {
   )
 }
 
-function getFilteredCmdsByCategory(cat) {
+function getFilteredCmdsByCategory(cat: Category) {
   if (!cat.value) {
     return commands;
   }
-  return commands.filter(cmd => cmd.category["name"] === cat.value);
+  return commands.filter(cmd => cmd.category.name === cat.value);
 }
 
 export default function Commands() {
@@ -175,7 +186,7 @@ export default function Commands() {
     if (!category.value) {
       return commands;
     }
-    return commands.filter(cmd => cmd.category["name"] === category.value);
+    return commands.filter(cmd => cmd.category.name === category.value);
   }
   var filteredCmds = useMemo(getFilteredCmds, [category, commands]);
 
@@ -209,13 +220,13 @@ export default function Commands() {
               </div>
               <RadioGroup as="span" value={language} onChange={setLanguage} className="ml-2 py-2 bg-neutral-800/50 rounded-sm bg-origin-padding">
                 {languages.map(lang => (
-                  <RadioGroup.Option key={lang.name} value={lang} as="span" className="border-r-2 border-transparent  ">
+                  <Radio key={lang.name} value={lang} as="span" className="border-r-2 border-transparent  ">
                     {({checked}) => (
                       <span className={`${checked ? 'bg-neutral-600/50 rounded-sm' : ''} hover:bg-neutral-600/30 p-2`}>
                         <span className={`fi ${lang.flag}`} />
                       </span>
                     )}
-                  </RadioGroup.Option>
+                  </Radio>
                 ))}
               </RadioGroup>
             </div>
@@ -280,9 +291,9 @@ export default function Commands() {
           </div>
           <div className="basis-full lg:basis-3/4 md:basis-2/3 grow md:pl-4 mt-4">
             <div className="rounded-sm bg-neutral-800/50 grid grid-cols-1 divide-y divide-neutral-600">
-              {filteredCmds.map(cmd => (
-                <div key={cmd.name} className="divide-y-6">
-                  <CollapsedCommand name={language.name} value={cmd} />
+              {filteredCmds.map(fcmd => (
+                <div key={fcmd.name} className="divide-y-6">
+                  <CollapsedCommand lang={language.name} cmd={fcmd} />
                 </div>
               ))}
             </div>

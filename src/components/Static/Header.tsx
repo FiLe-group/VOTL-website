@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
+import { NavbarItemInfo } from "@/utils/router";
 
-const MobileNavbar = ({ open, setOpen, NavItems }) => {
+function MobileNavbar({ open, setOpen, NavItems }: {open: boolean, setOpen: Dispatch<SetStateAction<boolean>>, NavItems: NavbarItemInfo[]}) {
   const router = useRouter();
   return (
     <>
@@ -31,7 +32,7 @@ const MobileNavbar = ({ open, setOpen, NavItems }) => {
               <i className="cursor-pointer fa fa-times text-xl mr-2" />
             </button>
           </div>
-          {NavItems.filter((a) => a.link).map((item, itemIndex) => (
+          {NavItems.filter((a) => a.href).map((item, itemIndex) => (
             <Link href={item.href} key={itemIndex} legacyBehavior>
               <div
                 key={itemIndex}
@@ -48,7 +49,7 @@ const MobileNavbar = ({ open, setOpen, NavItems }) => {
               </div>
             </Link>
           ))}
-          {NavItems.filter((a) => !a.link).map((item, itemIndex) => (
+          {NavItems.filter((a) => !a.href).map((item, itemIndex) => (
             <a href={item.href} key={itemIndex}>
               <div
                 key={itemIndex}
@@ -68,7 +69,8 @@ const MobileNavbar = ({ open, setOpen, NavItems }) => {
     </>
   );
 };
-const Header = ({ $, NavItems }) => {
+
+function Header({ NavItems }: {NavItems: NavbarItemInfo[]}) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -91,7 +93,7 @@ const Header = ({ $, NavItems }) => {
               </p>
             </div>
             <ul className="hidden lg:flex items-center space-x-6">
-              {NavItems.filter((a) => a.link).map((item, itemIndex) => (
+              {NavItems.filter((a) => a.href).map((item, itemIndex) => (
                 <li key={itemIndex}>
                   <Link
                     href={item.href}
@@ -105,7 +107,7 @@ const Header = ({ $, NavItems }) => {
                   </Link>
                 </li>
               ))}
-              {NavItems.filter((a) => !a.link).map((item, itemIndex) => (
+              {NavItems.filter((a) => !a.href).map((item, itemIndex) => (
                 <li key={itemIndex}>
                   <a target="_blank" href={item.href}>
                     <div
@@ -143,7 +145,7 @@ const Header = ({ $, NavItems }) => {
         open={open}
         setOpen={setOpen}
         NavItems={NavItems}
-        Menu={() => setOpen(!open)}
+        //Menu={() => setOpen(!open)}
       />
     </>
   );

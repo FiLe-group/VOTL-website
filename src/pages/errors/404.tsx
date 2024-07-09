@@ -1,5 +1,5 @@
-import ErrorPage from "../../components/ErrorPage";
-const UnkownPage = () => {
+import ErrorPage from "@/components/ErrorPage";
+function UnkownPage() {
   return (
     <ErrorPage
       code={404}

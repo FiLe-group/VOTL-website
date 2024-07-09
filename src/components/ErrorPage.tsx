@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-const ErrorPage = ({ code, message }) => {
+function ErrorPage({ code, message }: { code: number, message: string }) {
   const [clicked, setClicked] = useState(false);
   const router = useRouter();
 
@@ -39,6 +39,6 @@ const ErrorPage = ({ code, message }) => {
       </div>
     </>
   );
-};
+}
 
 export default ErrorPage;
