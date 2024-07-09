@@ -4,7 +4,7 @@ export default function Partners() {
   return (
     <>
       <Head>
-        <title>Partners | VOTL Bot</title>
+        <title>Partners | VOTL bot</title>
       </Head>
 
       <div className="w-full my-10">

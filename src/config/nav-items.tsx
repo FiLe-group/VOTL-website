@@ -28,13 +28,6 @@ const items: NavbarItemInfo[] = [
 		external: true
 	},
 	{
-		name: "UnionTeam's",
-		icon: "fal fa-handshake",
-  	activeIcon: "fa fa-handshake",
-    href: "/partners",
-		external: false
-	},
-	{
 		name: "Translate",
 		icon: "fal fa-language",
     href: "https://crowdin.com/project/voice-of-the-lord/",

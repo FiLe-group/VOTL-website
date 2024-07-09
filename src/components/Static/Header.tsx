@@ -26,7 +26,7 @@ function MobileNavbar({ open, setOpen, NavItems }: {open: boolean, setOpen: Disp
                 className="rounded-full icon-glow"
                 src="/img/logo.png"
               />
-              <p className=" font-extrabold ml-1 text-2xl">VOTL bot</p>
+              <p className=" font-extrabold ml-1 text-2xl">VOTL Bot</p>
             </div>
             <button onClick={() => setOpen(!open)}>
               <i className="cursor-pointer fa fa-times text-xl mr-2" />
@@ -92,7 +92,7 @@ function Header({ NavItems }: {NavItems: NavbarItemInfo[]}) {
                 </a>
               </p>
             </div>
-            <ul className="hidden lg:flex items-center space-x-6">
+            <ul className="hidden lg:flex items-center space-x-5">
               {NavItems.filter((a) => a.href).map((item, itemIndex) => (
                 <li key={itemIndex}>
                   <Link
@@ -145,7 +145,6 @@ function Header({ NavItems }: {NavItems: NavbarItemInfo[]}) {
         open={open}
         setOpen={setOpen}
         NavItems={NavItems}
-        //Menu={() => setOpen(!open)}
       />
     </>
   );

@@ -4,7 +4,7 @@ export default function Tos() {
   return (
     <>
       <Head>
-        <title>Terms | VOTL Bot</title>
+        <title>Terms | VOTL bot</title>
       </Head>
 
       <h1 className="mt-4 text-white font-semibold text-3xl">Terms of Services</h1>

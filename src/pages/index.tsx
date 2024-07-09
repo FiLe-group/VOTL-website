@@ -20,7 +20,7 @@ export default function Index() {
               "flex items-center px-6 justify-center gap-x-2 shadow-lg shadow-blue-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-blue-700 to-blue-500 hover:opacity-80 transition duration-200 text-white "
             }
           >
-            Invite VOTL Bot
+            Invite VOTL bot
           </Link>
         </div>
       </div>

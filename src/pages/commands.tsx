@@ -197,7 +197,7 @@ export default function Commands() {
   return (
     <>
       <Head>
-        <title>Commands | VOTL Bot</title>
+        <title>Commands | VOTL bot</title>
       </Head>
 
       <div className="text-white">
@@ -293,7 +293,7 @@ export default function Commands() {
             <div className="rounded-sm bg-neutral-800/50 grid grid-cols-1 divide-y divide-neutral-600">
               {filteredCmds.map(fcmd => (
                 <div key={fcmd.name} className="divide-y-6">
-                  <CollapsedCommand lang={language.name} cmd={fcmd} />
+                  <CollapsedCommand key={fcmd.name} lang={language.name} cmd={fcmd} />
                 </div>
               ))}
             </div>

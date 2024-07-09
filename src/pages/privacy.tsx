@@ -4,7 +4,7 @@ export default function Privacy() {
   return (
     <>
       <Head>
-        <title>Privacy | VOTL Bot</title>
+        <title>Privacy | VOTL bot</title>
       </Head>
 
       <h1 className="mt-4 text-white font-semibold text-3xl">Privacy Policy</h1>
@@ -13,7 +13,7 @@ export default function Privacy() {
         <p className="py-2">This privacy notice for FiLe group ('VOTL', 'we', 'us', or 'our'), describes how and why we might collect, store, use, and/or share ('process') your information when you use our services ('Services'), such as when you:</p>
         <ol className="py-2 list-disc pl-4">
           <li>Visit our website <a className="text-white" href="https://votl.fileeditor.dev/">votl.fileeditor.dev</a>, or any website of ours that links to this privacy notice</li>
-          <li>Use our Discord application ('Voice of the Lord', 'Bot', or 'VOTL Bot'), or any other Discord application of ours that links to this privacy notice</li>
+          <li>Use our Discord application ('Voice of the Lord', 'Bot', or 'VOTL bot'), or any other Discord application of ours that links to this privacy notice</li>
           <li>Participate in the same Discord server in which the Bot is operated</li>
         </ol>
         <p className="py-2"><b>Questions or concerns?</b> Reading this privacy notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us by using the contact details provided in the section '<a className="text-white" href="#contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>' below.</p>

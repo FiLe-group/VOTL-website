@@ -4,7 +4,7 @@ export default function Policies() {
   return (
     <>
       <Head>
-        <title>Policies | VOTL Bot</title>
+        <title>Policies | VOTL bot</title>
       </Head>
 
       <h1 className="mt-4 text-white text-semibold text-3xl">Bot's Source Code License</h1>

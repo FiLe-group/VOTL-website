@@ -9,7 +9,7 @@ function ErrorPage({ code, message }: { code: number, message: string }) {
   return (
     <>
       <Head>
-        <title>{`${code} | VOTL Bot`}</title>
+        <title>{`${code} | VOTL bot`}</title>
       </Head>
 
       <div className="max-w-7xl text-center py-20 mx-auto">
