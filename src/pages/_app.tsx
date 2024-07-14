@@ -1,16 +1,18 @@
 import "@/styles/global.css";
-import "@/styles/customColors.css";
-import "tailwindcss/tailwind.css";
 import Head from "next/head";
 
-import Header from '@/components/Static/Header';
-import Footer from "@/components/Static/Footer";
+import Header from '@/components/layout/navbar/main';
+import Footer from "@/components/layout/footer/main";
 import items from '@/config/nav-items';
 
-import { ThemeProvider } from "next-themes";
-import { Component, ReactNode } from "react";
+import { ReactNode } from "react";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
+import { theme } from "@/theme/config";
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { client } from "@/api/hooks";
+import { dark } from "@/theme/colors";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (children: ReactNode) => ReactNode;
@@ -24,23 +26,22 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((c) => c);
 
   return (
-    <ThemeProvider defaultTheme="blue">
-      <div className="h-screen relative border-t-4 border-blue-600">
-        <div
-          className="bg-gradient-to-b z-10 opacity-[25%] absolute top-0 w-full from-blue-600 to-transparent"
-          style={{ height: "500px" }}
-        />
+    <ChakraProvider theme={theme}>
+      <QueryClientProvider client={client}>
         <Head>
-          <title>{`Voice of the Lord`}</title>
+          <title>Voice of the Lord</title>
         </Head>
-        <main className="transition-all duration-200 z-10 absolute inset-0 px-5 h-screen max-w-7xl w-full mx-auto">
+        <Box h='100vh' pos='relative' borderTopWidth='4px' borderColor='blue.600'>
+          <Box w='full' pos='absolute' bgGradient={dark.globalGradient} opacity='25%' zIndex='10' top={0} height='500px' />
+        </Box>
+        <Box transition='all' transitionDuration='200ms' zIndex='10' pos='absolute' inset={0} px={5} h='100vh' maxW='7xl' w='full' mx='auto'>
           <Header NavItems={items} />
-          <div className="block px-5 md:px-0">
+          <Box display='block' px={[3, 0]}>
             {getLayout(<Component {...pageProps} />)}
-          </div>
+          </Box>
           <Footer />
-        </main>
-      </div>
-    </ThemeProvider>
+        </Box>
+      </QueryClientProvider>
+    </ChakraProvider>
   );
 }

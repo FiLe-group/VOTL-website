@@ -1,35 +1,40 @@
 import { NavbarItemInfo } from "@/utils/router";
+import { Icon } from "@chakra-ui/react";
+import { FaDiscord, FaInfoCircle } from "react-icons/fa";
+import { GoHome, GoHomeFill } from "react-icons/go";
+import { IoIosList, IoIosListBox } from "react-icons/io";
+import { IoLanguage } from "react-icons/io5";
 
 const items: NavbarItemInfo[] = [
 	{
 		name: "Home",
-		icon: "fal fa-home",
-  	activeIcon: "fa fa-home",
+		icon: <Icon as={GoHome}/>,
+  	activeIcon: <Icon as={GoHomeFill}/>,
     href: "/",
 		external: false
 	},
 	{
 		name: "Commands",
-		icon: "fal fa-list-alt",
-  	activeIcon: "fa fa-list-alt",
+		icon: <Icon as={IoIosList}/>,
+  	activeIcon: <Icon as={IoIosListBox}/>,
     href: "/commands",
 		external: false
 	},
 	{
 		name: "Docs",
-		icon: "fal fa-circle-info",
+		icon: <Icon as={FaInfoCircle}/>,
     href: "https://docs.votl.fileeditor.dev",
 		external: true
 	},
 	{
 		name: "Support",
-		icon: "fab fa-discord",
+		icon: <Icon as={FaDiscord}/>,
     href: "https://discord.gg/25K5S55wrU",
 		external: true
 	},
 	{
 		name: "Translate",
-		icon: "fal fa-language",
+		icon: <Icon as={IoLanguage}/>,
     href: "https://crowdin.com/project/voice-of-the-lord/",
 		external: true
 	},

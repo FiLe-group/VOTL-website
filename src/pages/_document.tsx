@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="en">
       <Head>
         <meta name="robots" content="index,nofollow" />
         <meta name="googlebot" content="index,nofollow" />
@@ -25,14 +25,6 @@ export default function Document() {
         <meta property="twitter:url" content="https://votl.fileeditor.dev" />
         <meta name="theme-color" content="#6108dd" />
         <link rel="icon" href="/img/logo.png" type="image/x-icon" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css"
-          rel="stylesheet"
-        />
       </Head>
       <body>
         <Main />

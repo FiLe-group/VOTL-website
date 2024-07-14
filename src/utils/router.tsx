@@ -1,9 +1,32 @@
+import items from "@/config/sidebar-items";
+import { useRouter } from "next/router";
+import { ReactNode, useMemo } from "react";
+
 export interface NavbarItemInfo {
 	name: string;
-	icon?: string;
-	activeIcon?: string;
+	icon?: ReactNode;
+	activeIcon?: ReactNode;
 	href: string;
 	external: boolean;
+}
+
+export function useActiveSidebarItem(): SidebarItemInfo | null {
+  const route = useRouter().route;
+
+  return useMemo(() => {
+    for (const item of items) {
+      if (item.path === route) return item;
+    }
+
+    return null;
+  }, [route]);
+}
+
+export interface SidebarItemInfo {
+  name: ReactNode;
+  icon?: string;
+  path: string;
+  hidden?: boolean;
 }
 
 export interface Command {

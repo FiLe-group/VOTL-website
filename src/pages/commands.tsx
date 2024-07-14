@@ -1,4 +1,3 @@
-import { Radio, RadioGroup } from "@headlessui/react";
 import StickyBox from "react-sticky-box";
 import { useMemo, useState } from "react";
 import { useCollapse } from "react-collapsed";
@@ -6,6 +5,7 @@ import "/node_modules/flag-icons/css/flag-icons.min.css";
 import Head from "next/head";
 import { Category, Command, LanguageData } from "@/utils/router";
 import Data from '@public/commandlist.json'
+import { Radio, RadioGroup } from "@headlessui/react";
 
 const commands = Data;
 
@@ -219,8 +219,8 @@ export default function Commands() {
                 Description language:
               </div>
               <RadioGroup as="span" value={language} onChange={setLanguage} className="ml-2 py-2 bg-neutral-800/50 rounded-sm bg-origin-padding">
-                {languages.map(lang => (
-                  <Radio key={lang.name} value={lang} as="span" className="border-r-2 border-transparent  ">
+                {languages.map((lang, i) => (
+                  <Radio key={i} value={lang} as="span" className="border-r-2 border-transparent  ">
                     {({checked}) => (
                       <span className={`${checked ? 'bg-neutral-600/50 rounded-sm' : ''} hover:bg-neutral-600/30 p-2`}>
                         <span className={`fi ${lang.flag}`} />
@@ -236,8 +236,8 @@ export default function Commands() {
           <div className="basis-full lg:basis-1/4 md:basis-1/3 mt-4">
             <StickyBox>
               <RadioGroup value={category} onChange={setCategory} className="rounded-sm bg-neutral-800/50 py-1">
-                {categories.map(cat => (
-                  <Radio key={cat.name} value={cat}>
+                {categories.map((cat, i) => (
+                  <Radio key={i} value={cat}>
                     {({checked}) => (
                       <div className={`${checked ? 'bg-origin-padding bg-neutral-600/50 rounded-sm' : ''} hover:bg-neutral-600/30 px-3 mx-2 my-1 h-10 cursor-pointer`}>
                         <div className="flex flex-row h-full items-center">
@@ -291,8 +291,8 @@ export default function Commands() {
           </div>
           <div className="basis-full lg:basis-3/4 md:basis-2/3 grow md:pl-4 mt-4">
             <div className="rounded-sm bg-neutral-800/50 grid grid-cols-1 divide-y divide-neutral-600">
-              {filteredCmds.map(fcmd => (
-                <div key={fcmd.name} className="divide-y-6">
+              {filteredCmds.map((fcmd, i) => (
+                <div key={i} className="divide-y-6">
                   <CollapsedCommand key={fcmd.name} lang={language.name} cmd={fcmd} />
                 </div>
               ))}
