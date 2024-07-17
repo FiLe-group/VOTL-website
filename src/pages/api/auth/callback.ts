@@ -28,7 +28,7 @@ async function exchangeToken(code: string): Promise<AccessToken> {
     method: 'POST',
     body: new URLSearchParams(data),
   });
-
+  
   if (response.ok) {
     return (await response.json()) as AccessToken;
   } else {

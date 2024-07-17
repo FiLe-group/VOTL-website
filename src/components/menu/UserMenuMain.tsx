@@ -13,8 +13,9 @@ import { common } from '@/config/translations/common';
 import Link from 'next/link';
 import { useSelfUser } from '@/api/hooks';
 import { useLogoutMutation } from '@/utils/auth/hooks';
+import { dark } from '@/theme/colors';
 
-export function UserMenu(props: { color: string; shadow: string; bg: string }) {
+export function UserMenu() {
   const user = useSelfUser();
 
   return (
@@ -30,19 +31,19 @@ export function UserMenu(props: { color: string; shadow: string; bg: string }) {
           h="40px"
         />
       </MenuButton>
-      <List user={user} shadow={props.shadow} menuBg={props.bg} textColor={props.color} />
+      <List user={user} />
     </Menu>
   );
 }
 
-function List(props: { textColor: string; shadow: string; menuBg: string; user: UserInfo }) {
+function List(props: { user: UserInfo }) {
   const t = common.useTranslations();
-  const { menuBg, shadow, textColor, user } = props;
+  const { user } = props;
   const borderColor = useColorModeValue('#E6ECFA', 'rgba(135, 140, 189, 0.3)');
   const logout = useLogoutMutation();
 
   return (
-    <MenuList boxShadow={shadow} p="0px" mt="10px" borderRadius="20px" bg={menuBg} border="none">
+    <MenuList boxShadow={dark.shadow} p="0px" mt="10px" borderRadius="20px" bg={dark.cardBg} border="none">
       <Flex w="100%" mb="0px">
         <Text
           ps="20px"
@@ -53,7 +54,7 @@ function List(props: { textColor: string; shadow: string; menuBg: string; user: 
           borderColor={borderColor}
           fontSize="sm"
           fontWeight="700"
-          color={textColor}
+          color={dark.textColorPrimary}
         >
           <span aria-label="Hi" role="img">
             👋

@@ -102,6 +102,23 @@ export async function fetchUserInfo(accessToken: string) {
   );
 }
 
+export async function fetchUserInfoSafe(accessToken: string) {
+  if (accessToken == '0') throw new Error('Not logged in');
+  return await callReturn<UserInfo>(
+    `/users/@me`,
+    discordRequest(accessToken, {
+      request: {
+        method: 'GET',
+      },
+      allowed: {
+        401: async () => {
+          throw new Error('Not logged in');
+        },
+      },
+    })
+  );
+}
+
 export async function getGuilds(accessToken: string) {
   return await callReturn<Guild[]>(
     `/users/@me/guilds`,

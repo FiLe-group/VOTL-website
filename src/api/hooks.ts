@@ -1,6 +1,6 @@
 import { CustomFeatures, CustomGuildInfo } from '../config/types';
 import { QueryClient, useMutation, useQuery, useSuspenseQuery } from '@tanstack/react-query';
-import { UserInfo, getGuild, getGuilds, fetchUserInfo } from '@/api/discord';
+import { UserInfo, getGuild, getGuilds, fetchUserInfo, fetchUserInfoSafe } from '@/api/discord';
 import {
   disableFeature,
   enableFeature,
@@ -11,7 +11,7 @@ import {
   updateFeature,
 } from '@/api/bot';
 import { GuildInfo } from '@/config/types';
-import { useAccessToken, useSession } from '@/utils/auth/hooks';
+import { useAccessToken, useSession, useSessionTemp } from '@/utils/auth/hooks';
 
 export const client = new QueryClient({
   defaultOptions: {
@@ -64,6 +64,19 @@ export function useSelfUserQuery() {
   return useQuery<UserInfo>({
     queryKey: ['users', 'me'],
     queryFn: () => fetchUserInfo(accessToken!!),
+    enabled: accessToken != null,
+    staleTime: Infinity
+  });
+}
+
+export function useSelfUserQuerySafe() {
+  const { status, session } = useSessionTemp();
+
+  const accessToken = status == 'unauthenticated' ? '0' : session?.access_token;
+
+  return useQuery<UserInfo>({
+    queryKey: ['users', 'me'],
+    queryFn: () => fetchUserInfoSafe(accessToken!!),
     enabled: accessToken != null,
     staleTime: Infinity
   });

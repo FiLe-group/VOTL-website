@@ -23,7 +23,11 @@ export async function logout() {
   });
 
   await client.invalidateQueries({queryKey: Keys.login});
-  await Router.push('/');
+  if (Router.asPath == '/') {
+    await Router.reload()
+  } else {
+    await Router.push('/');
+  }
 }
 
 type SessionResult =
@@ -36,6 +40,20 @@ type SessionResult =
       session: null;
     };
 
+type SessionResultTemp =
+  | {
+      status: 'authenticated';
+      session: AccessToken;
+    }
+  | {
+      status: 'loading';
+      session: null;
+    }
+  | {
+      status: 'unauthenticated';
+      session: number;
+    };
+
 export function useSession(): SessionResult {
   const { isError, isLoading, data } = useQuery({
     queryKey: Keys.login,
@@ -46,6 +64,30 @@ export function useSession(): SessionResult {
     return {
       status: 'unauthenticated',
       session: null,
+    };
+
+  if (isLoading)
+    return {
+      status: 'loading',
+      session: null,
+    };
+
+  return {
+    status: 'authenticated',
+    session: data!,
+  };
+}
+
+export function useSessionTemp(): SessionResultTemp {
+  const { isError, isLoading, data } = useQuery({
+    queryKey: Keys.login,
+    queryFn: () => auth()
+  });
+
+  if (isError)
+    return {
+      status: 'unauthenticated',
+      session: 0,
     };
 
   if (isLoading)
