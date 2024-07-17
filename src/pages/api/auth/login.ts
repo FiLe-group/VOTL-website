@@ -11,7 +11,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     'https://discord.com/api/oauth2/authorize?' +
     new URLSearchParams({
       client_id: CLIENT_ID,
-      redirect_uri: `${getAbsoluteUrl()}/dash/auth/callback`,
+      redirect_uri: `${getAbsoluteUrl()}/api/auth/callback`,
       response_type: 'code',
       scope: 'identify guilds',
       state: locale ?? '',

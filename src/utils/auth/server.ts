@@ -38,7 +38,7 @@ export function getServerSession(
     cookies: NextApiRequestCookies;
   }
 ) {
-  const raw = req.cookies[TokenCookie];
+  const raw = req.cookies == null ? null : req.cookies[TokenCookie];
 
   return tokenSchema.safeParse(raw == null ? raw : JSON.parse(raw));
 }

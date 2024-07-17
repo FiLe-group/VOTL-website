@@ -5,69 +5,77 @@ import "/node_modules/flag-icons/css/flag-icons.min.css";
 import Head from "next/head";
 import { Category, Command, LanguageData } from "@/utils/router";
 import Data from '@public/commandlist.json'
-import { Radio, RadioGroup } from "@headlessui/react";
+import { NextPageWithLayout } from "./_app";
+import AppLayout from "@/components/layout/app";
+import { Box, Divider, Flex, HStack, ListItem, StackDivider, Text, UnorderedList, VStack } from "@chakra-ui/layout";
+import { Button, Icon, useControllableState, useRadio, useRadioGroup } from "@chakra-ui/react";
+import { FaCaretDown, FaCheck, FaCrown, FaDice, FaInfoCircle, FaList, FaPhone, FaQuestion, FaServer, FaShieldAlt, FaTicketAlt, FaUser, FaUserShield } from "react-icons/fa";
+import { FaGear, FaGears, FaXmark } from "react-icons/fa6";
+import { HiBadgeCheck } from "react-icons/hi";
+import { MdOutlineWebhook } from "react-icons/md";
+import { PiArrowBendDownRight } from "react-icons/pi";
 
 const commands = Data;
 
 const categories: Category[] = [
   {
-    name: "All",
+    title: "All",
     value: "",
-    icon: "fa fa-list",
+    icon: <Icon as={FaList} boxSize='20px'/>,
     size: 0
   },
   {
-    name: "Moderation",
+    title: "Moderation",
     value: "moderation",
-    icon: "fa fa-shield",
+    icon: <Icon as={FaShieldAlt} boxSize='20px' />,
     size: 0
   },
   {
-    name: "Voice",
+    title: "Voice",
     value: "voice",
-    icon: "fa fa-phone",
+    icon: <Icon as={FaPhone} boxSize='20px' />,
     size: 0
   },
   {
-    name: "Server",
+    title: "Server",
     value: "guild",
-    icon: "fa fa-server",
+    icon: <Icon as={FaServer} boxSize='20px' />,
     size: 0
   },
   {
-    name: "Roles",
+    title: "Roles",
     value: "roles",
-    icon: "fa fa-users",
+    icon: <Icon as={FaUser} boxSize='20px' />,
     size: 0
   },
   {
-    name: "Verification",
+    title: "Verification",
     value: "verification",
-    icon: "fa fa-badge-check",
+    icon: <Icon as={HiBadgeCheck} boxSize='20px' />,
     size: 0
   },
   {
-    name: "Ticketing",
+    title: "Ticketing",
     value: "ticketing",
-    icon: "fa fa-ticket",
+    icon: <Icon as={FaTicketAlt} boxSize='20px' />,
     size: 0
   },
   {
-    name: "Webhook",
+    title: "Webhook",
     value: "webhook",
-    icon: "fa fa-share-nodes",
+    icon: <Icon as={MdOutlineWebhook} boxSize='20px' />,
     size: 0
   },
   {
-    name: "Game",
+    title: "Game",
     value: "games",
-    icon: "fa fa-dice",
+    icon: <Icon as={FaDice} boxSize='20px' />,
     size: 0
   },
   {
-    name: "Other",
+    title: "Other",
     value: "other",
-    icon: "fa fa-circle-info",
+    icon: <Icon as={FaInfoCircle} boxSize='20px' />,
     size: 0
   }
 ]
@@ -85,19 +93,19 @@ const languages: LanguageData[] = [
 function CommandLevel(access: number) {
   switch (access) {
     case 2:
-      return 'fa-user text-green-500'
+      return <Icon as={FaUser} color='green.500' boxSize='20px'/>
     case 3:
-      return 'fa-user-shield text-blue-500'
+      return <Icon as={FaUserShield} color='blue.500' boxSize='20px'/>
     case 5:
-      return 'fa-user-shield text-yellow-400'
-    case 7  :
-      return 'fa-crown text-yellow-600'
+      return <Icon as={FaUserShield} color='yellow.400' boxSize='20px'/>
+    case 7:
+      return <Icon as={FaCrown} color='yellow.600' boxSize='20px'/>
     case 8:
-      return 'fa-crown text-yellow-600'
+      return <Icon as={FaCrown} color='yellow.600' boxSize='20px'/>
     case 10:
-      return 'fa-gear text-red-500'
+      return <Icon as={FaGear} color='red.500' boxSize='20px'/>
     default:
-      return 'text-transparent'
+      return <Box hidden boxSize='20px'/>
   }
 }
 
@@ -109,64 +117,143 @@ function CollapsedCommand({ lang, cmd }: {lang: string, cmd: Command}) {
 
   return (
     <>
-      <button className="w-full px-6 py-3 rounded-lg cursor-pointer transition-all duration-200" {...getToggleProps()}>
-        <div className="flex flex-row items-center">
-          <div className="grow text-left break-words">
-            <span className="rounded-lg bg-blue-500/80 m-1 border-2 border-blue-500/80">
-              <span className="px-2 height-auto">
-                {`/${cmd.name}`}
-              </span>
-            </span>
-            <span className="px-1">-</span>
-            <span className="break-words">{cmd.description[lang]}</span>
-          </div>
-          <div className="justify-end px-3 min-w-[56px] items-center">
-            <i className={`fa ${CommandLevel(cmd.access)}`} />
-          </div>
-          <div className="justify-end">
-            <i className={`fa fa-caret-down translation-transform duration-300 ease-out ${isExpanded ? 'rotate-180' : ''}`} />
-          </div>
-        </div>
-      </button>
-      <section className="px-4" {...getCollapseProps()}>
-        <div className="pt-1 pb-3">
-          <div>
+      <Button
+        {...getToggleProps()}
+        w='full'
+        px={6}
+        py={3}
+        rounded='lg'
+        cursor='pointer'
+        transition='all'
+        transitionDuration='200ms'
+        bg='transparent'
+        _hover={{bg:'transparent'}}
+        textColor='white'
+        display='inline-flex'
+        flex={1}
+        whiteSpace='wrap'
+      >
+        <Flex flexGrow={1} display='inherit' align='start'>
+          <Box
+            as='span'
+            rounded='lg'
+            bgColor='blue.500.8'
+            border='2px'
+            borderColor='blue.500.8'
+            px={2}
+            height='auto'
+            fontWeight='medium'
+          >
+            {`/${cmd.name}`}
+          </Box>
+          <Box as='span' px={1}>-</Box>
+          <Box as='span' whiteSpace='wrap' textAlign='left'>{cmd.description[lang]}</Box>
+        </Flex>
+        <Box justifyContent='end' px={3} minW='56px' justifyItems='center'>
+          {CommandLevel(cmd.access)}
+        </Box>
+        <Icon justifyContent='end' as={FaCaretDown} transform={isExpanded?'rotate(180deg)':'rotate(0deg)'} transitionProperty='transform' transitionDuration='300ms' transitionTimingFunction='ease-in' />
+      </Button>
+      <Box px={4} {...getCollapseProps()}>
+        <VStack pt={1} spacing={2} align='left'>
+          <Text>
             Module:
-            <span className="text-blue-400 pl-1">{cmd.module[lang] === "" ? "-" : cmd.module[lang]}</span>
-          </div>
-          <div className="pt-2">
+            <Text display='inline' textColor='blue.400' pl={1}>{cmd.module[lang] === "" ? "-" : cmd.module[lang]}</Text>
+          </Text>
+          <Flex>
             Can be used in DM:
-            <i className={`pl-1 text-lg fa ${cmd.guildOnly ? 'text-red-400 fa-xmark' : 'text-green-400 fa-check'}`} />
-          </div>
-          <div className="pt-2">
-            <div className="font-bold pb-2">Usage:</div>
+            <Icon pl={1} boxSize='24px' as={cmd.guildOnly?FaXmark:FaCheck} color={cmd.guildOnly?'red.400':'green.400'}/>
+          </Flex>
+          <Box pb={1}>
+            <Text fontWeight='bold' pb={2}>Usage:</Text>
             {cmd.child.length === 0 ? (
-              <span className="rounded-lg bg-neutral-700 mx-1 border-2 border-neutral-700">
-                <span className="px-2 height-auto font-mono">
-                  {`/${cmd.usage[lang]}`}
-                </span>
-              </span>
+              <Text
+                rounded='lg'
+                bgColor='neutral.700'
+                m={1}
+                border='2px'
+                borderColor='neutral.700'
+                px={2}
+                height='auto'
+                fontFamily='monospace'
+                fontSize='md'
+                display='inline'
+              >
+                {`/${cmd.usage[lang]}`}
+              </Text>
             ) : (
               cmd.child.map(child => (
-                <div className="pb-1">
-                  <span className="rounded-lg bg-neutral-700 mx-1 border-2 border-neutral-700">
-                    <span className="px-2 height-auto font-mono">
-                      {`/${cmd.name} ${child.usage[lang]}`}
-                    </span>
-                  </span>
-                  <div className="pl-2">
-                    <i className="fa fa-arrow-turn-down-right pr-2" />
+                <Box pb={1}>
+                  <Text
+                    rounded='lg'
+                    bgColor='neutral.700'
+                    m={1}
+                    border='2px'
+                    borderColor='neutral.700'
+                    px={2}
+                    height='auto'
+                    fontFamily='monospace'
+                    fontSize='md'
+                    display='inline'
+                  >
+                    {`/${cmd.name} ${child.usage[lang]}`}
+                  </Text>
+                  <Flex pl={2}>
+                    <Icon as={PiArrowBendDownRight} pr={1} boxSize='24px' />
                     {child.description[lang]}
-                  </div>
-                </div>
+                  </Flex>
+                </Box>
               ))
             )}
-          </div>
-        </div>
-        <div className=""></div>
-      </section>
+          </Box>
+        </VStack>
+      </Box>
     </>
   )
+}
+
+function HelpBox() {
+  const {getCollapseProps, getToggleProps, isExpanded} = useCollapse({
+    easing: "cubic-bezier(0.4, 0, 1, 1)",
+  })
+
+  return (
+    <Box mt={4} rounded='sm' bgColor='neutral.800'>
+      <Button
+        {...getToggleProps()}
+        py={3}
+        px={6}
+        w='full'
+        bg='transparent'
+        _hover={{bg:'transparent'}}
+        textColor='white'
+      >
+        <HStack spacing={0} justifyContent='normal' w='full'>
+          <Icon as={FaQuestion} mr={2} />
+          <Text flexGrow={1} textAlign='left'>Command Help</Text>
+          <Icon justifyContent='end' as={FaCaretDown} transform={isExpanded?'rotate(180deg)':'rotate(0deg)'} transitionProperty='transform' transitionDuration='300ms' transitionTimingFunction='ease-in'/>
+        </HStack>
+      </Button>
+      <Box px={4} {...getCollapseProps()}>
+        <Box mb={2} pt={1}>
+          <Text>Default prefix is <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">/</Text></Text>
+          <Divider mt={2}/>
+        </Box>
+        <Text fontWeight='bold'>Syntax</Text>
+        <UnorderedList pb={2}>
+          <ListItem>
+            <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'<>'}</Text> - Required parameter
+          </ListItem>
+          <ListItem>
+            <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'[]'}</Text> - Optional parameter
+          </ListItem>
+          <ListItem>
+            <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'A | B'}</Text> - Required parameter
+          </ListItem>
+        </UnorderedList>
+      </Box>
+    </Box>
+  );
 }
 
 function getFilteredCmdsByCategory(cat: Category) {
@@ -176,23 +263,114 @@ function getFilteredCmdsByCategory(cat: Category) {
   return commands.filter(cmd => cmd.category.name === cat.value);
 }
 
-export default function Commands() {
+const CommandsPage: NextPageWithLayout = () => {
+  const defaultLanguage = 'en-GB';
+  const defaultCategory = '';
+
+  const [language, setLanguage] = useState(defaultLanguage);
+  const [category, setCategory] = useState(defaultCategory);
+  
+  function LanguageBox() {
+    const { getRadioProps, getRootProps } = useRadioGroup({
+      name: 'languages',
+      onChange: setLanguage,
+      defaultValue: 'none'
+    })
+
+    function getProps(value: string) {
+      return getRadioProps({value: value});
+    }
+  
+    return (
+      <HStack spacing={1} {...getRootProps()} >
+        {languages.map((lang) => {
+          const { state, getInputProps, getRadioProps } = useRadio(getProps(lang.name));
+  
+          return (
+            <Box as='label' key={lang.name}>
+              <input {...getInputProps()} />
+              <Box
+                {...getRadioProps()}
+                //bg={state.isChecked?'#52525288':(state.isHovered?'#52525244':'transparent')}
+                bg={state.isHovered?'#52525244':'transparent'}
+                rounded='sm'
+                cursor='pointer'
+                py={1}
+                px={2}
+                _focusVisible={{
+                  boxShadow: 'outline',
+                }}
+              >
+                <span className={`fi ${lang.flag}`}/>
+              </Box>
+            </Box>
+          );
+        })}
+      </HStack>
+    )
+  }
+
+  function CategoryBox() {
+    const { getRadioProps, getRootProps } = useRadioGroup({
+      name: 'categories',
+      onChange: setCategory,
+      defaultValue: 'none'
+    })
+
+    function getProps(value: string) {
+      return getRadioProps({value: value});
+    }
+  
+    return (
+      <VStack rounded='sm' bgColor='#26262688' py={1} spacing={0} align='inherit' {...getRootProps()}>
+        {categories.map((cat) => {
+          const { state, getInputProps, getRadioProps } = useRadio(getProps(cat.value));
+  
+          return (
+            <Box as='label' key={cat.value}>
+              <input {...getInputProps()} />
+              <Box
+                {...getRadioProps()}
+                //bg={state.isChecked?'#52525288':(state.isHovered?'#52525244':'transparent')}
+                bg={state.isHovered?'#52525244':'transparent'}
+                rounded='sm'
+                px={3}
+                mx={2}
+                my={1}
+                h={10}
+                cursor='pointer'
+                _focusVisible={{
+                  boxShadow: 'outline',
+                }}
+              >
+                <HStack h='full' spacing={0}>
+                  <Box minW='56px' h='24px'>
+                    {cat.icon}
+                  </Box>
+                  <Box flexGrow={1} whiteSpace='nowrap' overflow='hidden'>
+                    {cat.title}
+                  </Box>
+                  <Box justifyContent='flex-end' minW='56px' textAlign='right'>
+                    {cat.size}
+                  </Box>
+                </HStack>
+              </Box>
+            </Box>
+          );
+        })}
+      </VStack>
+    )
+  }
+
   categories.forEach(cat => cat.size = getFilteredCmdsByCategory(cat).length);
-   
-  const [category, setCategory] = useState(categories[0]);
-  const [language, setLanguage] = useState(languages[0]);
   
   function getFilteredCmds() {
-    if (!category.value) {
+    if (!category) {
       return commands;
     }
-    return commands.filter(cmd => cmd.category.name === category.value);
+    return commands.filter(cmd => cmd.category.name === category);
   }
   var filteredCmds = useMemo(getFilteredCmds, [category, commands]);
-
-  const {getCollapseProps, getToggleProps, isExpanded} = useCollapse({
-    easing: "cubic-bezier(0.4, 0, 1, 1)",
-  })
 
   return (
     <>
@@ -200,106 +378,49 @@ export default function Commands() {
         <title>Commands | VOTL bot</title>
       </Head>
 
-      <div className="text-white">
-        <p className="text-xl font-medium">
-          <i className="fal fa-cogs text-blue-400 mr-2" />
-          Commands
-        </p>
-        <p className="text-sm text-white/50 mb-5">
+      <Box>
+        <HStack className="text-xl font-medium">
+          <Icon as={FaGears} boxSize='20px' color='blue.400' mr={2}/>
+          <Text fontSize='xl'>Commands</Text>
+        </HStack>
+        <Text fontSize='sm' textColor='white.50' mb={5}>
           You can get information about the commands of the VOTL bot.
-        </p>
+        </Text>
 
-        <div className="flex flex-wrap">
-          <div className="basis-full lg:basis-1/4 md:basis-1/3 h-10">
+        <Flex wrap='wrap'>
+          <Text h={10} flexBasis={{base:'100%', md:'33%', lg:'25%'}}>
             Select category to filter out commands
-          </div>
-          <div className="basis-full lg:basis-3/4 md:basis-2/3 grow self-center md:pl-4">
-            <div className="flex flex-row items-center justify-end">
-              <div>
-                Description language:
-              </div>
-              <RadioGroup as="span" value={language} onChange={setLanguage} className="ml-2 py-2 bg-neutral-800/50 rounded-sm bg-origin-padding">
-                {languages.map((lang, i) => (
-                  <Radio key={i} value={lang} as="span" className="border-r-2 border-transparent  ">
-                    {({checked}) => (
-                      <span className={`${checked ? 'bg-neutral-600/50 rounded-sm' : ''} hover:bg-neutral-600/30 p-2`}>
-                        <span className={`fi ${lang.flag}`} />
-                      </span>
-                    )}
-                  </Radio>
-                ))}
-              </RadioGroup>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-wrap">
-          <div className="basis-full lg:basis-1/4 md:basis-1/3 mt-4">
+          </Text>
+          <HStack flexBasis={{base:'100%', md:'67%', lg:'75%'}} flexGrow='1' alignSelf='center' pl={{md:4}} justify='end'>
+            <Text>
+              Description language:
+            </Text>
+            <Box py={1} bgColor='#26262688' rounded='sm'>
+              <LanguageBox />
+            </Box>
+          </HStack>
+        </Flex>
+        <Flex wrap='wrap'>
+          <Box flexBasis={{base:'100%', md:'33%', lg:'25%'}} mt={4} flexShrink={0}>
             <StickyBox>
-              <RadioGroup value={category} onChange={setCategory} className="rounded-sm bg-neutral-800/50 py-1">
-                {categories.map((cat, i) => (
-                  <Radio key={i} value={cat}>
-                    {({checked}) => (
-                      <div className={`${checked ? 'bg-origin-padding bg-neutral-600/50 rounded-sm' : ''} hover:bg-neutral-600/30 px-3 mx-2 my-1 h-10 cursor-pointer`}>
-                        <div className="flex flex-row h-full items-center">
-                          <div className="min-w-[56px]">
-                            <i className={`${cat.icon} text-[18px]`} />
-                          </div>
-                          <div className="grow truncate">
-                            {cat.name}
-                          </div>
-                          <div className="justify-end min-w-[56px] text-right">
-                            {cat.size}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </Radio>
-                ))}
-              </RadioGroup>
-              <div className="mt-4 rounded-sm bg-neutral-800/50">
-                <button className="py-3 px-6 w-full" {...getToggleProps()}>
-                  <div className="flex flex-row">
-                    <div className="grow truncate text-left">
-                      <i className="fa fa-question mr-2" />
-                      <span>Command Help</span>
-                    </div>
-                    <div className="justify-end">
-                      <i className={`fa fa-caret-down translation-transform duration-300 ease-in-out ${isExpanded ? 'rotate-180' : ''}`} />
-                    </div>
-                  </div>
-                </button>
-                <section className="px-4" {...getCollapseProps()}>
-                  <div className="mb-2 pt-1">
-                    <div>Default prefix is <span className="code after:content-['\A0'] before:content-['\A0'] text-blue-400">/</span></div>
-                    <hr className="mt-2 border-neutral-600"/>
-                  </div>
-                  <b>Syntax</b>
-                  <ul className="pb-2 list-disc list-inside">
-                    <li>
-                      <span className="code after:content-['\A0'] before:content-['\A0'] text-blue-400">{'<>'}</span> - Required parameter
-                    </li>
-                    <li>
-                      <span className="code after:content-['\A0'] before:content-['\A0'] text-blue-400">{'[]'}</span> - Optional parameter
-                    </li>
-                    <li>
-                      <span className="code after:content-['\A0'] before:content-['\A0'] text-blue-400">{'A | B'}</span> - Required parameter
-                    </li>
-                  </ul>
-                </section>
-              </div>
+              <CategoryBox />
+              <HelpBox />
             </StickyBox>
-          </div>
-          <div className="basis-full lg:basis-3/4 md:basis-2/3 grow md:pl-4 mt-4">
-            <div className="rounded-sm bg-neutral-800/50 grid grid-cols-1 divide-y divide-neutral-600">
+          </Box>
+          <Box flexBasis={{base:'100%', md:'67%', lg:'75%'}} flexGrow={1} mt={4} pl={{md:4}}>
+            <VStack rounded='sm' bgColor='#26262688' align='inherit' py={2} divider={<StackDivider borderColor='#828282' />}>
               {filteredCmds.map((fcmd, i) => (
-                <div key={i} className="divide-y-6">
-                  <CollapsedCommand key={fcmd.name} lang={language.name} cmd={fcmd} />
-                </div>
+                <Box key={i} borderY={6}>
+                  <CollapsedCommand key={fcmd.name} lang={language} cmd={fcmd} />
+                </Box>
               ))}
-            </div>
-          </div>
-        </div>
-      </div>
+            </VStack>
+          </Box>
+        </Flex>
+      </Box>
     </>
   );
 }
+
+CommandsPage.getLayout = (p) => <AppLayout>{p}</AppLayout>;
+export default CommandsPage;

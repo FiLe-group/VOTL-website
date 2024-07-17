@@ -57,9 +57,9 @@ export interface Command {
 }
 
 export interface Category {
-  name: string;
+  title: string;
   value: string;
-  icon: string;
+  icon: ReactNode;
   size: number;
 }
 

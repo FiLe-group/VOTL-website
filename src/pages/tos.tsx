@@ -1,7 +1,9 @@
 import { Link, ListItem, Text, UnorderedList, VStack } from "@chakra-ui/layout";
 import Head from "next/head";
+import { NextPageWithLayout } from "./_app";
+import AppLayout from "@/components/layout/app";
 
-export default function Tos() {
+const TosPage: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -118,3 +120,6 @@ export default function Tos() {
     </>
   );
 }
+
+TosPage.getLayout = (p) => <AppLayout>{p}</AppLayout>;
+export default TosPage;

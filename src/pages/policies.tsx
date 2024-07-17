@@ -1,7 +1,9 @@
-import { Box, Heading, Text } from "@chakra-ui/layout";
+import { Box, Text } from "@chakra-ui/layout";
 import Head from "next/head";
+import { NextPageWithLayout } from "./_app";
+import AppLayout from "@/components/layout/app";
 
-export default function Policies() {
+const PoliciesPage: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -19,3 +21,6 @@ export default function Policies() {
     </>
   )
 }
+
+PoliciesPage.getLayout = (p) => <AppLayout>{p}</AppLayout>;
+export default PoliciesPage;

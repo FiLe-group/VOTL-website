@@ -23,7 +23,7 @@ export async function logout() {
   });
 
   await client.invalidateQueries({queryKey: Keys.login});
-  await Router.push('/auth/signin');
+  await Router.push('/');
 }
 
 type SessionResult =
@@ -58,6 +58,13 @@ export function useSession(): SessionResult {
     status: 'authenticated',
     session: data!,
   };
+}
+
+export function useSessionQuery() {
+  return useQuery({
+    queryKey: Keys.login,
+    queryFn: () => auth()
+  });
 }
 
 export function useAccessToken() {

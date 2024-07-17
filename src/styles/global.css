@@ -395,3 +395,13 @@ code.embed-code {
   font-weight: 900;
   font-size: 85%;
 }
+
+.code-blue {
+  background-color: #2f3136;
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);
+  font-family: monospace,monospace;
+  font-weight: 900;
+  font-size: 85%;
+  color: #60a5fa;
+  display: inline;
+}

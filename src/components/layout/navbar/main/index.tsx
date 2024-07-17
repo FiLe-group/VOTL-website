@@ -1,9 +1,10 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import { NavbarItemInfo } from "@/utils/router";
 import { Box, Flex, HStack, Link, Text, VStack } from "@chakra-ui/layout";
 import { Button, Drawer, DrawerCloseButton, DrawerContent, DrawerOverlay, Icon, Image } from "@chakra-ui/react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import items from "@/config/nav-items";
 
 function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: Dispatch<SetStateAction<boolean>>, NavItems: NavbarItemInfo[]}) {
   const router = useRouter();
@@ -85,30 +86,29 @@ function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: 
   );
 };
 
-function Header({ NavItems }: {NavItems: NavbarItemInfo[]}) {
+function Header({ children }: {children?: ReactNode}) {
   const [isOpen, setOpen] = useState(false);
   const router = useRouter();
-
-  const loggedin = false;
-  const user = loggedin ? null : null;
 
   return (
     <>
       <header>
         <Flex maxW='7xl' px={5} py={5} mx='auto' align='center' justify='space-between'>
           <HStack spacing={6}>
-            <HStack spacing={3}>
-              <Image
-                src="/img/logo-small.png"
-                borderRadius='full'
-                boxSize='48px'
-              />
-              <Link href="/" hideBelow='sm' fontSize='xl' textColor='white' fontWeight='600' _hover={{ textDecoration: "none" }}>
-                <Text color='blue.400' display='inline-block' whiteSpace='nowrap'>VOTL</Text> Bot
-              </Link>
-            </HStack>
+            <Link href="/" _hover={{ textDecoration: "none" }}>
+              <HStack>
+                <Image
+                  src="/img/logo-small.png"
+                  borderRadius='full'
+                  boxSize='48px'
+                />
+                <Text hideBelow='sm' fontSize='xl' display='inline-block' whiteSpace='nowrap' textColor='white' fontWeight='600'>
+                  <Text color='blue.400' as='span'>VOTL</Text> Bot
+                </Text>
+              </HStack>
+            </Link>
             <HStack hideBelow='lg' align='center' spacing={5}>
-              {NavItems.filter((a) => !a.external).map((item, i) => (
+              {items.filter((a) => !a.external).map((item, i) => (
                 <Link key={i} href={item.href} _hover={{textDecoration:'none'}}>
                   <Text
                     display='inline'
@@ -125,7 +125,7 @@ function Header({ NavItems }: {NavItems: NavbarItemInfo[]}) {
                   </Text>
                 </Link>
               ))}
-              {NavItems.filter((a) => a.external).map((item, i) => (
+              {items.filter((a) => a.external).map((item, i) => (
                 <Link key={i} target='_blank' href={item.href} _hover={{textDecoration:'none'}}>
                   <Text
                     display='inline'
@@ -179,25 +179,27 @@ function Header({ NavItems }: {NavItems: NavbarItemInfo[]}) {
               Invite
             </Link>
             
-            <Link
-              href="/dash/auth/login"
-              w='auto'
-              px={8}
-              py={2.5}
-              alignItems='center'
-              boxShadow='0 10px 15px -3px rgba(55, 122, 242, 0.2)'
-              rounded='xl'
-              bgGradient='linear(to-tl, blue.500, blue.700)'
-              textColor='white'
-              transitionProperty='opacity'
-              transitionDuration='300ms'
-              _hover={{
-                opacity: 0.8
-              }}
-            >
-              <Text hideFrom='520px'>Login</Text>
-              <Text hideBelow='519px'>Login with Discord</Text>
-            </Link>
+            {children ? children : (
+							<Link
+								href="/api/auth/login"
+								w='auto'
+								px={8}
+								py={2.5}
+								alignItems='center'
+								boxShadow='0 10px 15px -3px rgba(55, 122, 242, 0.2)'
+								rounded='xl'
+								bgGradient='linear(to-tl, blue.500, blue.700)'
+								textColor='white'
+								transitionProperty='opacity'
+								transitionDuration='300ms'
+								_hover={{
+									opacity: 0.8
+								}}
+							>
+								<Text hideFrom='520px'>Login</Text>
+								<Text hideBelow='519px'>Login with Discord</Text>
+							</Link>
+						)}
           </HStack>
         </Flex>
       </header>
@@ -205,7 +207,7 @@ function Header({ NavItems }: {NavItems: NavbarItemInfo[]}) {
       <MobileNavbar
         isOpen={isOpen}
         setOpen={setOpen}
-        NavItems={NavItems}
+        NavItems={items}
       />
     </>
   );

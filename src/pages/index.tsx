@@ -1,7 +1,9 @@
 import { Box, Flex, Link, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
+import { NextPageWithLayout } from "./_app";
+import AppLayout from "@/components/layout/app";
 
-export default function Index() {
+const IndexPage: NextPageWithLayout = () => {
   return (
     <Box maxW='3xl' py={20} mb='30px' mx='auto'>
       <Flex pb={3} justify='center'>
@@ -33,3 +35,6 @@ export default function Index() {
     </Box>
   );
 }
+
+IndexPage.getLayout = (p) => <AppLayout>{p}</AppLayout>;
+export default IndexPage;

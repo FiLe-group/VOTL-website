@@ -19,7 +19,7 @@ import { profile } from '@/config/translations/profile';
 import { IoLogOut } from 'react-icons/io5';
 import { useSettingsStore } from '@/stores';
 import { NextPageWithLayout } from '@/pages/_app';
-import AppLayout from '@/components/layout/app';
+import DashLayout from '@/components/layout/dash';
 import { useLogoutMutation } from '@/utils/auth/hooks';
 import { useSelfUser } from '@/api/hooks';
 
@@ -121,6 +121,5 @@ function Content() {
   return <></>;
 }
 
-ProfilePage.getLayout = (p) => <AppLayout>{p}</AppLayout>;
-
+ProfilePage.getLayout = (p) => <DashLayout>{p}</DashLayout>;
 export default ProfilePage;

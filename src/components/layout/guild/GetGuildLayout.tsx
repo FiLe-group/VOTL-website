@@ -1,4 +1,4 @@
-import AppLayout from '../app';
+import DashLayout from '../dash';
 import { ReactNode } from 'react';
 import GuildNavbar from './GuildNavbar';
 import { InGuildSidebar } from './GuildSidebar';
@@ -11,8 +11,8 @@ export default function getGuildLayout({
   children: ReactNode;
 }) {
   return (
-    <AppLayout navbar={<GuildNavbar back={back} />} sidebar={back ? <InGuildSidebar /> : undefined}>
+    <DashLayout navbar={<GuildNavbar back={back} />} sidebar={back ? <InGuildSidebar /> : undefined}>
       {children}
-    </AppLayout>
+    </DashLayout>
   );
 }

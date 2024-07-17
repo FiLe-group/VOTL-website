@@ -12,7 +12,7 @@ import {
 import { config } from '@/config/common';
 import { useGuilds } from '@/api/hooks';
 import { NextPageWithLayout } from '@/pages/_app';
-import AppLayout from '@/components/layout/app';
+import DashLayout from '@/components/layout/dash';
 import { iconUrl } from '@/api/discord';
 import Link from 'next/link';
 
@@ -60,5 +60,5 @@ export function GuildSelect() {
   return <></>;
 }
 
-HomePage.getLayout = (c) => <AppLayout>{c}</AppLayout>;
+HomePage.getLayout = (c) => <DashLayout>{c}</DashLayout>;
 export default HomePage;

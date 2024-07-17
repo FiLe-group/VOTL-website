@@ -1,9 +1,12 @@
 import { Link, Text, VStack } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
 import Head from "next/head";
+import { NextPageWithLayout } from "./_app";
+import AppLayout from "@/components/layout/app";
 
 //#1285f1/30
-export default function Partners() {
+
+const PartnersPage: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -25,3 +28,6 @@ export default function Partners() {
     </>
   );
 }
+
+PartnersPage.getLayout = (p) => <AppLayout>{p}</AppLayout>;
+export default PartnersPage;

@@ -16,7 +16,7 @@ async function exchangeToken(code: string): Promise<AccessToken> {
     client_secret: CLIENT_SECRET,
     grant_type: 'authorization_code',
     code: code,
-    redirect_uri: `${getAbsoluteUrl()}/dash/auth/callback`,
+    redirect_uri: `${getAbsoluteUrl()}/api/auth/callback`,
   };
 
   const headers = {
@@ -60,5 +60,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const token = await exchangeToken(code);
 
   setServerSession(req, res, token);
-  res.redirect(state ? `/${state}/dash/user/home` : `/dash/user/home`);
+  res.redirect(state ? `/${state}/user/home` : `/user/home`);
 }

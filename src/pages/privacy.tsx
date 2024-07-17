@@ -1,7 +1,9 @@
 import { Link, ListItem, Text, UnorderedList, VStack } from "@chakra-ui/layout";
 import Head from "next/head";
+import { NextPageWithLayout } from "./_app";
+import AppLayout from "@/components/layout/app";
 
-export default function Privacy() {
+const PrivacyPage: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -89,3 +91,6 @@ export default function Privacy() {
     </>
   );
 }
+
+PrivacyPage.getLayout = (p) => <AppLayout>{p}</AppLayout>;
+export default PrivacyPage;
