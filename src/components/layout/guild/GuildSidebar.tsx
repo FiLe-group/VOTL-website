@@ -9,7 +9,6 @@ import { sidebarBreakpoint } from '@/theme/breakpoints';
 import { guild as view } from '@/config/translations/guild';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-// @ts-ignore TODO
 import { Params } from '@/pages/guilds/[guild]/modules/[module]';
 import { SidebarItem } from '../sidebar/SidebarItem';
 

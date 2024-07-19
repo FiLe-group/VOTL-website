@@ -2,7 +2,7 @@ import { Icon } from '@chakra-ui/react';
 import { Center, Heading, Text } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/react';
 import { LoadingPanel } from '@/components/panel/LoadingPanel';
-import { modulest } from '@/config/modules';
+import { modules } from '@/config/modules';
 import { CustomModule, ModuleConfig } from '@/config/types';
 import { BsSearch } from 'react-icons/bs';
 import { useEnableModuleMutation, useModuleQuery } from '@/api/hooks';
@@ -23,7 +23,7 @@ const ModulePage: NextPageWithLayout = () => {
   const { module, guild } = useRouter().query as Params;
 
   const query = useModuleQuery(guild, module);
-  const moduleConfig = modulest[module] as ModuleConfig<typeof module>;
+  const moduleConfig = modules[module] as ModuleConfig<typeof module>;
   const skeleton = moduleConfig?.useSkeleton?.();
 
   if (moduleConfig == null) return <NotFound />;

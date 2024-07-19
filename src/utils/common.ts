@@ -1,4 +1,4 @@
-import { modulest } from "@/config/modules";
+import { modules } from "@/config/modules";
 import { CustomModule, ModuleConfig } from "@/config/types";
 
 export type IdModule<K extends keyof CustomModule = keyof CustomModule> = ModuleConfig<K> & {
@@ -6,7 +6,7 @@ export type IdModule<K extends keyof CustomModule = keyof CustomModule> = Module
 };
 
 export function getModules(): IdModule<any>[] {
-  return Object.entries(modulest).map(([k, v]) => {
+  return Object.entries(modules).map(([k, v]) => {
     return {
       id: k,
       ...v,
