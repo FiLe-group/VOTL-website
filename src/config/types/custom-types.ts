@@ -2,24 +2,27 @@
  * Custom types that should be configured by developer
  ***/
 
-import { z } from 'zod';
 import { GuildInfo } from './types';
 
 export type CustomGuildInfo = GuildInfo & {};
 
 /**
- * Define feature ids and it's option types
+ * Define module ids and it's option types
  */
-export type CustomFeatures = {
-  music: {};
-  gaming: {};
-  'reaction-role': {};
-  meme: {};
-  'welcome-message': WelcomeMessageFeature;
+export type CustomModule = {
+  webhook: {};
+  moderation: {};
+  strikes: {};
+  verification: {};
+  ticketing: {};
+  voice: {};
+  report: {};
+  roles: {};
+  games: {};
 };
 
 /** example only */
-export type WelcomeMessageFeature = {
+/* export type WelcomeMessageFeature = {
   channel?: string;
   message: string;
 };
@@ -29,4 +32,4 @@ export const memeFeatureSchema = z.object({
   source: z.enum(['youtube', 'twitter', 'discord']).optional(),
 });
 
-export type MemeFeature = z.infer<typeof memeFeatureSchema>;
+export type MemeFeature = z.infer<typeof memeFeatureSchema>; */

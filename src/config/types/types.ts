@@ -1,4 +1,4 @@
-import { CustomFeatures } from './custom-types';
+import { CustomModule } from './custom-types';
 import { Guild } from '@/api/discord';
 import { ReactElement, ReactNode } from 'react';
 
@@ -37,24 +37,24 @@ export type GuildConfig = {
 };
 
 export interface GuildInfo {
-  enabledFeatures: string[];
+  disabledModules: string[];
 }
 
-export type FeaturesConfig = {
-  [K in keyof CustomFeatures]: FeatureConfig<K>;
+export type ModulesConfig = {
+  [K in keyof CustomModule]: ModuleConfig<K>;
 };
 
 /**
- * Internal Feature info
+ * Internal Module info
  */
-export interface FeatureConfig<K extends keyof CustomFeatures> {
+export interface ModuleConfig<K extends keyof CustomModule> {
   name: ReactNode;
   description?: ReactNode;
-  icon?: string;
+  icon?: ReactNode;
   /**
-   * Render content in Feature view
+   * Render content in Module view
    */
-  useRender: UseFormRender<CustomFeatures[K]>;
+  useRender: UseFormRender<CustomModule[K]>;
   /**
    * Render skeleton before featrue is loaded
    */

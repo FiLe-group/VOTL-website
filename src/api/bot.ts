@@ -1,4 +1,4 @@
-import { CustomFeatures, CustomGuildInfo } from '@/config/types/custom-types';
+import { CustomModule, CustomGuildInfo } from '@/config/types/custom-types';
 import { AccessToken } from '@/utils/auth/server';
 import { callDefault, callReturn } from '@/utils/fetch/core';
 import { botRequest } from '@/utils/fetch/requests';
@@ -48,9 +48,9 @@ export async function fetchGuildInfo(
   );
 }
 
-export async function enableFeature(session: AccessToken, guild: string, feature: string) {
+export async function enableModule(session: AccessToken, guild: string, module: string) {
   return await callDefault(
-    `/guilds/${guild}/features/${feature}`,
+    `/guilds/${guild}/modules/${module}`,
     botRequest(session, {
       request: {
         method: 'POST',
@@ -59,9 +59,9 @@ export async function enableFeature(session: AccessToken, guild: string, feature
   );
 }
 
-export async function disableFeature(session: AccessToken, guild: string, feature: string) {
+export async function disableModule(session: AccessToken, guild: string, module: string) {
   return await callDefault(
-    `/guilds/${guild}/features/${feature}`,
+    `/guilds/${guild}/modules/${module}`,
     botRequest(session, {
       request: {
         method: 'DELETE',
@@ -70,13 +70,13 @@ export async function disableFeature(session: AccessToken, guild: string, featur
   );
 }
 
-export async function getFeature<K extends keyof CustomFeatures>(
+export async function getModule<K extends keyof CustomModule>(
   session: AccessToken,
   guild: string,
-  feature: K
-): Promise<CustomFeatures[K]> {
-  return await callReturn<CustomFeatures[K]>(
-    `/guilds/${guild}/features/${feature}`,
+  module: K
+): Promise<CustomModule[K]> {
+  return await callReturn<CustomModule[K]>(
+    `/guilds/${guild}/modules/${module}`,
     botRequest(session, {
       request: {
         method: 'GET',
@@ -85,16 +85,16 @@ export async function getFeature<K extends keyof CustomFeatures>(
   );
 }
 
-export async function updateFeature<K extends keyof CustomFeatures>(
+export async function updateModule<K extends keyof CustomModule>(
   session: AccessToken,
   guild: string,
-  feature: K,
+  module: K,
   options: FormData | string
-): Promise<CustomFeatures[K]> {
+): Promise<CustomModule[K]> {
   const isForm = options instanceof FormData;
 
-  return await callReturn<CustomFeatures[K]>(
-    `/guilds/${guild}/features/${feature}`,
+  return await callReturn<CustomModule[K]>(
+    `/guilds/${guild}/modules/${module}`,
     botRequest(session, {
       request: {
         method: 'PATCH',

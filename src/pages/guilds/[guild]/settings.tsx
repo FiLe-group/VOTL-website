@@ -54,8 +54,8 @@ const GuildSettingsPage: NextPageWithLayout = () => {
       <SimpleGrid mt={5} columns={{ base: 1, md: 2 }} gap={3}>
         <SwitchFieldForm
           control={{
-            label: 'Beta Features',
-            description: 'Use beta features before releasing',
+            label: 'Beta Modules',
+            description: 'Use beta modules before releasing',
           }}
           controller={{ control, name: 'beta' }}
         />

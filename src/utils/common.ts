@@ -1,12 +1,12 @@
-import { features } from "@/config/features";
-import { CustomFeatures, FeatureConfig } from "@/config/types";
+import { modulest } from "@/config/modules";
+import { CustomModule, ModuleConfig } from "@/config/types";
 
-export type IdFeature<K extends keyof CustomFeatures = keyof CustomFeatures> = FeatureConfig<K> & {
+export type IdModule<K extends keyof CustomModule = keyof CustomModule> = ModuleConfig<K> & {
   id: K;
 };
 
-export function getFeatures(): IdFeature<any>[] {
-  return Object.entries(features).map(([k, v]) => {
+export function getModules(): IdModule<any>[] {
+  return Object.entries(modulest).map(([k, v]) => {
     return {
       id: k,
       ...v,

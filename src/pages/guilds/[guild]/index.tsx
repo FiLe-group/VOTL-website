@@ -7,9 +7,9 @@ import { BsMailbox } from 'react-icons/bs';
 import { FaRobot } from 'react-icons/fa';
 import { useGuildInfoQuery } from '@/api/hooks';
 import { useRouter } from 'next/router';
-import { getFeatures } from '@/utils/common';
+import { getModules } from '@/utils/common';
 import { Banner } from '@/components/GuildBanner';
-import { FeatureItem } from '@/components/feature/FeatureItem';
+import { ModuleItem } from '@/components/module/ModuleItem';
 import type { CustomGuildInfo } from '@/config/types/custom-types';
 import { NextPageWithLayout } from '@/pages/_app';
 import getGuildLayout from '@/components/layout/guild/GetGuildLayout';
@@ -37,14 +37,14 @@ function GuildPanel({ guild: id, info }: { guild: string; info: CustomGuildInfo 
     <Flex direction="column" gap={5}>
       <Banner />
       <Flex direction="column" gap={5} mt={3}>
-        <Heading size="md">{t.features}</Heading>
+        <Heading size="md">{t.modules}</Heading>
         <SimpleGrid columns={{ base: 1, md: 2, '2xl': 3 }} gap={3}>
-          {getFeatures().map((feature) => (
-            <FeatureItem
-              key={feature.id}
+          {getModules().map((module) => (
+            <ModuleItem
+              key={module.id}
               guild={id}
-              feature={feature}
-              enabled={info.enabledFeatures.includes(feature.id)}
+              module={module}
+              enabled={!info.disabledModules.includes(module.id)}
             />
           ))}
         </SimpleGrid>

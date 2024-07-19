@@ -2,34 +2,34 @@ import { RiErrorWarningFill as WarningIcon } from 'react-icons/ri';
 import { Box, Flex, Heading, Spacer, Text } from '@chakra-ui/layout';
 import { ButtonGroup, Button, Icon } from '@chakra-ui/react';
 import { SlideFade } from '@chakra-ui/react';
-import { FeatureConfig, UseFormRenderResult, CustomFeatures } from '@/config/types';
+import { ModuleConfig, UseFormRenderResult, CustomModule } from '@/config/types';
 import { IoSave } from 'react-icons/io5';
-import { useEnableFeatureMutation, useUpdateFeatureMutation } from '@/api/hooks';
+import { useEnableModuleMutation, useUpdateModuleMutation } from '@/api/hooks';
 // @ts-ignore
-import { Params } from '@/pages/guilds/[guild]/features/[feature]';
-import { feature as view } from '@/config/translations/feature';
+import { Params } from '@/pages/guilds/[guild]/modules/[module]';
+import { module as view } from '@/config/translations/module';
 import { useRouter } from 'next/router';
 
-export function UpdateFeaturePanel({
-  feature,
+export function UpdateModulePanel({
+  module,
   config,
 }: {
-  feature: CustomFeatures[keyof CustomFeatures];
-  config: FeatureConfig<keyof CustomFeatures>;
+  module: CustomModule[keyof CustomModule];
+  config: ModuleConfig<keyof CustomModule>;
 }) {
-  const { guild, feature: featureId } = useRouter().query as Params;
-  const mutation = useUpdateFeatureMutation();
-  const enableMutation = useEnableFeatureMutation();
-  const result = config.useRender(feature, (data) => {
+  const { guild, module: moduleId } = useRouter().query as Params;
+  const mutation = useUpdateModuleMutation();
+  const enableMutation = useEnableModuleMutation();
+  const result = config.useRender(module, (data) => {
     return mutation.mutateAsync({
       guild,
-      feature: featureId,
+      module: moduleId,
       options: data,
     });
   });
 
   const onDisable = () => {
-    enableMutation.mutate({ enabled: false, guild, feature: featureId });
+    enableMutation.mutate({ enabled: false, guild, module: moduleId });
   };
 
   return (

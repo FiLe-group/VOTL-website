@@ -4,8 +4,7 @@ import { Option, SelectField } from '@/components/forms/SelectField';
 import { toRGB } from '@/utils/common';
 import { Role } from '@/api/bot';
 import { useRouter } from 'next/router';
-// @ts-ignore TODO
-import { Params } from '@/pages/guilds/[guild]/features/[feature]';
+import { Params } from '@/pages/guilds/[guild]/modules/[module]';
 import { forwardRef } from 'react';
 import { SelectInstance, Props as SelectProps } from 'chakra-react-select';
 import { Override } from '@/utils/types';

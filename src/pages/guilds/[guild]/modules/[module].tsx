@@ -2,40 +2,40 @@ import { Icon } from '@chakra-ui/react';
 import { Center, Heading, Text } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/react';
 import { LoadingPanel } from '@/components/panel/LoadingPanel';
-import { features } from '@/config/features';
-import { CustomFeatures, FeatureConfig } from '@/config/types';
+import { modulest } from '@/config/modules';
+import { CustomModule, ModuleConfig } from '@/config/types';
 import { BsSearch } from 'react-icons/bs';
-import { useEnableFeatureMutation, useFeatureQuery } from '@/api/hooks';
-import { UpdateFeaturePanel } from '@/components/feature/UpdateFeaturePanel';
-import { feature as view } from '@/config/translations/feature';
+import { useEnableModuleMutation, useModuleQuery } from '@/api/hooks';
+import { UpdateModulePanel } from '@/components/module/UpdateModulePanel';
+import { module as view } from '@/config/translations/module';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from '@/pages/_app';
 import getGuildLayout from '@/components/layout/guild/GetGuildLayout';
 
 export type Params = {
   guild: string;
-  feature: keyof CustomFeatures;
+  module: keyof CustomModule;
 };
 
-export type UpdateFeatureValue<K extends keyof CustomFeatures> = Partial<CustomFeatures[K]>;
+export type UpdateModuleValue<K extends keyof CustomModule> = Partial<CustomModule[K]>;
 
-const FeaturePage: NextPageWithLayout = () => {
-  const { feature, guild } = useRouter().query as Params;
+const ModulePage: NextPageWithLayout = () => {
+  const { module, guild } = useRouter().query as Params;
 
-  const query = useFeatureQuery(guild, feature);
-  const featureConfig = features[feature] as FeatureConfig<typeof feature>;
-  const skeleton = featureConfig?.useSkeleton?.();
+  const query = useModuleQuery(guild, module);
+  const moduleConfig = modulest[module] as ModuleConfig<typeof module>;
+  const skeleton = moduleConfig?.useSkeleton?.();
 
-  if (featureConfig == null) return <NotFound />;
+  if (moduleConfig == null) return <NotFound />;
   if (query.isError) return <NotEnabled />;
   if (query.isLoading) return skeleton != null ? <>{skeleton}</> : <LoadingPanel />;
-  return <UpdateFeaturePanel key={feature} feature={query.data} config={featureConfig} />;
+  return <UpdateModulePanel key={module} module={query.data} config={moduleConfig} />;
 };
 
 function NotEnabled() {
   const t = view.useTranslations();
-  const { guild, feature } = useRouter().query as Params;
-  const enable = useEnableFeatureMutation();
+  const { guild, module } = useRouter().query as Params;
+  const enable = useEnableModuleMutation();
 
   return (
     <Center flexDirection="column" h="full" gap={1}>
@@ -46,7 +46,7 @@ function NotEnabled() {
       <Button
         mt={3}
         isLoading={enable.isPending}
-        onClick={() => enable.mutate({ enabled: true, guild, feature })}
+        onClick={() => enable.mutate({ enabled: true, guild, module })}
         variant="action"
         px={6}
       >
@@ -68,5 +68,5 @@ function NotFound() {
   );
 }
 
-FeaturePage.getLayout = (c) => getGuildLayout({ children: c, back: true });
-export default FeaturePage;
+ModulePage.getLayout = (c) => getGuildLayout({ children: c, back: true });
+export default ModulePage;

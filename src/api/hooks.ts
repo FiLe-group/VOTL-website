@@ -1,14 +1,14 @@
-import { CustomFeatures, CustomGuildInfo } from '../config/types';
+import { CustomModule, CustomGuildInfo } from '../config/types';
 import { QueryClient, useMutation, useQuery, useSuspenseQuery } from '@tanstack/react-query';
 import { UserInfo, getGuild, getGuilds, fetchUserInfo, fetchUserInfoSafe } from '@/api/discord';
 import {
-  disableFeature,
-  enableFeature,
+  disableModule,
+  enableModule,
   fetchGuildChannels,
   fetchGuildInfo,
   fetchGuildRoles,
-  getFeature,
-  updateFeature,
+  getModule,
+  updateModule,
 } from '@/api/bot';
 import { GuildInfo } from '@/config/types';
 import { useAccessToken, useSession, useSessionTemp } from '@/utils/auth/hooks';
@@ -29,13 +29,13 @@ export const client = new QueryClient({
 export const Keys = {
   login: ['login'],
   guild_info: (guild: string) => ['guild_info', guild],
-  features: (guild: string, feature: string) => ['feature', guild, feature],
+  modules: (guild: string, module: string) => ['module', guild, module],
   guildRoles: (guild: string) => ['gulid_roles', guild],
   guildChannels: (guild: string) => ['gulid_channel', guild],
 };
 
 export const Mutations = {
-  updateFeature: (guild: string, id: string) => ['feature', guild, id],
+  updateModule: (guild: string, id: string) => ['module', guild, id],
 };
 
 export function useGuild(id: string) {
@@ -95,40 +95,40 @@ export function useGuildInfoQuery(guild: string) {
   });
 }
 
-export function useFeatureQuery<K extends keyof CustomFeatures>(guild: string, feature: K) {
+export function useModuleQuery<K extends keyof CustomModule>(guild: string, module: K) {
   const { status, session } = useSession();
 
   return useSuspenseQuery({
-    queryKey: Keys.features(guild, feature),
-    queryFn: () => getFeature(session!!, guild, feature)
+    queryKey: Keys.modules(guild, module),
+    queryFn: () => getModule(session!!, guild, module)
   });
 }
 
-export type EnableFeatureOptions = { guild: string; feature: string; enabled: boolean };
-export function useEnableFeatureMutation() {
+export type EnableModuleOptions = { guild: string; module: string; enabled: boolean };
+export function useEnableModuleMutation() {
   const { session } = useSession();
 
   return useMutation({
-    mutationFn: async ({ enabled, guild, feature }: EnableFeatureOptions) => {
-      if (enabled) return enableFeature(session!!, guild, feature);
-      return disableFeature(session!!, guild, feature);
+    mutationFn: async ({ enabled, guild, module }: EnableModuleOptions) => {
+      if (enabled) return enableModule(session!!, guild, module);
+      return disableModule(session!!, guild, module);
     },
-    async onSuccess(_, { guild, feature, enabled }) {
-      await client.invalidateQueries({queryKey: Keys.features(guild, feature)});
+    async onSuccess(_, { guild, module, enabled }) {
+      await client.invalidateQueries({queryKey: Keys.modules(guild, module)});
       client.setQueryData<GuildInfo | null>(Keys.guild_info(guild), (prev) => {
         if (prev == null) return null;
 
         if (enabled) {
           return {
             ...prev,
-            enabledFeatures: prev.enabledFeatures.includes(feature)
-              ? prev.enabledFeatures
-              : [...prev.enabledFeatures, feature],
+            disabledModules: prev.disabledModules.includes(module)
+              ? prev.disabledModules
+              : [...prev.disabledModules, module],
           };
         } else {
           return {
             ...prev,
-            enabledFeatures: prev.enabledFeatures.filter((f) => f !== feature),
+            disabledModules: prev.disabledModules.filter((f) => f !== module),
           };
         }
       });
@@ -136,19 +136,19 @@ export function useEnableFeatureMutation() {
   });
 }
 
-export type UpdateFeatureOptions = {
+export type UpdateModuleOptions = {
   guild: string;
-  feature: keyof CustomFeatures;
+  module: keyof CustomModule;
   options: FormData | string;
 };
-export function useUpdateFeatureMutation() {
+export function useUpdateModuleMutation() {
   const { session } = useSession();
 
   return useMutation({
-    mutationFn: (options: UpdateFeatureOptions) =>
-      updateFeature(session!!, options.guild, options.feature, options.options),
+    mutationFn: (options: UpdateModuleOptions) =>
+      updateModule(session!!, options.guild, options.module, options.options),
     onSuccess(updated, options) {
-      const key = Keys.features(options.guild, options.feature);
+      const key = Keys.modules(options.guild, options.module);
 
       return client.setQueryData(key, updated);
     },

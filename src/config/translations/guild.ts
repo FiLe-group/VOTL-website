@@ -3,7 +3,7 @@ import { createI18n } from '@/utils/i18n';
 
 export const guild = createI18n(provider, {
   en: {
-    features: 'Features',
+    modules: 'Modules',
     banner: {
       title: 'Getting Started',
       description: 'Create your bot and type something',
@@ -14,8 +14,8 @@ export const guild = createI18n(provider, {
       load: 'Failed to load guild',
     },
     bn: {
-      'enable feature': 'Enable',
-      'config feature': 'Config',
+      'enable module': 'Enable',
+      'config module': 'Config',
       invite: 'Invite bot',
       settings: 'Settings',
     },

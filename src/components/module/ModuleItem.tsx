@@ -1,22 +1,22 @@
 import { Box, Center, Flex, Text } from '@chakra-ui/layout';
 import { Button, ButtonGroup, Card, CardBody, CardFooter } from '@chakra-ui/react';
-import { IdFeature } from '@/utils/common';
+import { IdModule } from '@/utils/common';
 import { IoOpen, IoOptions } from 'react-icons/io5';
-import { useEnableFeatureMutation } from '@/api/hooks';
+import { useEnableModuleMutation } from '@/api/hooks';
 import { guild as view } from '@/config/translations/guild';
 import Router from 'next/router';
 
-export function FeatureItem({
+export function ModuleItem({
   guild,
-  feature,
+  module,
   enabled,
 }: {
   guild: string;
-  feature: IdFeature;
+  module: IdModule;
   enabled: boolean;
 }) {
   const t = view.useTranslations();
-  const mutation = useEnableFeatureMutation();
+  const mutation = useEnableModuleMutation();
 
   return (
     <Card variant="primary">
@@ -32,14 +32,14 @@ export function FeatureItem({
             color: enabled ? 'white' : 'brand.200',
           }}
         >
-          {feature.icon}
+          {module.icon}
         </Center>
         <Box flex={1}>
           <Text fontSize={{ base: '16px', md: 'lg' }} fontWeight="600">
-            {feature.name}
+            {module.name}
           </Text>
           <Text fontSize={{ base: 'sm', md: 'md' }} color="TextSecondary">
-            {feature.description}
+            {module.description}
           </Text>
         </Box>
       </CardBody>
@@ -52,13 +52,13 @@ export function FeatureItem({
                 variant: 'action',
                 rounded: '2xl',
                 leftIcon: <IoOptions />,
-                onClick: () => Router.push(`/guilds/${guild}/features/${feature.id}`),
-                children: t.bn['config feature'],
+                onClick: () => Router.push(`/guilds/${guild}/modules/${module.id}`),
+                children: t.bn['config module'],
               }
             : {
                 leftIcon: <IoOpen />,
-                onClick: () => mutation.mutate({ enabled: true, guild, feature: feature.id }),
-                children: t.bn['enable feature'],
+                onClick: () => mutation.mutate({ enabled: true, guild, module: module.id }),
+                children: t.bn['enable module'],
               })}
         />
       </CardFooter>
