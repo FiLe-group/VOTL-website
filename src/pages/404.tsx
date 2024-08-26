@@ -1,5 +1,8 @@
 import ErrorPage from "@/components/ErrorPage";
-function UnkownPage() {
+import { NextPageWithLayout } from "./_app";
+import AppLayout from "@/components/layout/app";
+
+const UnkownPage: NextPageWithLayout = () => {
   return (
     <ErrorPage
       code={404}
@@ -10,4 +13,5 @@ function UnkownPage() {
   );
 };
 
+UnkownPage.getLayout = (p) => <AppLayout>{p}</AppLayout>;
 export default UnkownPage;

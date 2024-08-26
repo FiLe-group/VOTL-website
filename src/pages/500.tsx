@@ -1,5 +1,8 @@
 import ErrorPage from "@/components/ErrorPage";
-function UnkownPage() {
+import AppLayout from "@/components/layout/app";
+import { NextPageWithLayout } from "./_app";
+
+const ServerErrorPage: NextPageWithLayout = () => {
   return (
     <ErrorPage
       code={500}
@@ -10,4 +13,5 @@ function UnkownPage() {
   );
 };
 
-export default UnkownPage;
+ServerErrorPage.getLayout = (p) => <AppLayout>{p}</AppLayout>;
+export default ServerErrorPage;

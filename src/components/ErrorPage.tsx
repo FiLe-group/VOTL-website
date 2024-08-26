@@ -1,6 +1,9 @@
+import { Box, Flex, Text, VStack } from "@chakra-ui/layout";
+import { Button, Icon, Image, Spinner } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
 
 function ErrorPage({ code, message }: { code: number, message: string }) {
   const [clicked, setClicked] = useState(false);
@@ -12,31 +15,42 @@ function ErrorPage({ code, message }: { code: number, message: string }) {
         <title>{`${code} | VOTL bot`}</title>
       </Head>
 
-      <div className="max-w-7xl text-center py-20 mx-auto">
-        <div className="flex w-full justify-center">
-          <img width="400" src="/img/monkey.gif" />
-        </div>
-        <h1 className="text-4xl font-extrabold text-white">{code}</h1>
-        <p className="text-xl font-thin text-white text-opacity-75">
+      <VStack py={20} maxW='7xl' spacing={0}>
+        <Flex>
+          <Image w="400" src="/img/monkey.gif" />
+        </Flex>
+        <Text fontSize='4xl' fontWeight='extrabold'>{code}</Text>
+        <Text fontSize='xl' fontWeight='thin' textColor='#AAAAAA'>
           {message}
-        </p>
-        <button
-          className="w-42 shadow-lg mt-2 shadow-blue-600/20 rounded-xl py-2 font-medium px-7 text-zinc-900 bg-blue-400 hover:bg-opacity-50 transition duration-200"
+        </Text>
+        <Button
+          w='42'
+          mt={2}
+          py={2}
+          px={7}
+          rounded='xl'
+          boxShadow='0 10px 15px -3px rgba(103, 117, 138, 0.2)'
+          bgGradient='linear(to-bl, blue.900, blue.700)'
+          transitionProperty='opacity'
+          transitionDuration='300ms'
+          _hover={{
+            opacity: 0.8
+          }}
           onClick={() => {
             setClicked(true);
             router.back();
           }}
         >
           {clicked ? (
-            <i className="fad fa-spinner-third fa-spin text-white" />
+            <Spinner/>
           ) : (
             <>
-              <i className="fa fa-arrow-left mr-2" />
+              <Icon as={FaArrowLeft} mr={2} />
               Go Back
             </>
           )}
-        </button>
-      </div>
+        </Button>
+      </VStack>
     </>
   );
 }
