@@ -8,7 +8,7 @@ const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpe
 export const avatarStyles = defineMultiStyleConfig({
   baseStyle: definePartsStyle({
     container: {
-      bg: 'brand.300',
+      bg: 'blue.300.2',
       color: 'white',
     },
   }),

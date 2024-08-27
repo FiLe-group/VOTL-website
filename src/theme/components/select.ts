@@ -13,7 +13,7 @@ const outline = definePartsStyle((props) => {
   return {
     field: {
       border: '1px solid',
-      borderColor: 'inherit',
+      borderColor: 'whiteAlpha.100',
       bg: 'inherit',
       _hover: {
         borderColor: 'whiteAlpha.400',

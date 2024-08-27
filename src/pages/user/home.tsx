@@ -1,5 +1,4 @@
 import {
-  Heading,
   Button,
   Card,
   CardHeader,

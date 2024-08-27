@@ -24,7 +24,7 @@ export function useActiveSidebarItem(): SidebarItemInfo | null {
 
 export interface SidebarItemInfo {
   name: ReactNode;
-  icon?: string;
+  icon?: ReactNode;
   path: string;
   hidden?: boolean;
 }

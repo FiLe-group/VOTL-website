@@ -7,6 +7,9 @@ export const buttonStyles = defineStyleConfig({
     boxSizing: 'border-box',
     _focus: {
       boxShadow: 'none',
+      outline: '3px solid transparent',
+      outlineOffset: '2px',
+      outlineColor: '#FFFFFF'
     },
     _active: {
       boxShadow: 'none',
@@ -19,15 +22,8 @@ export const buttonStyles = defineStyleConfig({
       _hover: { bg: 'red.400' },
       _active: { bg: 'red.300' },
     }),
-    action: defineStyle((props) => ({
-      fontWeight: '600',
-      borderRadius: '50px',
-      bg: 'linear-gradient(to right bottom, var(--chakra-colors-brand-500), var(--chakra-colors-brand-400))',
-      color: 'white',
-      rounded: 'xl',
-      boxShadow: '1px 2px 5px var(--chakra-colors-brand-400)',
-    })),
     secondary: defineStyle({
+      boxShadow: '0 7px 10px -3px rgba(103, 117, 138, 0.2)',
       bg: 'whiteAlpha.200',
       _hover: {
         bg: 'whiteAlpha.300',
@@ -36,6 +32,16 @@ export const buttonStyles = defineStyleConfig({
         bg: 'whiteAlpha.300',
       },
     }),
+    blue: defineStyle({
+      boxShadow: '0 7px 10px -3px rgba(103, 117, 138, 0.2)',
+      bg: 'blue.700',
+      _hover: {
+        bg: 'blue.900',
+      },
+      _active: {
+        bg: 'blue.900',
+      },
+    })
   },
   sizes: {
     sm: {

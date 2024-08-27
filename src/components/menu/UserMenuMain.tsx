@@ -43,7 +43,7 @@ function List(props: { user: UserInfo }) {
   const logout = useLogoutMutation();
 
   return (
-    <MenuList boxShadow={dark.shadow} p="0px" mt="10px" borderRadius="20px" bg={dark.cardBg} border="none">
+    <MenuList boxShadow={dark.shadow} p="0px" mt="10px" borderRadius="20px" bg='#333333' border="none">
       <Flex w="100%" mb="0px">
         <Text
           ps="20px"

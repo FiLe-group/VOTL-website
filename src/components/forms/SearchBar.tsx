@@ -35,7 +35,7 @@ export function SearchBar(
       <Input
         variant="search"
         fontSize="sm"
-        bg="secondaryGray.300"
+        bg="navy.900"
         color="TextPrimary"
         fontWeight="500"
         _placeholder={{ color: 'gray.400', fontSize: '14px' }}
@@ -43,9 +43,6 @@ export function SearchBar(
         placeholder={`${t.search}...`}
         onKeyDown={(e) => {
           if (e.key === 'Enter') onSearch?.();
-        }}
-        _dark={{
-          bg: 'navy.900',
         }}
         {...input}
       />

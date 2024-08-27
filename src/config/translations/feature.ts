@@ -1,7 +1,7 @@
 import { provider } from './provider';
 import { createI18n } from '@/utils/i18n';
 
-export const module = createI18n(provider, {
+export const feature = createI18n(provider, {
   en: {
     unsaved: 'Save Changes',
     error: {

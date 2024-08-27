@@ -1,6 +1,5 @@
 export const globalStyles = (props: any) => ({
 	body: {
-    fontFamily: `'Montserrat', sans-serif`,
     fontWeight: 500,
     color: 'TextPrimary',
     bg: 'MainBackground',

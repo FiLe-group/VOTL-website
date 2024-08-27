@@ -7,7 +7,7 @@ import { IoSave } from 'react-icons/io5';
 import { useEnableModuleMutation, useUpdateModuleMutation } from '@/api/hooks';
 // @ts-ignore
 import { Params } from '@/pages/guilds/[guild]/modules/[module]';
-import { module as view } from '@/config/translations/module';
+import { feature as view } from '@/config/translations/feature';
 import { useRouter } from 'next/router';
 
 export function UpdateModulePanel({
@@ -84,8 +84,7 @@ function Savebar({
       <Icon
         display={{ base: 'none', [breakpoint]: 'block' }}
         as={WarningIcon}
-        _light={{ color: 'orange.400' }}
-        _dark={{ color: 'orange.300' }}
+        color='orange.300'
         w="30px"
         h="30px"
       />

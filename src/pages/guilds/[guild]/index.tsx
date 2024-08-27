@@ -35,7 +35,7 @@ function GuildPanel({ guild: id, info }: { guild: string; info: CustomGuildInfo 
 
   return (
     <Flex direction="column" gap={5}>
-      <Banner />
+      <Banner imageLink={info.bannerUrl ? `url('${info.bannerUrl}')` : 'https://imgur.com/eVV0GLl.png'} />
       <Flex direction="column" gap={5} mt={3}>
         <Heading size="md">{t.modules}</Heading>
         <SimpleGrid columns={{ base: 1, md: 2, '2xl': 3 }} gap={3}>
@@ -66,7 +66,7 @@ function NotJoined({ guild }: { guild: string }) {
         {t.error['not found description']}
       </Text>
       <Button
-        variant="action"
+        variant="blue"
         leftIcon={<FaRobot />}
         px={6}
         as="a"

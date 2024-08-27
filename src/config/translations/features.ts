@@ -1,25 +1,25 @@
 import { provider } from './provider';
 import { createI18n } from '@/utils/i18n';
 
-export const modulest = createI18n(provider, {
+export const features = createI18n(provider, {
   en: {
-		webhook: 'title',
+		webhook: 'Webhook',
 		'webhook description': 'description',
-		moderation: 'title',
+		moderation: 'Moderation',
 		'moderation description': 'description',
-		strikes: 'title',
+		strikes: 'Strikes',
 		'strikes description': 'description',
-		verification: 'title',
+		verification: 'Verification',
 		'verification description': 'description',
-		ticketing: 'title',
+		ticketing: 'Ticketing',
 		'ticketing description': 'description',
-		voice: 'title',
+		voice: 'Custom VC',
 		'voice description': 'description',
-		report: 'title',
+		report: 'Reporting',
 		'report description': 'description',
-		roles: 'title',
+		roles: 'Roles',
 		'roles description': 'description',
-		games: 'title',
+		games: 'Games',
 		'games description': 'description',
 	},
 });

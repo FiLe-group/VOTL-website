@@ -43,8 +43,7 @@ const GuildSettingsPage: NextPageWithLayout = () => {
           fontSize="lg"
           fontWeight="500"
           as="code"
-          _light={{ color: 'cyan.500' }}
-          _dark={{ color: 'cyan.400' }}
+          color='cyan.400'
           cursor="pointer"
           onClick={handleSubmit(() => console.log('submit'))}
         >

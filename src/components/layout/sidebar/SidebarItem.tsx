@@ -18,18 +18,14 @@ export function SidebarItem({
       <Center
         p={2}
         fontSize="sm"
-        bg={active ? 'brand.500' : 'transparent'}
+        bg={active ? 'blue.700' : 'transparent'}
         rounded="xl"
-        color={active ? 'white' : 'TextPrimary'}
-        border="2px solid"
-        borderColor="blackAlpha.200"
-        boxShadow={`0px 0px 15px ${
-          active ? 'var(--chakra-colors-brandAlpha-500)' : 'rgba(112, 144, 176, 0.3)'
+        color='white'
+        border="4px solid"
+        borderColor="whiteAlpha.400"
+        boxShadow={`0px 0px 10px ${
+          active ? 'var(--chakra-colors-blue-500-5)' : 'rgba(112, 144, 176, 0.3)'
         }`}
-        _dark={{
-          bg: active ? 'brand.400' : 'transparent',
-          borderColor: 'whiteAlpha.400',
-        }}
       >
         {icon}
       </Center>
@@ -48,10 +44,7 @@ function CardItem({ active, href, ...props }: { href: string; active: boolean } 
       rounded="xl"
       p={2}
       color={active ? 'TextPrimary' : 'TextSecondary'}
-      bg={active ? 'MainBackground' : undefined}
-      _dark={{
-        bg: active ? 'whiteAlpha.100' : undefined,
-      }}
+      bg={active ? 'whiteAlpha.100' : undefined}
       cursor="pointer"
       {...props}
     />

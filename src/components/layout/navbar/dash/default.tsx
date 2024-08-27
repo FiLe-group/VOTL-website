@@ -43,10 +43,7 @@ export function DefaultNavbar() {
           <Icon
             verticalAlign="middle"
             as={ChevronRightIcon}
-            color="brand.500"
-            _dark={{
-              color: 'brand.100',
-            }}
+            color="blue.100"
           />
         }
       >
@@ -57,12 +54,8 @@ export function DefaultNavbar() {
               href={item.href}
               gap={1}
               rounded="full"
-              color="brand.500"
-              bg="brand.100"
-              _dark={{
-                color: 'brand.100',
-                bg: '#7551FF33',
-              }}
+              color="blue.100"
+              bg="blue.500.2"
             >
               {item.icon}
               <Text>{item.text}</Text>
@@ -70,7 +63,7 @@ export function DefaultNavbar() {
           </BreadcrumbItem>
         ))}
       </Breadcrumb>
-      <Text color="TextPrimary" fontWeight="bold" fontSize={{ base: '25px', '3sm': '34px' }} mb={2}>
+      <Text color="TextPrimary" fontWeight="bold" fontSize='2xl' mb={2}>
         {activeItem?.name || <SkeletonText w="full" noOfLines={2} />}
       </Text>
     </Flex>

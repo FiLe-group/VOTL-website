@@ -11,10 +11,7 @@ export function SidebarTrigger() {
       <Flex w="max-content" h="max-content" onClick={() => setOpen(true)}>
         <Icon
           as={IoMenuOutline}
-          color="gray.400"
-          _dark={{
-            color: 'white',
-          }}
+          color='white'
           my="auto"
           w="20px"
           h="20px"

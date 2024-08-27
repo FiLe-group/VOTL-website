@@ -22,15 +22,12 @@ export function ModuleItem({
     <Card variant="primary">
       <CardBody as={Flex} direction="row" gap={3}>
         <Center
-          bg={enabled ? 'Brand' : 'brandAlpha.100'}
-          color={enabled ? 'white' : 'brand.500'}
+          bg={enabled ? 'blue.700' : 'blue.500.2'}
+          color={enabled ? 'white' : 'blue.100'}
           rounded="xl"
           w="50px"
           h="50px"
           fontSize="3xl"
-          _dark={{
-            color: enabled ? 'white' : 'brand.200',
-          }}
         >
           {module.icon}
         </Center>
@@ -49,13 +46,13 @@ export function ModuleItem({
           disabled={mutation.isPending}
           {...(enabled
             ? {
-                variant: 'action',
-                rounded: '2xl',
+                variant: 'blue',
                 leftIcon: <IoOptions />,
                 onClick: () => Router.push(`/guilds/${guild}/modules/${module.id}`),
                 children: t.bn['config module'],
               }
             : {
+                variant: 'secondary',
                 leftIcon: <IoOpen />,
                 onClick: () => mutation.mutate({ enabled: true, guild, module: module.id }),
                 children: t.bn['enable module'],

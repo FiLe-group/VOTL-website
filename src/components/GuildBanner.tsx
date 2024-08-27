@@ -1,11 +1,11 @@
 import { FiSettings as SettingsIcon } from 'react-icons/fi';
 import { Flex, Heading, Text } from '@chakra-ui/layout';
-import { Button, ButtonGroup } from '@chakra-ui/react';
+import { Button, ButtonGroup, Image } from '@chakra-ui/react';
 import { guild as view } from '@/config/translations/guild';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-export function Banner() {
+export function Banner({imageLink}: { imageLink: string}) {
   const { guild } = useRouter().query as { guild: string };
   const t = view.useTranslations();
 
@@ -16,8 +16,11 @@ export function Banner() {
       py={{ base: 5, lg: 7 }}
       rounded="2xl"
       bgColor="Brand"
-      bgImg={{ '3sm': '/Banner1.png' }}
+      bgImage={imageLink}
+      bgRepeat='no-repeat'
       bgSize="cover"
+      bgBlendMode='multiply'
+      bgPos='center'
       gap={1}
     >
       <Heading color="white" fontSize={{ base: '2xl' }} fontWeight="bold">
@@ -30,7 +33,7 @@ export function Banner() {
           color="white"
           bg="whiteAlpha.200"
           _hover={{
-            bg: 'whiteAlpha.300',
+            bg: 'whiteAlpha.400',
           }}
           _active={{
             bg: 'whiteAlpha.400',

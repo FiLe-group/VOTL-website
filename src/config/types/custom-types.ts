@@ -4,7 +4,7 @@
 
 import { GuildInfo } from './types';
 
-export type CustomGuildInfo = GuildInfo & {};
+export type CustomGuildInfo = GuildInfo & {bannerUrl?: string};
 
 /**
  * Define module ids and it's option types
@@ -16,17 +16,18 @@ export type CustomModule = {
   verification: {};
   ticketing: {};
   voice: {};
-  report: {};
+  report: ReportModule;
   roles: {};
   games: {};
 };
 
-/** example only */
-/* export type WelcomeMessageFeature = {
+export type ReportModule = {
   channel?: string;
-  message: string;
+  message?: string;
+  temp: boolean;
 };
 
+/** example only
 export const memeFeatureSchema = z.object({
   channel: z.string().optional(),
   source: z.enum(['youtube', 'twitter', 'discord']).optional(),

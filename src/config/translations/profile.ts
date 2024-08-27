@@ -8,8 +8,6 @@ export const profile = createI18n(provider, {
     language: 'Language',
     'language description': 'Select your language',
     settings: 'Settings',
-    'dark mode': 'Dark Mode',
-    'dark mode description': 'Enables dark theme in order to protect your eyes',
     'dev mode': 'Developer Mode',
     'dev mode description': 'Used for debugging and testing',
   },

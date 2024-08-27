@@ -52,7 +52,7 @@ export const inputStyles = defineMultiStyleConfig({
       field: {
         ...main.field,
         _focus: {
-          borderColor: 'brand.400',
+          borderColor: 'blue.400',
         },
       },
     }),

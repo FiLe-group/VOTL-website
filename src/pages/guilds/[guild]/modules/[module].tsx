@@ -7,7 +7,7 @@ import { CustomModule, ModuleConfig } from '@/config/types';
 import { BsSearch } from 'react-icons/bs';
 import { useEnableModuleMutation, useModuleQuery } from '@/api/hooks';
 import { UpdateModulePanel } from '@/components/module/UpdateModulePanel';
-import { module as view } from '@/config/translations/module';
+import { feature as view } from '@/config/translations/feature';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from '@/pages/_app';
 import getGuildLayout from '@/components/layout/guild/GetGuildLayout';

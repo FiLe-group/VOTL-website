@@ -33,16 +33,11 @@ const customComponents = {
 const styles: ChakraStylesConfig<any, any, any> = {
   menuList: (provided) => ({
     ...provided,
-    _dark: {
-      ...(provided as any)._dark,
-      shadow: '14px 17px 40px 4px rgba(2, 4, 6, 0.06)',
-    },
+    shadow: '14px 17px 40px 4px rgba(2, 4, 6, 0.06)',
   }),
   placeholder: (provided) => ({
     ...provided,
-    _dark: {
-      color: 'secondaryGray.600',
-    },
+    color: 'secondaryGray.600',
   }),
   dropdownIndicator: (provided) => ({
     ...provided,
@@ -50,27 +45,21 @@ const styles: ChakraStylesConfig<any, any, any> = {
   }),
   groupHeading: (provided) => ({
     ...provided,
-    _dark: {
-      bg: 'navy.800',
-    },
+    bg: 'navy.800',
   }),
   option: (provided, options) => ({
     ...provided,
-    color: options.isSelected && 'white',
-    _dark: {
-      bg: options.isSelected && 'brand.400',
-      _hover: {
-        bg: options.isSelected ? 'brand.400' : 'whiteAlpha.200',
-      },
+    color: options.isSelected && 'white.20',
+    bg: options.isSelected && 'blue.400.5',
+    _hover: {
+      bg: options.isSelected ? 'blue.400' : 'whiteAlpha.200',
     },
   }),
   control: (provided, data) => ({
     ...provided,
     rounded: '2xl',
-    _dark: {
-      borderColor: data.isFocused ? 'brand.400' : 'navy.600',
-      bg: 'blackAlpha.300',
-    },
+    borderColor: data.isFocused ? 'blue.400' : 'navy.600',
+    bg: 'blackAlpha.300',
   }),
 };
 
@@ -83,7 +72,7 @@ export type Option = OptionBase & {
 export const SelectFieldBase = forwardRef<SelectInstance, Props>((props, ref) => {
   return (
     <Select<any, any, any>
-      focusBorderColor='brand.400'
+      focusBorderColor='white.75'
       components={customComponents}
       chakraStyles={styles}
       ref={ref}

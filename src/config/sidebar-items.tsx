@@ -1,16 +1,19 @@
 import { common } from '@/config/translations/common';
 import { SidebarItemInfo } from '@/utils/router';
+import { Icon } from '@chakra-ui/react';
+import { IoPerson } from "react-icons/io5";
+import { FaChalkboard } from "react-icons/fa";
 
 const items: SidebarItemInfo[] = [
   {
     name: <common.T text="dashboard" />,
     path: '/user/home',
-    icon: "fa fa-chalkboard",
+    icon: <Icon as={FaChalkboard} />,
   },
   {
     name: <common.T text="profile" />,
     path: '/user/profile',
-    icon: "fa fa-person",
+    icon: <Icon as={IoPerson} />,
   },
 ];
 

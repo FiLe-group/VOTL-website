@@ -1,21 +1,20 @@
 import { Icon } from '@chakra-ui/react';
 import { ModulesConfig } from './types';
-import { modulest } from '@/config/translations/modules';
+import { features } from '@/config/translations/features';
 import { LuWebhook, LuTicket } from "react-icons/lu";
 import { FaShieldAlt, FaMicrophone, FaGamepad } from "react-icons/fa";
 import { RiAlarmWarningLine, RiTeamLine } from "react-icons/ri";
 import { GoVerified } from "react-icons/go";
 import { TbMessageReport } from "react-icons/tb";
+import { useReportModule } from './modules/ReportModule';
 
 /**
  * Define information for each features
- *
- * There is an example:
  */
 export const modules: ModulesConfig = {
   webhook: {
-    name: <modulest.T text="webhook" />,
-    description: <modulest.T text="webhook description" />,
+    name: <features.T text="webhook" />,
+    description: <features.T text="webhook description" />,
     icon: <Icon as={LuWebhook} />,
     useRender() {
       return {
@@ -25,8 +24,8 @@ export const modules: ModulesConfig = {
     },
   },
   moderation: {
-    name: <modulest.T text="moderation" />,
-    description: <modulest.T text="moderation description" />,
+    name: <features.T text="moderation" />,
+    description: <features.T text="moderation description" />,
     icon: <Icon as={FaShieldAlt} />,
     useRender() {
       return {
@@ -36,8 +35,8 @@ export const modules: ModulesConfig = {
     },
   },
   strikes: {
-    name: <modulest.T text="strikes" />,
-    description: <modulest.T text="strikes description" />,
+    name: <features.T text="strikes" />,
+    description: <features.T text="strikes description" />,
     icon: <Icon as={RiAlarmWarningLine} />,
     useRender() {
       return {
@@ -47,8 +46,8 @@ export const modules: ModulesConfig = {
     },
   },
   verification: {
-    name: <modulest.T text="verification" />,
-    description: <modulest.T text="verification description" />,
+    name: <features.T text="verification" />,
+    description: <features.T text="verification description" />,
     icon: <Icon as={GoVerified} />,
     useRender() {
       return {
@@ -58,8 +57,8 @@ export const modules: ModulesConfig = {
     },
   },
   ticketing: {
-    name: <modulest.T text="ticketing" />,
-    description: <modulest.T text="ticketing description" />,
+    name: <features.T text="ticketing" />,
+    description: <features.T text="ticketing description" />,
     icon: <Icon as={LuTicket} />,
     useRender() {
       return {
@@ -69,8 +68,8 @@ export const modules: ModulesConfig = {
     },
   },
   voice: {
-    name: <modulest.T text="voice" />,
-    description: <modulest.T text="voice description" />,
+    name: <features.T text="voice" />,
+    description: <features.T text="voice description" />,
     icon: <Icon as={FaMicrophone} />,
     useRender() {
       return {
@@ -80,19 +79,14 @@ export const modules: ModulesConfig = {
     },
   },
   report: {
-    name: <modulest.T text="report" />,
-    description: <modulest.T text="report description" />,
+    name: <features.T text="report" />,
+    description: <features.T text="report description" />,
     icon: <Icon as={TbMessageReport} />,
-    useRender() {
-      return {
-        component: <></>,
-        onSubmit: () => {},
-      };
-    },
+    useRender: useReportModule,
   },
   roles: {
-    name: <modulest.T text="roles" />,
-    description: <modulest.T text="roles description" />,
+    name: <features.T text="roles" />,
+    description: <features.T text="roles description" />,
     icon: <Icon as={RiTeamLine} />,
     useRender() {
       return {
@@ -102,8 +96,8 @@ export const modules: ModulesConfig = {
     },
   },
   games: {
-    name: <modulest.T text="games" />,
-    description: <modulest.T text="games description" />,
+    name: <features.T text="games" />,
+    description: <features.T text="games description" />,
     icon: <Icon as={FaGamepad} />,
     useRender() {
       return {

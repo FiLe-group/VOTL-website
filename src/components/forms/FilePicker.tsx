@@ -44,9 +44,8 @@ export const FilePickerForm: ControlledInput<FilePickerFormProps, File[] | undef
             <Input input={getInputProps(field)} />
             {empty ? (
               <VStack
-                color="secondaryGray.700"
+                color="secondaryGray.600"
                 textAlign="center"
-                _dark={{ color: 'secondaryGray.600' }}
               >
                 <Icon as={MdUpload} w="70px" h="70px" />
                 <Text fontWeight="500">{placeholder ?? 'Upload Files'}</Text>
@@ -79,7 +78,7 @@ function FilePreview({ file }: { file: File }) {
       {file.type.startsWith('image/') ? (
         <Image alt={file.name} maxW="70px" maxH="70px" src={url} rounded="md" />
       ) : (
-        <Center rounded="2xl" bg="brand.300" w="50px" h="50px">
+        <Center rounded="2xl" bg="blue.300" w="50px" h="50px">
           <Icon as={FaFile} color="white" />
         </Center>
       )}

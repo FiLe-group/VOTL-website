@@ -69,13 +69,6 @@ const ProfilePage: NextPageWithLayout = () => {
         </CardHeader>
         <CardBody as={Flex} direction="column" gap={6} mt={3}>
           <SwitchField
-            id="dark-mode"
-            label={t['dark mode']}
-            desc={t['dark mode description']}
-            isChecked={colorMode === 'dark'}
-            onChange={(e) => setColorMode(e.target.checked ? 'dark' : 'light')}
-          />
-          <SwitchField
             id="developer-mode"
             label={t['dev mode']}
             desc={t['dev mode description']}

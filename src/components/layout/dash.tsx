@@ -22,10 +22,10 @@ export default function DashLayout({
 
   return (
     <>
-      <Box h='100vh' pos='relative' borderTopWidth='4px' borderColor='blue.600'>
+      <Box h='4px' pos='relative' borderTopWidth='4px' borderColor='blue.600'>
         <Box w='full' pos='absolute' bgGradient={dark.globalGradient} opacity='25%' zIndex='10' top={0} height='500px' />
       </Box>
-      <Flex direction="row" zIndex='10' pos='absolute' inset={0} h='100vh'>
+      <Flex direction="row" zIndex='20' pos='fixed' inset={0} h='100vh' mt='4px'>
         <Sidebar sidebar={sidebar} />
         <Show below={sidebarBreakpoint}>
           <SidebarResponsive sidebar={sidebar} />

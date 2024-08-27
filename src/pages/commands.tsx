@@ -8,7 +8,7 @@ import Data from '@public/commandlist.json'
 import { NextPageWithLayout } from "./_app";
 import AppLayout from "@/components/layout/app";
 import { Box, Divider, Flex, HStack, ListItem, StackDivider, Text, UnorderedList, VStack } from "@chakra-ui/layout";
-import { Button, Icon, useControllableState, useRadio, useRadioGroup } from "@chakra-ui/react";
+import { Button, Icon, useRadio, useRadioGroup } from "@chakra-ui/react";
 import { FaCaretDown, FaCheck, FaCrown, FaDice, FaInfoCircle, FaList, FaPhone, FaQuestion, FaServer, FaShieldAlt, FaTicketAlt, FaUser, FaUserShield } from "react-icons/fa";
 import { FaGear, FaGears, FaXmark } from "react-icons/fa6";
 import { HiBadgeCheck } from "react-icons/hi";
@@ -329,7 +329,7 @@ const CommandsPage: NextPageWithLayout = () => {
           return (
             <Box as='label' key={cat.value}>
               <input {...getInputProps()} />
-              <Box
+              <Box 
                 {...getRadioProps()}
                 //bg={state.isChecked?'#52525288':(state.isHovered?'#52525244':'transparent')}
                 bg={state.isHovered?'#52525244':'transparent'}

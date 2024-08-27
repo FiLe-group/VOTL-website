@@ -17,6 +17,10 @@ import { tabsStyles } from "./components/tabs";
 import { textareaStyles } from "./components/textarea";
 
 export const theme = extendTheme({
+  fonts: {
+    body: `'Montserrat', sans-serif`,
+    heading: `'Montserrat', sans-serif`,
+  },
   config: {
     initialColorMode: 'dark',
   },

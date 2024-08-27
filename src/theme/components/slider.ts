@@ -7,7 +7,7 @@ export const sliderStyles = defineMultiStyleConfig({
   variants: {
     main: definePartsStyle((props) => ({
       thumb: {
-        bg: 'brand.400',
+        bg: 'blue.400',
       },
     })),
   },
