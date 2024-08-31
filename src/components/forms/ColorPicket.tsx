@@ -63,10 +63,10 @@ export const ColorPickerForm: ControlledInput<ColorPickerFormProps, ColorPickerP
 
   return (
     <FormCard {...control} error={fieldState.error?.message}>
-      <SimpleGrid columns={{ base: 1, '3sm': 2 }} gap={2}>
+      <SimpleGrid columns={{ base: 1, 'sm': 2 }} gap={5}>
         <Flex direction="column" gap={3}>
           <Center
-            display={{ base: 'none', '3sm': 'flex' }}
+            display={{ base: 'none', 'sm': 'flex' }}
             minH="150px"
             rounded="xl"
             border="1px solid"

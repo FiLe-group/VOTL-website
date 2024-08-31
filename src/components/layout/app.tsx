@@ -4,7 +4,7 @@ import { LoadingPanel } from "../panel/LoadingPanel";
 import { dark } from "@/theme/colors";
 import Footer from "./footer/main";
 import { QueryStatus } from "../panel/QueryPanelMain";
-import { UserMenu } from "../menu/UserMenuMain";
+import { UserMenu } from "../menu/UserMenu";
 import { useSelfUserQuerySafe } from "@/api/hooks";
 
 export default function AppLayout({
@@ -20,7 +20,7 @@ export default function AppLayout({
         <Box w='full' pos='absolute' bgGradient={dark.globalGradient} opacity='25%' zIndex='10' top={0} height='500px' />
       </Box>
       <Box transition='all' transitionDuration='200ms' zIndex='10' pos='absolute' inset={0} px={5} h='100vh' maxW='7xl' w='full' mx='auto'>
-        <QueryStatus query={query} loading={<LoadingPanel />} usermenu={<UserMenu />}>
+        <QueryStatus query={query} loading={<LoadingPanel />} usermenu={<UserMenu bgColor='#333333' />}>
           <Box display='block' px={[3, 0]}>
             {children}
           </Box>

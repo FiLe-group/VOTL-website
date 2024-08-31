@@ -8,7 +8,6 @@ const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpe
 
 const main = definePartsStyle({
   field: {
-    border: '2px solid',
     borderRadius: '16px',
     fontSize: 'sm',
     p: '20px',
@@ -18,18 +17,26 @@ const main = definePartsStyle({
 			color: 'secondaryGray.600',
 		},
 		_invalid: {
-			borderColor: 'red.400',
+			outlineColor: 'red.400',
 		},
-		borderColor: 'navy.600',
   },
 });
 
 export const inputStyles = defineMultiStyleConfig({
   baseStyle: definePartsStyle({
     field: {
+      border: '0px',
       fontWeight: 400,
-      borderColor: 'navy.600',
-      borderRadius: '8px',
+      outline: '3px solid',
+      outlineColor: 'whiteAlpha.700',
+      _hover: {
+        outlineColor: 'whiteAlpha.900',
+      },
+      _focusVisible: {
+        outlineColor: 'blue.400',
+      },
+      transitionProperty: 'outline',
+      borderColor: 'transparent'
     },
   }),
 

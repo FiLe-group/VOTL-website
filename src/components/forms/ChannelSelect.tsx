@@ -1,9 +1,9 @@
-import { BsChatLeftText as ChatIcon } from 'react-icons/bs';
+import { FaHashtag } from "react-icons/fa";
+import { BiSolidMegaphone, BiSolidVolumeFull } from "react-icons/bi";
 import { GuildChannel } from '@/api/bot';
 import { ChannelTypes } from '@/api/discord';
 import { Option, SelectField } from '@/components/forms/SelectField';
 import { forwardRef, useMemo } from 'react';
-import { MdRecordVoiceOver } from 'react-icons/md';
 import { useGuildChannelsQuery } from '@/api/hooks';
 import { Icon } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
@@ -22,10 +22,12 @@ const render = (channel: GuildChannel): Option => {
     switch (channel.type) {
       case ChannelTypes.GUILD_STAGE_VOICE:
       case ChannelTypes.GUILD_VOICE: {
-        return <Icon as={MdRecordVoiceOver} />;
+        return <Icon as={BiSolidVolumeFull} />;
       }
+      case ChannelTypes.GUILD_ANNOUNCEMENT:
+        return <Icon as={BiSolidMegaphone} />
       default:
-        return <ChatIcon />;
+        return <Icon as={FaHashtag} />;
     }
   };
 

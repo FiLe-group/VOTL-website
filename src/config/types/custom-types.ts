@@ -4,7 +4,7 @@
 
 import { GuildInfo } from './types';
 
-export type CustomGuildInfo = GuildInfo & {bannerUrl?: string};
+export type CustomGuildInfo = GuildInfo & {};
 
 /**
  * Define module ids and it's option types

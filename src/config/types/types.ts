@@ -38,6 +38,7 @@ export type GuildConfig = {
 
 export interface GuildInfo {
   disabledModules: string[];
+  bannerUrl?: string;
 }
 
 export type ModulesConfig = {

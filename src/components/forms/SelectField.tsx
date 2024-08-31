@@ -58,8 +58,8 @@ const styles: ChakraStylesConfig<any, any, any> = {
   control: (provided, data) => ({
     ...provided,
     rounded: '2xl',
-    borderColor: data.isFocused ? 'blue.400' : 'navy.600',
     bg: 'blackAlpha.300',
+    border: '0px'
   }),
 };
 
@@ -72,7 +72,7 @@ export type Option = OptionBase & {
 export const SelectFieldBase = forwardRef<SelectInstance, Props>((props, ref) => {
   return (
     <Select<any, any, any>
-      focusBorderColor='white.75'
+      //focusBorderColor='white.75'
       components={customComponents}
       chakraStyles={styles}
       ref={ref}

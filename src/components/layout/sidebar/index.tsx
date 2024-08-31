@@ -51,6 +51,7 @@ export function SidebarResponsive({ sidebar }: { sidebar?: ReactNode }) {
       <DrawerContent w="285px" maxW="285px" bg="CardBackground">
         <DrawerCloseButton
           zIndex="3"
+          mt={3}
           onClick={() => setOpen(false)}
           _focus={{ boxShadow: 'none' }}
           _hover={{ boxShadow: 'none' }}

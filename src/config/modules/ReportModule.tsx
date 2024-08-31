@@ -7,11 +7,17 @@ import { SimpleGrid } from "@chakra-ui/layout";
 import { ChannelSelectForm } from "@/components/forms/ChannelSelect";
 import { TextAreaForm } from "@/components/forms/TextAreaField";
 import { SwitchFieldForm } from "@/components/forms/SwitchField";
+import { FilePickerForm } from "@/components/forms/FilePicker";
+import { ColorPickerForm } from "@/components/forms/ColorPicket";
+import { DatePickerForm } from "@/components/forms/DatePicker";
 
 const schema = z.object({
 	channel: z.string(),
   message: z.string().min(20),
   temp: z.boolean(),
+  color: z.string().optional(),
+  date: z.date().optional(),
+  file: z.custom<File[]>().optional(),
 })
 
 type Input = z.infer<typeof schema>;
@@ -24,6 +30,9 @@ export const useReportModule: UseFormRender<ReportModule> = (data, onSubmit) => 
       channel: data.channel,
       message: data.message ?? '',
       temp: false,
+      color: undefined,
+      date: undefined,
+      file: [],
     },
   });
 
@@ -52,6 +61,28 @@ export const useReportModule: UseFormRender<ReportModule> = (data, onSubmit) => 
             control,
             name: 'temp',
           }}
+        />
+        <FilePickerForm
+          control={{
+            label: 'File',
+            description: 'The file to upload',
+          }}
+          options={{ accept: { 'image/*': [] }, multiple: false }}
+          controller={{ control, name: 'file' }}
+        />
+        <ColorPickerForm
+          control={{
+            label: 'Color',
+            description: 'The color of message',
+          }}
+          controller={{ control, name: 'color' }}
+        />
+        <DatePickerForm
+          control={{
+            label: 'Date',
+            description: 'The date of today',
+          }}
+          controller={{ control, name: 'date' }}
         />
 			</SimpleGrid>
 		),

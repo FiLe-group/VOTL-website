@@ -48,7 +48,7 @@ export default function DashLayout({
               pos="sticky"
               w="full"
               pt={{ [navbarBreakpoint]: '16px' }}
-              px={{ '3sm': '30px' }}
+              px={{ [navbarBreakpoint]: '30px' }}
             >
               <Navbar>{navbar ?? <DefaultNavbar />}</Navbar>
             </Box>
@@ -58,7 +58,7 @@ export default function DashLayout({
               maxW="1200px"
               flex={1}
               my={{ base: '30px', [sidebarBreakpoint]: '50px' }}
-              px={{ base: '24px', '3sm': '30px' }}
+              px={{ base: '24px', [navbarBreakpoint]: '30px' }}
             >
               {children}
             </Box>

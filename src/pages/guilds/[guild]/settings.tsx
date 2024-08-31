@@ -11,9 +11,9 @@ import { ChannelSelectForm } from '@/components/forms/ChannelSelect';
 
 const schema = z.object({
   beta: z.boolean(),
-  role: z.string().optional(),
+  role: z.number().optional(),
   prefix: z.string().min(1).max(1),
-  channel: z.string().optional(),
+  channel: z.number().optional(),
 });
 
 type ExampleSettings = z.infer<typeof schema>;
@@ -35,7 +35,7 @@ const GuildSettingsPage: NextPageWithLayout = () => {
 
   return (
     <Flex direction="column">
-      <Box ml={{ '3sm': 5 }}>
+      <Box ml={{ 'sm': 5 }}>
         <Heading fontSize="2xl" fontWeight="600">
           Guild Settings
         </Heading>

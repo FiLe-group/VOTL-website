@@ -6,29 +6,24 @@ const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpe
   selectAnatomy.keys
 );
 
-const outline = definePartsStyle((props) => {
-	const focusBorderColor = dark.brand;
-	const errorBorderColor = 'red.300';
-
-  return {
-    field: {
-      border: '1px solid',
-      borderColor: 'whiteAlpha.100',
-      bg: 'inherit',
-      _hover: {
-        borderColor: 'whiteAlpha.400',
-      },
-      _invalid: {
-        borderColor: errorBorderColor,
-        boxShadow: `0 0 0 1px ${errorBorderColor}`,
-      },
-      _focusVisible: {
-        zIndex: 0,
-        borderColor: focusBorderColor,
-        boxShadow: `0 0 0 1px ${focusBorderColor}`,
-      },
+const outline = definePartsStyle({
+  field: {
+    //border: '3px',
+    //borderColor: 'whiteAlpha.300',
+    bg: 'inherit',
+    _hover: {
+      //borderColor: 'whiteAlpha.100',
     },
-  };
+    _invalid: {
+      //borderColor: 'red.300',
+      //boxShadow: `0 0 0 1px red.300`,
+    },
+    _focusVisible: {
+      zIndex: 0,
+      //borderColor: dark.brand,
+      //boxShadow: `0 0 0 1px ${dark.brand}`,
+    },
+  },
 });
 
 export const selectStyles = defineMultiStyleConfig({

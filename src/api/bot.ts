@@ -53,7 +53,7 @@ export async function enableModule(session: AccessToken, guild: string, module: 
     `/guilds/${guild}/modules/${module}`,
     botRequest(session, {
       request: {
-        method: 'POST',
+        method: 'PUT',
       },
     })
   );

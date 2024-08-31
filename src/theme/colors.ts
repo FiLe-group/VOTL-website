@@ -162,6 +162,6 @@ export const dark = {
   brand: 'blue.700',
   textColorPrimary: 'white',
   textColorSecondary: 'white.60',
-  cardBg: 'navy.800',
+  cardBg: '#080e2c',
   shadow: '7px 10px 30px rgba(60, 60, 60, 0.3)',
 };

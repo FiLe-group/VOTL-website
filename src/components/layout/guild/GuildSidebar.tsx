@@ -27,7 +27,7 @@ export function InGuildSidebar() {
           icon={<Icon verticalAlign="middle" as={FaChevronLeft} />}
           aria-label="back"
         />
-        <Text fontSize="lg" fontWeight="600">
+        <Text fontSize="lg" fontWeight="600" maxW='90%'>
           {guild?.name}
         </Text>
       </HStack>

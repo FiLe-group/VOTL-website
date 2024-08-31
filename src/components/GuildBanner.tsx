@@ -31,7 +31,7 @@ export function Banner({imageLink}: { imageLink: string}) {
         <Button
           leftIcon={<SettingsIcon />}
           color="white"
-          bg="whiteAlpha.200"
+          bg="whiteAlpha.300"
           _hover={{
             bg: 'whiteAlpha.400',
           }}

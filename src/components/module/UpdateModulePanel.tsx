@@ -34,7 +34,7 @@ export function UpdateModulePanel({
 
   return (
     <Flex as="form" direction="column" gap={5} w="full" h="full">
-      <Flex direction={{ base: 'column', md: 'row' }} mx={{ '3sm': 5 }} justify="space-between">
+      <Flex direction={{ base: 'column', md: 'row' }} mx={{ 'sm': 5 }} justify="space-between">
         <Box>
           <Heading fontSize="2xl" fontWeight="600">
             {config.name}
@@ -62,7 +62,7 @@ function Savebar({
   isLoading: boolean;
 }) {
   const t = view.useTranslations();
-  const breakpoint = '3sm';
+  const breakpoint = 'sm';
 
   return (
     <Flex

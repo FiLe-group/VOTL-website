@@ -42,7 +42,7 @@ function NavbarLinksBox({ children }: { children?: ReactNode }) {
       {children ?? (
         <>
           <SidebarTrigger />
-          <UserMenu color="TextPrimary" shadow="normal" bg="CardBackground" />
+          <UserMenu bgColor="#333333" />
         </>
       )}
     </Flex>

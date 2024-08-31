@@ -53,15 +53,15 @@ export function FormCard({
 }: FormCardProps) {
   return (
     <Form isRequired={required} isInvalid={error != null} {...baseControl}>
-      <FormLabel fontSize={{ base: '16px', md: 'lg' }} fontWeight="medium" mb={0}>
+      <Text fontSize={{ base: '16px', md: 'lg' }} fontWeight="medium" mb={0}>
         {label}
-      </FormLabel>
-      <Text fontSize={{ base: 'sm', md: 'md' }} color="TextSecondary">
+      </Text>
+      <Text fontSize={{ base: 'sm', md: 'md' }} color="TextSecondary" mb={2}>
         {description}
       </Text>
-      <Spacer mt={2} />
       {children}
       <FormErrorMessage>{error}</FormErrorMessage>
+      <Spacer />
     </Form>
   );
 }

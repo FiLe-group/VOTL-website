@@ -9,10 +9,8 @@ const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpe
 export const cardStyles = defineMultiStyleConfig({
   baseStyle: definePartsStyle({
     container: {
-			'--custom-card-bg': `colors.${dark.cardBg}`,
-			'--card-color': `colors.${dark.textColorPrimary}`,
-      color: 'var(--card-color)',
-      bg: 'var(--custom-card-bg)',
+      color: dark.textColorPrimary,
+      bg: dark.cardBg,
       p: 'var(--card-padding)',
     },
     header: {

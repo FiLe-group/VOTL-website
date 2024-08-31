@@ -1,8 +1,10 @@
 import {
   Avatar,
   Flex,
+  Icon,
   Menu,
   MenuButton,
+  MenuDivider,
   MenuItem,
   MenuList,
   Text,
@@ -13,8 +15,11 @@ import { common } from '@/config/translations/common';
 import Link from 'next/link';
 import { useSelfUser } from '@/api/hooks';
 import { useLogoutMutation } from '@/utils/auth/hooks';
+import { dark } from '@/theme/colors';
+import { FaChalkboard, FaRegUser } from 'react-icons/fa';
+import { FiLogOut } from 'react-icons/fi';
 
-export function UserMenu(props: { color: string; shadow: string; bg: string }) {
+export function UserMenu({bgColor}: { bgColor: string }) {
   const user = useSelfUser();
 
   return (
@@ -30,19 +35,18 @@ export function UserMenu(props: { color: string; shadow: string; bg: string }) {
           h="40px"
         />
       </MenuButton>
-      <List user={user} shadow={props.shadow} menuBg={props.bg} textColor={props.color} />
+      <List user={user} bgColor={bgColor} />
     </Menu>
   );
 }
 
-function List(props: { textColor: string; shadow: string; menuBg: string; user: UserInfo }) {
+function List({user, bgColor}: { user: UserInfo, bgColor: string }) {
   const t = common.useTranslations();
-  const { menuBg, shadow, textColor, user } = props;
   const borderColor = useColorModeValue('#E6ECFA', 'rgba(135, 140, 189, 0.3)');
   const logout = useLogoutMutation();
 
   return (
-    <MenuList boxShadow={shadow} p="0px" mt="10px" borderRadius="20px" bg={menuBg} border="none">
+    <MenuList boxShadow={dark.shadow} p="0px" mt="10px" borderRadius="20px" bg={bgColor} border="none">
       <Flex w="100%" mb="0px">
         <Text
           ps="20px"
@@ -53,7 +57,7 @@ function List(props: { textColor: string; shadow: string; menuBg: string; user: 
           borderColor={borderColor}
           fontSize="sm"
           fontWeight="700"
-          color={textColor}
+          color={dark.textColorPrimary}
         >
           <span aria-label="Hi" role="img">
             👋
@@ -68,10 +72,23 @@ function List(props: { textColor: string; shadow: string; menuBg: string; user: 
           borderRadius="8px"
           px="14px"
           as={Link}
+          href={`/user/home`}
+        >
+          <Icon as={FaChalkboard} mr={2} />
+          <Text fontSize="sm">{t.dashboard}</Text>
+        </MenuItem>
+        <MenuItem
+          _hover={{ bg: 'none' }}
+          _focus={{ bg: 'none' }}
+          borderRadius="8px"
+          px="14px"
+          as={Link}
           href={`/user/profile`}
         >
+          <Icon as={FaRegUser} mr={2} />
           <Text fontSize="sm">{t.profile}</Text>
         </MenuItem>
+        <MenuDivider />
         <MenuItem
           _hover={{ bg: 'none' }}
           _focus={{ bg: 'none' }}
@@ -80,6 +97,7 @@ function List(props: { textColor: string; shadow: string; menuBg: string; user: 
           onClick={() => logout.mutate()}
           px="14px"
         >
+          <Icon as={FiLogOut} mr={2} />
           <Text fontSize="sm">{t.logout}</Text>
         </MenuItem>
       </Flex>

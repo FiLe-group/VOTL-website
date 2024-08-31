@@ -11,6 +11,6 @@ export const common = createI18n(provider, {
     dashboard: 'Dashboard',
     profile: 'Profile',
     pages: 'Pages',
-    logout: 'Logout',
+    logout: 'Log out',
   },
 });

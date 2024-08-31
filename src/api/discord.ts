@@ -134,6 +134,7 @@ export async function getGuild(accessToken: string, id: string) {
 }
 
 export function iconUrl(guild: Guild) {
+  if (guild.icon == null) return '';
   return `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
 }
 
