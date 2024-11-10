@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/react";
+import { createSystem, defaultConfig } from "@chakra-ui/react";
 import { globalStyles } from '../styles/global';
 import { breakpoints } from "./breakpoints";
 import { colors, dark } from "./colors";
@@ -16,62 +16,66 @@ import { switchStyles } from "./components/switch";
 import { tabsStyles } from "./components/tabs";
 import { textareaStyles } from "./components/textarea";
 
-export const theme = extendTheme({
-  fonts: {
-    body: `'Montserrat', sans-serif`,
-    heading: `'Montserrat', sans-serif`,
-  },
-  config: {
-    initialColorMode: 'dark',
-  },
-	breakpoints,
-  colors,
-	styles: {
-		global: globalStyles,
-	},
-	components: {
-    Avatar: avatarStyles,
-    Button: buttonStyles,
-    Card: cardStyles,
-    Input: inputStyles,
-    Menu: menuTheme,
-    Modal: modalStyles,
-    Popover: popoverStyles,
-    Select: selectStyles,
-    Skeleton: skeletonStyles,
-    RangeSlider: sliderStyles,
-    Switch: switchStyles,
-    Tabs: tabsStyles,
-    Textarea: textareaStyles,
-	},
-	semanticTokens: {
-		shadows: {
-			normal: {
-				default: dark.shadow
-			}
-		},
-		colors: {
-			TextPrimary: {
-        default: dark.textColorPrimary,
+export const theme = createSystem(defaultConfig, {
+  theme: {
+    tokens: {
+      fonts: {
+        body: { value: `'Montserrat', sans-serif`},
+        heading: { value: `'Montserrat', sans-serif`},
       },
-      TextSecondary: {
-        default: dark.textColorSecondary,
+      config: {
+        initialColorMode: 'dark',
       },
-      MainBackground: {
-        default: dark.globalBg,
+      breakpoints,
+      colors,
+      styles: {
+        global: globalStyles,
       },
-      InputBackground: {
-        default: 'gray.900',
+      components: {
+        Avatar: avatarStyles,
+        Button: buttonStyles,
+        Card: cardStyles,
+        Input: inputStyles,
+        Menu: menuTheme,
+        Modal: modalStyles,
+        Popover: popoverStyles,
+        Select: selectStyles,
+        Skeleton: skeletonStyles,
+        RangeSlider: sliderStyles,
+        Switch: switchStyles,
+        Tabs: tabsStyles,
+        Textarea: textareaStyles,
       },
-      InputBorder: {
-        default: 'blackAlpha.200',
+      semanticTokens: {
+        shadows: {
+          normal: {
+            default: dark.shadow
+          }
+        },
+        colors: {
+          TextPrimary: {
+            default: dark.textColorPrimary,
+          },
+          TextSecondary: {
+            default: dark.textColorSecondary,
+          },
+          MainBackground: {
+            default: dark.globalBg,
+          },
+          InputBackground: {
+            default: 'gray.900',
+          },
+          InputBorder: {
+            default: 'blackAlpha.200',
+          },
+          Brand: {
+            default: dark.brand,
+          },
+          CardBackground: {
+            default: dark.cardBg,
+          },
+        }
       },
-      Brand: {
-        default: dark.brand,
-      },
-      CardBackground: {
-        default: dark.cardBg,
-      },
-		}
-	},
+    }
+  }
 })
