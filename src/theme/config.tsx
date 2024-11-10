@@ -61,7 +61,7 @@ export const theme = extendTheme({
         default: dark.globalBg,
       },
       InputBackground: {
-        default: 'secondaryGray.300',
+        default: 'gray.900',
       },
       InputBorder: {
         default: 'blackAlpha.200',

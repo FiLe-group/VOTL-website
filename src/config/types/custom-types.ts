@@ -22,7 +22,7 @@ export type CustomModule = {
 };
 
 export type ReportModule = {
-  channel?: string;
+  channel?: number;
   message?: string;
   temp: boolean;
 };

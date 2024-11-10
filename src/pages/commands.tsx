@@ -9,7 +9,7 @@ import { NextPageWithLayout } from "./_app";
 import AppLayout from "@/components/layout/app";
 import { Box, Divider, Flex, HStack, ListItem, StackDivider, Text, UnorderedList, VStack } from "@chakra-ui/layout";
 import { Button, Icon, useRadio, useRadioGroup } from "@chakra-ui/react";
-import { FaCaretDown, FaCheck, FaCrown, FaDice, FaInfoCircle, FaList, FaPhone, FaQuestion, FaServer, FaShieldAlt, FaTicketAlt, FaUser, FaUserShield } from "react-icons/fa";
+import { FaCaretDown, FaCheck, FaCrown, FaDice, FaInfoCircle, FaList, FaPhone, FaPhoneAlt, FaQuestion, FaServer, FaShieldAlt, FaTicketAlt, FaUser, FaUserShield } from "react-icons/fa";
 import { FaGear, FaGears, FaXmark } from "react-icons/fa6";
 import { HiBadgeCheck } from "react-icons/hi";
 import { MdOutlineWebhook } from "react-icons/md";
@@ -33,7 +33,7 @@ const categories: Category[] = [
   {
     title: "Voice",
     value: "voice",
-    icon: <Icon as={FaPhone} boxSize='20px' />,
+    icon: <Icon as={FaPhoneAlt} boxSize='20px' />,
     size: 0
   },
   {
@@ -143,6 +143,7 @@ function CollapsedCommand({ lang, cmd }: {lang: string, cmd: Command}) {
             px={2}
             height='auto'
             fontWeight='medium'
+            whiteSpace='nowrap'
           >
             {`/${cmd.name}`}
           </Box>

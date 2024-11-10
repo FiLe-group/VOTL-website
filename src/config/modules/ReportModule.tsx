@@ -12,7 +12,7 @@ import { ColorPickerForm } from "@/components/forms/ColorPicket";
 import { DatePickerForm } from "@/components/forms/DatePicker";
 
 const schema = z.object({
-	channel: z.string(),
+	channel: z.number(),
   message: z.string().min(20),
   temp: z.boolean(),
   color: z.string().optional(),

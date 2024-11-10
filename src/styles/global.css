@@ -405,3 +405,7 @@ code.embed-code {
   color: #60a5fa;
   display: inline;
 }
+
+.colorpicker .react-colorful__saturation {
+  border-bottom: 20px;
+}

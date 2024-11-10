@@ -102,6 +102,7 @@ export type ColorPickerProps = {
 
 export function ColorPicker({ value, onChange, supportAlpha, ...rest }: ColorPickerProps) {
   const props: Partial<ColorPickerBaseProps<string>> = {
+    className: 'colorpicker',
     color: value ?? undefined,
     onChange,
     style: {

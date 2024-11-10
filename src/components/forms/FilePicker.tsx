@@ -44,7 +44,7 @@ export const FilePickerForm: ControlledInput<FilePickerFormProps, File[] | undef
             <Input input={getInputProps(field)} />
             {empty ? (
               <VStack
-                color="secondaryGray.600"
+                color="white"
                 textAlign="center"
               >
                 <Icon as={MdUpload} w="70px" h="70px" />
@@ -87,7 +87,7 @@ function FilePreview({ file }: { file: File }) {
           {file.name}
         </Text>
         <Text fontSize="sm" color="TextSecondary">
-          {file.size} bytes
+          {Math.round(file.size/102.4)/10} Kb
         </Text>
       </VStack>
     </Flex>
