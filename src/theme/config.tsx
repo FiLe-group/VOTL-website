@@ -1,81 +1,84 @@
 import { createSystem, defaultConfig } from "@chakra-ui/react";
-import { globalStyles } from '../styles/global';
 import { breakpoints } from "./breakpoints";
 import { colors, dark } from "./colors";
-import { avatarStyles } from "./components/avatar";
-import { buttonStyles } from "./components/button";
-import { cardStyles } from "./components/card";
-import { inputStyles } from "./components/input";
-import { menuTheme } from "./components/menu";
-import { sliderStyles } from "./components/slider";
-import { modalStyles } from "./components/modal";
-import { popoverStyles } from "./components/popover";
-import { selectStyles } from "./components/select";
-import { skeletonStyles } from "./components/skeleton";
-import { switchStyles } from "./components/switch";
-import { tabsStyles } from "./components/tabs";
-import { textareaStyles } from "./components/textarea";
 
-export const theme = createSystem(defaultConfig, {
+import { avatarSlotRecipe } from "./components/avatar";
+import { buttonRecipe } from "./components/button";
+import { cardSlotRecipe } from "./components/card";
+import { inputSlotRecipe } from "./components/input";
+import { menuSlotRecipe } from "./components/menu";
+import { dialogSlotRecipe } from "./components/dialog";
+import { popoverSlotRecipe } from "./components/popover";
+import { selectSlotRecipe } from "./components/select";
+import { skeletonRecipe } from "./components/skeleton";
+import { sliderSlotRecipe } from "./components/slider";
+import { switchSlotRecipe } from "./components/switch";
+import { tabsSlotRecipe } from "./components/tabs";
+import { textareaRecipe } from "./components/textarea";
+
+export const system = createSystem(defaultConfig, {
+  globalCss: {
+    "body": {
+      fontWeight: 500,
+      color: 'TextPrimary',
+      bg: 'MainBackground',
+    }
+  },
   theme: {
     tokens: {
       fonts: {
         body: { value: `'Montserrat', sans-serif`},
         heading: { value: `'Montserrat', sans-serif`},
       },
-      config: {
-        initialColorMode: 'dark',
-      },
       breakpoints,
       colors,
-      styles: {
-        global: globalStyles,
-      },
-      components: {
-        Avatar: avatarStyles,
-        Button: buttonStyles,
-        Card: cardStyles,
-        Input: inputStyles,
-        Menu: menuTheme,
-        Modal: modalStyles,
-        Popover: popoverStyles,
-        Select: selectStyles,
-        Skeleton: skeletonStyles,
-        RangeSlider: sliderStyles,
-        Switch: switchStyles,
-        Tabs: tabsStyles,
-        Textarea: textareaStyles,
-      },
-      semanticTokens: {
-        shadows: {
-          normal: {
-            default: dark.shadow
-          }
-        },
-        colors: {
-          TextPrimary: {
-            default: dark.textColorPrimary,
-          },
-          TextSecondary: {
-            default: dark.textColorSecondary,
-          },
-          MainBackground: {
-            default: dark.globalBg,
-          },
-          InputBackground: {
-            default: 'gray.900',
-          },
-          InputBorder: {
-            default: 'blackAlpha.200',
-          },
-          Brand: {
-            default: dark.brand,
-          },
-          CardBackground: {
-            default: dark.cardBg,
-          },
+    },
+    slotRecipes: {
+      avatar: avatarSlotRecipe,
+      card: cardSlotRecipe,
+      input: inputSlotRecipe,
+      menu: menuSlotRecipe,
+      dialog: dialogSlotRecipe,
+      popover: popoverSlotRecipe,
+      select: selectSlotRecipe,
+      slider: sliderSlotRecipe,
+      switch: switchSlotRecipe,
+      tabs: tabsSlotRecipe,
+    },
+    recipes: {
+      button: buttonRecipe,
+      skeleton: skeletonRecipe,
+      textarea: textareaRecipe,
+    },
+    semanticTokens: {
+      shadows: {
+        normal: {
+          DEFAULT: {value: dark.shadow}
         }
       },
-    }
+      colors: {
+        TextPrimary: {
+          DEFAULT: {value: dark.textColorPrimary},
+        },
+        TextSecondary: {
+          DEFAULT: {value: dark.textColorSecondary},
+        },
+        MainBackground: {
+          DEFAULT: {value: dark.globalBg},
+        },
+        InputBackground: {
+          DEFAULT: {value: 'gray.900'},
+        },
+        InputBorder: {
+          DEFAULT: {value: 'blackAlpha.200'},
+        },
+        Brand: {
+          DEFAULT: {value: dark.brand},
+        },
+        CardBackground: {
+          DEFAULT: {value: dark.cardBg},
+        },
+      }
+    },
   }
 })
