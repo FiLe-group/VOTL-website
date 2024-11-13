@@ -1,4 +1,5 @@
-const nextConfig = {
+/** @type {import('next').NextConfig} */
+module.exports = {
   reactStrictMode: true,
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',
@@ -10,6 +11,7 @@ const nextConfig = {
     locales: ['en'],
     defaultLocale: 'en',
   },
+  experimental: {
+    optimizePackageImports: ["@chakra-ui/react"],
+  },
 };
-
-module.exports = nextConfig;
