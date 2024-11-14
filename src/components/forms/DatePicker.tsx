@@ -1,20 +1,13 @@
 import { Calendar, CalendarProps } from 'react-calendar';
-import { FormCard } from './Form';
 import { ControlledInput } from './types';
-import { Icon } from '@chakra-ui/react';
+import {Icon, Input, useRecipe} from '@chakra-ui/react';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { Text } from '@chakra-ui/layout';
-import {
-  Input,
-  InputGroup,
-  InputRightElement,
-  Popover,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-} from '@chakra-ui/react';
 import { AiTwotoneCalendar as CalendarIcon } from 'react-icons/ai';
 import { useController } from 'react-hook-form';
+import {FormCard} from "@/components/forms/Form";
+import {PopoverBody, PopoverContent, PopoverRoot, PopoverTrigger} from "@/components/ui/popover";
+import {InputGroup} from "@/components/ui/input-group";
 
 export function DatePicker(props: CalendarProps) {
   return (
@@ -62,15 +55,20 @@ export const SmallDatePickerForm: ControlledInput<DatePickerFormProps, CalendarP
     dateStyle: 'short',
   });
 
+  const recipe = useRecipe({ key: "input" })
+  const styles = recipe({variant:"main"})
+
   return (
     <FormCard {...control} error={fieldState.error?.message}>
-      <Popover>
+      <PopoverRoot>
         <PopoverTrigger>
-          <InputGroup>
-            <Input value={text ?? ''} placeholder="Select a Date" variant="main" readOnly />
-            <InputRightElement zIndex={0}>
-              <CalendarIcon />
-            </InputRightElement>
+          <InputGroup endElement={<CalendarIcon z={0} />}>
+            <Input
+              css={styles}
+              value={text ?? ''}
+              placeholder="Select a Date"
+              readOnly
+            />
           </InputGroup>
         </PopoverTrigger>
         <PopoverContent>
@@ -78,7 +76,7 @@ export const SmallDatePickerForm: ControlledInput<DatePickerFormProps, CalendarP
             <DatePicker inputRef={ref} {...field} {...props} />
           </PopoverBody>
         </PopoverContent>
-      </Popover>
+      </PopoverRoot>
     </FormCard>
   );
 };

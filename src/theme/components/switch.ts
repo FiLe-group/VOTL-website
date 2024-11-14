@@ -1,11 +1,8 @@
-import { switchAnatomy as parts } from '@chakra-ui/anatomy';
-import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
-import { dark } from '../colors';
+import { defineSlotRecipe } from '@chakra-ui/react';
 
-const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys);
-
-export const switchStyles = defineMultiStyleConfig({
-  baseStyle: definePartsStyle({
+export const switchSlotRecipe = defineSlotRecipe({
+  slots: ['thumb', 'track'],
+  base: {
     thumb: {
       fontWeight: 400,
       borderRadius: '50%',
@@ -26,8 +23,8 @@ export const switchStyles = defineMultiStyleConfig({
       },
       bg: 'navy.700',
       _checked: {
-        bg: dark.brand,
+        bg: "colors.brand",
       },
     },
-  }),
+  },
 });

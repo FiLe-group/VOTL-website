@@ -1,19 +1,16 @@
-import { menuAnatomy as parts } from '@chakra-ui/anatomy';
-import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
-import { dark } from '../colors';
+import { defineSlotRecipe } from '@chakra-ui/react';
 
-const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys);
-
-export const menuTheme = defineMultiStyleConfig({
-  baseStyle: definePartsStyle({
+export const menuSlotRecipe = defineSlotRecipe({
+  slots: ['item', 'list'],
+  base: {
     item: {
       _hover: {
-        bg: dark.cardBg,
+        bg: "colors.cardBg",
       },
       bg: 'transparent',
     },
     list: {
-      bg: dark.globalBg,
-    },
-  }),
+      bg: "colors.globalBg",
+    }
+  }
 });

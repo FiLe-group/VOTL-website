@@ -49,8 +49,8 @@ const styles: ChakraStylesConfig<any, any, any> = {
   }),
   option: (provided, options) => ({
     ...provided,
-    color: options.isSelected && 'white.20',
-    bg: options.isSelected && 'blue.400.5',
+    color: options.isSelected ? 'white.20' : '',
+    bg: options.isSelected ? 'blue.400.5': '',
     _hover: {
       bg: options.isSelected ? 'blue.400' : 'whiteAlpha.200',
     },

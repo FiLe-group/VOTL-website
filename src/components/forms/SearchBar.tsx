@@ -1,14 +1,11 @@
 import {
-  Icon,
-  IconButton,
+  Icon, IconButton,
   Input,
-  InputGroup,
-  InputGroupProps,
-  InputLeftElement,
-  InputProps,
+  InputProps, useRecipe,
 } from '@chakra-ui/react';
 import { AiOutlineSearch as SearchIcon } from 'react-icons/ai';
 import { common } from '@/config/translations/common';
+import {InputGroup, InputGroupProps} from "@/components/ui/input-group";
 
 export function SearchBar(
   props: {
@@ -19,21 +16,47 @@ export function SearchBar(
   const t = common.useTranslations();
   const { input, onSearch, ...rest } = props;
 
+  const recipe = useRecipe({ key: "input" })
+  const styles = recipe({variant:"search"})
+
   return (
-    <InputGroup {...rest}>
-      <InputLeftElement>
+    <InputGroup
+      {...rest}
+      startElement={
         <IconButton
+          color="colorPalette.fg"
+          bgColor={{
+            _hover: "colorPalette.subtle",
+            _expanded: "colorPalette.subtle"
+          }}
           aria-label="search"
           bg="inherit"
           borderRadius="inherit"
           _active={{}}
-          variant="ghost"
-          icon={<Icon as={SearchIcon} color="TextPrimary" width="15px" height="15px" />}
           onClick={onSearch}
-        />
-      </InputLeftElement>
+        >
+          <Icon as={SearchIcon} color="TextPrimary" width="15px" height="15px" />
+        </IconButton>
+      }
+      endElement={
+        <IconButton
+          color="colorPalette.fg"
+          bgColor={{
+            _hover: "colorPalette.subtle",
+            _expanded: "colorPalette.subtle"
+          }}
+          aria-label="search"
+          bg="inherit"
+          borderRadius="inherit"
+          _active={{}}
+          onClick={onSearch}
+        >
+          <Icon as={SearchIcon} color="TextPrimary" width="15px" height="15px" />
+        </IconButton>
+      }
+    >
       <Input
-        variant="search"
+        css={styles}
         fontSize="sm"
         bg="navy.900"
         color="TextPrimary"

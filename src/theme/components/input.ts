@@ -1,95 +1,76 @@
-import { inputAnatomy } from '@chakra-ui/anatomy';
-import { createMultiStyleConfigHelpers } from '@chakra-ui/react';
-import { dark } from '../colors';
+import {defineRecipe} from '@chakra-ui/react';
 
-const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(
-  inputAnatomy.keys
-);
-
-const main = definePartsStyle({
-  field: {
-    borderRadius: '16px',
-    fontSize: 'sm',
-    p: '20px',
-    color: 'white',
-		bg: 'navy.800',
-		_placeholder: {
-			color: 'secondaryGray.600',
-		},
-		_invalid: {
-			outlineColor: 'red.400',
-		},
+const main = {
+  borderRadius: '16px',
+  fontSize: 'sm',
+  p: '20px',
+  color: 'white',
+  bg: 'navy.800',
+  _placeholder: {
+    color: 'secondaryGray.600',
   },
-});
+  _invalid: {
+    outlineColor: 'red.400',
+  },
+}
 
-export const inputStyles = defineMultiStyleConfig({
-  baseStyle: definePartsStyle({
-    field: {
-      border: '0px',
-      fontWeight: 400,
-      outline: '3px solid',
-      outlineColor: 'whiteAlpha.700',
-      _hover: {
-        outlineColor: 'whiteAlpha.900',
-      },
-      _focusVisible: {
-        outlineColor: 'blue.400',
-      },
-      transitionProperty: 'outline',
-      borderColor: 'transparent'
+export const inputSlotRecipe = defineRecipe({
+  base: {
+    border: '0px',
+    fontWeight: 400,
+    outline: '3px solid',
+    outlineColor: 'whiteAlpha.700',
+    _hover: {
+      outlineColor: 'whiteAlpha.900',
     },
-  }),
-
+    _focusVisible: {
+      outlineColor: 'blue.400',
+    },
+    transitionProperty: 'outline',
+    borderColor: 'transparent'
+  },
   variants: {
-    flushed: definePartsStyle({
-      field: {
+    variant: {
+      flushed: {
         _focus: {
-          borderColor: dark.brand,
+          borderColor: 'colors.brand',
           boxShadow: 'none',
         },
 
         fontSize: '2xl',
         fontWeight: '600',
-        color: dark.textColorPrimary,
+        color: 'colors.textColorPrimary',
         borderBottomColor: 'navy.600',
       },
-    }),
-    main,
-    focus: definePartsStyle({
-      field: {
-        ...main.field,
+      main,
+      focus: {
+        ...main,
         _focus: {
           borderColor: 'blue.400',
         },
       },
-    }),
-    auth: definePartsStyle({
-      field: {
+      auth: {
         bg: 'transparent',
         fontWeight: '500',
         color: 'white',
-				borderColor: 'rgba(135, 140, 189, 0.3)',
+        borderColor: 'rgba(135, 140, 189, 0.3)',
         border: '1px solid',
         borderRadius: '16px',
         _placeholder: { color: 'secondaryGray.600', fontWeight: '400' },
       },
-    }),
-    authSecondary: definePartsStyle({
-      field: {
+      authSecondary: {
         bg: 'transparent',
         border: '1px solid',
         borderColor: 'secondaryGray.100',
         borderRadius: '16px',
         _placeholder: { color: 'secondaryGray.600' },
       },
-    }),
-    search: definePartsStyle({
-      field: {
+      search: {
         border: 'none',
         py: '11px',
         borderRadius: 'inherit',
         _placeholder: { color: 'secondaryGray.600' },
       },
-    }),
-  },
+    }
+  }
 });

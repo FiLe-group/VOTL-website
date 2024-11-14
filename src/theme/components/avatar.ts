@@ -1,29 +1,27 @@
-import { createMultiStyleConfigHelpers } from '@chakra-ui/react';
-import { avatarAnatomy } from '@chakra-ui/anatomy';
+import { defineSlotRecipe } from '@chakra-ui/react';
 
-const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(
-  avatarAnatomy.keys
-);
-
-export const avatarStyles = defineMultiStyleConfig({
-  baseStyle: definePartsStyle({
+export const avatarSlotRecipe = defineSlotRecipe({
+  slots: ["container"],
+  base: {
     container: {
       bg: 'blue.300.2',
       color: 'white',
     },
-  }),
+  },
   variants: {
-    border: definePartsStyle({
-      container: {
-        border: 'auto',
-        borderWidth: 10,
-        borderColor: 'navy.800',
+    variant: {
+      border: {
+        container: {
+          border: 'auto',
+          borderWidth: 10,
+          borderColor: 'navy.800',
+        },
       },
-    }),
-    normal: definePartsStyle({
-      container: {
-        border: 0,
+      normal: {
+        container: {
+          border: 0,
+        },
       },
-    }),
+    },
   },
 });

@@ -1,16 +1,12 @@
 import { cardAnatomy } from '@chakra-ui/anatomy';
-import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
-import { dark } from '@/theme/colors';
+import { defineSlotRecipe } from '@chakra-ui/react';
 
-const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(
-  cardAnatomy.keys
-);
-
-export const cardStyles = defineMultiStyleConfig({
-  baseStyle: definePartsStyle({
+export const cardSlotRecipe = defineSlotRecipe({
+  slots: cardAnatomy.keys,
+  base: {
     container: {
-      color: dark.textColorPrimary,
-      bg: dark.cardBg,
+      color: "colors.textColorPrimary",
+      bg: "colors.cardBg",
       p: 'var(--card-padding)',
     },
     header: {
@@ -26,12 +22,14 @@ export const cardStyles = defineMultiStyleConfig({
       p: 0,
       mt: 4,
     },
-  }),
+  },
   variants: {
-    primary: definePartsStyle({
-      container: {
-        rounded: '2xl',
+    variant: {
+      primary: {
+        container: {
+          rounded: '2xl',
+        },
       },
-    }),
+    }
   },
 });

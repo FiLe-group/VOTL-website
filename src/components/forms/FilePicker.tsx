@@ -1,13 +1,14 @@
 import { Box, Center, Flex, Text, VStack } from '@chakra-ui/layout';
-import { Icon, Image, useFormControl } from '@chakra-ui/react';
+import { Icon, Image } from '@chakra-ui/react';
 import { ComponentProps } from 'react';
 import Dropzone, { DropzoneOptions } from 'react-dropzone';
 import { FaFile } from 'react-icons/fa';
 import { MdUpload } from 'react-icons/md';
-import { FormCard } from './Form';
 import { useController } from 'react-hook-form';
 import { ControlledInput } from './types';
 import { useFileUrl } from '@/utils/use-file-url';
+import {FormCard} from "@/components/forms/Form";
+import {useFormControl} from "@chakra-ui/form-control";
 
 export type FilePickerFormProps = {
   options?: DropzoneOptions;
@@ -32,9 +33,9 @@ export const FilePickerForm: ControlledInput<FilePickerFormProps, File[] | undef
       <Dropzone ref={ref} {...options} onDrop={onChange}>
         {({ getInputProps, getRootProps }) => (
           <Box
-            bg="InputBackground"
+            bg="gray.900"
             border="1px dashed"
-            borderColor="InputBorder"
+            borderColor="blackAlpha.200"
             borderRadius="16px"
             w="100%"
             p={5}

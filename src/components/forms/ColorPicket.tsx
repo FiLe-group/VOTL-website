@@ -1,22 +1,17 @@
 import {
+  Box,
   Center,
-  Flex,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  Popover,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
+  Flex, Input,
   SimpleGrid,
-  Text,
+  Text, useRecipe,
 } from '@chakra-ui/react';
 import { HexAlphaColorPicker, HexColorPicker } from 'react-colorful';
-import { ColorPickerBaseProps } from 'react-colorful/dist/types';
 import { FormCard } from './Form';
 import { convertHexToRGBA } from '@/utils/common';
 import { useController } from 'react-hook-form';
 import { ControlledInput } from './types';
+import {PopoverBody, PopoverContent, PopoverRoot, PopoverTrigger} from "@/components/ui/popover";
+import {InputGroup} from "@/components/ui/input-group";
 
 export type ColorPickerFormProps = Omit<ColorPickerProps, 'value' | 'onChange'>;
 
@@ -27,15 +22,17 @@ export const SmallColorPickerForm: ControlledInput<
   const { field, fieldState } = useController(controller);
   const { value } = field;
 
+  const recipe = useRecipe({ key: "input" })
+  const styles = recipe({variant:"main"})
+
   return (
     <FormCard {...control} error={fieldState.error?.message}>
-      <Popover>
+      <PopoverRoot>
         <PopoverTrigger>
-          <InputGroup>
-            <InputLeftAddon bg={value} rounded="xl" h="full" />
+          <InputGroup startElement={<Box bg={value} rounded="xl" h="full"/>}>
             <Input
+              css={styles}
               autoComplete="off"
-              variant="main"
               placeholder={value ?? 'Select a color'}
               {...field}
               value={field.value ?? ''}
@@ -48,7 +45,7 @@ export const SmallColorPickerForm: ControlledInput<
             <ColorPicker value={value} onChange={field.onChange} {...props} />
           </PopoverBody>
         </PopoverContent>
-      </Popover>
+      </PopoverRoot>
     </FormCard>
   );
 };
@@ -61,6 +58,9 @@ export const ColorPickerForm: ControlledInput<ColorPickerFormProps, ColorPickerP
   const { field, fieldState } = useController(controller);
   const { value } = field;
 
+  const recipe = useRecipe({ key: "input" })
+  const styles = recipe({variant:"main"})
+
   return (
     <FormCard {...control} error={fieldState.error?.message}>
       <SimpleGrid columns={{ base: 1, 'sm': 2 }} gap={5}>
@@ -70,8 +70,8 @@ export const ColorPickerForm: ControlledInput<ColorPickerFormProps, ColorPickerP
             minH="150px"
             rounded="xl"
             border="1px solid"
-            borderColor="InputBorder"
-            bgColor={value == null ? 'InputBackground' : convertHexToRGBA(value)}
+            borderColor="blackAlpha.200"
+            bgColor={value == null ? 'gray.900' : convertHexToRGBA(value)}
             flex={1}
           >
             {value == null && (
@@ -81,8 +81,8 @@ export const ColorPickerForm: ControlledInput<ColorPickerFormProps, ColorPickerP
             )}
           </Center>
           <Input
+            css={styles}
             placeholder={value ?? 'Select a color'}
-            variant="main"
             autoComplete="off"
             {...field}
             value={field.value ?? ''}
@@ -101,7 +101,7 @@ export type ColorPickerProps = {
 };
 
 export function ColorPicker({ value, onChange, supportAlpha, ...rest }: ColorPickerProps) {
-  const props: Partial<ColorPickerBaseProps<string>> = {
+  const props: Parameters<typeof HexColorPicker>[0] = {
     className: 'colorpicker',
     color: value ?? undefined,
     onChange,
