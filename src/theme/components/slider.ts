@@ -1,14 +1,14 @@
-import { sliderAnatomy as parts } from '@chakra-ui/anatomy';
-import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
+import { defineSlotRecipe } from '@chakra-ui/react';
 
-const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpers(parts.keys);
-
-export const sliderStyles = defineMultiStyleConfig({
+export const sliderSlotRecipe = defineSlotRecipe({
+  slots: ['thumb'],
   variants: {
-    main: definePartsStyle((props) => ({
-      thumb: {
-        bg: 'blue.400',
-      },
-    })),
-  },
+    variant: {
+      main: {
+        thumb: {
+          bg: 'blue.400',
+        },
+      }
+    }
+  }
 });
