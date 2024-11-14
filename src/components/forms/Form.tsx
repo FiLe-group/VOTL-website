@@ -1,10 +1,6 @@
-import {
-  FormControl,
-  FormControlProps,
-  FormErrorMessage,
-  FormLabel,
-} from '@chakra-ui/form-control';
-import { Flex, Spacer, Text } from '@chakra-ui/layout';
+"use client"
+
+import { Flex, Spacer } from '@chakra-ui/layout';
 import { ReactNode } from 'react';
 import {
   Controller,
@@ -13,29 +9,64 @@ import {
   Path,
   UseControllerProps,
 } from 'react-hook-form';
-  
-export function Form(props: FormControlProps) {
+import {createSlotRecipeContext, HTMLChakraProps, RecipeVariantProps} from "@chakra-ui/react";
+import {fieldSlotRecipe} from "@/theme/components/field";
+
+const { withProvider, withContext } = createSlotRecipeContext ({
+  recipe: fieldSlotRecipe,
+})
+
+interface FieldRootProps
+  extends HTMLChakraProps<
+    "div",
+    RecipeVariantProps<typeof fieldSlotRecipe>
+  > {
+  required?: boolean;
+  invalid?: boolean;
+}
+export const FieldRoot = withProvider<HTMLLabelElement, FieldRootProps>(
+  "div",
+  "root",
+)
+
+interface FieldControlProps extends HTMLChakraProps<"input"> {}
+export const FieldControl = withContext<
+  HTMLInputElement,
+  FieldControlProps
+>("input", "control")
+
+interface FieldLabelProps extends HTMLChakraProps<"label"> {}
+export const FieldLabel = withContext<HTMLSpanElement, FieldLabelProps>(
+  "label",
+  "label",
+)
+
+interface FieldHelperProps extends HTMLChakraProps<"div"> {}
+export const FieldHelper = withContext<HTMLSpanElement, FieldHelperProps>(
+  "div",
+  "helperText",
+)
+
+interface FieldErrorProps extends HTMLChakraProps<"div"> {}
+export const FieldError = withContext<HTMLSpanElement, FieldErrorProps>(
+  "div",
+  "errorText",
+)
+
+export const Form = (props: FieldRootProps) => {
   return (
-    <FormControl
+    <FieldRoot
       as={Flex}
-      direction="column"
-      bg="CardBackground"
-      rounded="3xl"
-      p={5}
-      boxShadow="normal"
       {...props}
     >
       {props.children}
-    </FormControl>
+    </FieldRoot>
   );
 }
 
 export type FormCardProps = {
   required?: boolean;
-  baseControl?: FormControlProps;
-  /**
-   * Show an error message if not null
-   */
+  baseControl?: FieldControlProps;
   error?: string;
   label?: string | ReactNode;
   description?: string | ReactNode;
@@ -52,17 +83,15 @@ export function FormCard({
   error,
 }: FormCardProps) {
   return (
-    <Form isRequired={required} isInvalid={error != null} {...baseControl}>
-      <Text fontSize={{ base: '16px', md: 'lg' }} fontWeight="medium" mb={0}>
+    <FieldRoot required={required} invalid={error!=null} {...baseControl}>
+      <FieldLabel>
         {label}
-      </Text>
-      <Text fontSize={{ base: 'sm', md: 'md' }} color="TextSecondary" mb={2}>
-        {description}
-      </Text>
+      </FieldLabel>
+      <FieldHelper>{description}</FieldHelper>
       {children}
-      <FormErrorMessage>{error}</FormErrorMessage>
+      <FieldError>{error}</FieldError>
       <Spacer />
-    </Form>
+    </FieldRoot>
   );
 }
 
@@ -70,7 +99,7 @@ export type FormCardControllerProps<
   TFieldValue extends FieldValues,
   TName extends Path<TFieldValue>
 > = {
-  control: Omit<FormCardProps, 'error' | 'children'>;
+  control: Omit<FieldRootProps, 'error' | 'children'>;
   controller: UseControllerProps<TFieldValue, TName>;
   render: ControllerProps<TFieldValue, TName>['render'];
 };
