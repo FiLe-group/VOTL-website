@@ -1,7 +1,6 @@
 import { FaChevronLeft } from 'react-icons/fa';
 import { Flex, HStack, Text, VStack } from '@chakra-ui/layout';
 import { Icon, IconButton } from '@chakra-ui/react';
-import { HSeparator } from '@/components/layout/Separator';
 import { getModules } from '@/utils/common';
 import { IoSettings } from 'react-icons/io5';
 import { useGuildPreview } from '@/api/hooks';
@@ -11,6 +10,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Params } from '@/pages/guilds/[guild]/modules/[module]';
 import { SidebarItem } from '../sidebar/SidebarItem';
+import {HSeparator} from "@/components/layout/HSeparator";
 
 export function InGuildSidebar() {
   const router = useRouter();
@@ -24,9 +24,10 @@ export function InGuildSidebar() {
       <HStack as={Link} cursor="pointer" mb={2} href={`/guilds/${guildId}`}>
         <IconButton
           display={{ base: 'none', [sidebarBreakpoint]: 'block' }}
-          icon={<Icon verticalAlign="middle" as={FaChevronLeft} />}
           aria-label="back"
-        />
+        >
+          <Icon verticalAlign="middle" as={FaChevronLeft} />
+        </IconButton>
         <Text fontSize="lg" fontWeight="600" maxW='90%'>
           {guild?.name}
         </Text>

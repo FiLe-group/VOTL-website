@@ -1,13 +1,14 @@
 import { FaChevronLeft as ChevronLeftIcon } from 'react-icons/fa';
 import { Box, Flex, Text } from '@chakra-ui/layout';
-import { Avatar, Icon, SkeletonCircle } from '@chakra-ui/react';
+import {Collapsible, Icon} from '@chakra-ui/react';
 import { iconUrl } from '@/api/discord';
 import { useGuildPreview } from '@/api/hooks';
-import { motion } from 'framer-motion';
 import { ReactElement } from 'react';
 import { sidebarBreakpoint } from '@/theme/breakpoints';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import {SkeletonCircle} from "@/components/ui/skeleton";
+import {Avatar} from "@/components/ui/avatar";
 
 export default function GuildNavbar({ back }: { back?: boolean }) {
   const { guild: selected } = useRouter().query as { guild: string };
@@ -50,19 +51,37 @@ export default function GuildNavbar({ back }: { back?: boolean }) {
   );
 }
 
+// function HorizontalCollapse({ in: isOpen, children }: { in: boolean; children: ReactElement }) {
+//   return (
+//     <motion.section
+//       animate={isOpen ? 'open' : 'collapsed'}
+//       exit="collapsed"
+//       initial="collapsed"
+//       variants={{
+//         open: { opacity: 1, width: 'auto' },
+//         collapsed: { opacity: 0, width: 0 },
+//       }}
+//       transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+//     >
+//       {children}
+//     </motion.section>
+//   );
+// }
+
 function HorizontalCollapse({ in: isOpen, children }: { in: boolean; children: ReactElement }) {
   return (
-    <motion.section
-      animate={isOpen ? 'open' : 'collapsed'}
-      exit="collapsed"
-      initial="collapsed"
-      variants={{
-        open: { opacity: 1, width: 'auto' },
-        collapsed: { opacity: 0, width: 0 },
-      }}
-      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+    <Collapsible.Root
+      //animate={isOpen ? 'open' : 'collapsed'}
+      //exit="collapsed"
+      //initial="collapsed"
+      // variants={{
+      //   open: { opacity: 1, width: 'auto' },
+      //   collapsed: { opacity: 0, width: 0 },
+      // }}
+      animationDuration='0.4s'
+      animationTimingFunction='easeIn'
     >
       {children}
-    </motion.section>
+    </Collapsible.Root>
   );
 }

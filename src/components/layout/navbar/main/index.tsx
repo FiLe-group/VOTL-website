@@ -2,19 +2,19 @@ import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import { NavbarItemInfo } from "@/utils/router";
 import { Box, Flex, HStack, Link, Text, VStack } from "@chakra-ui/layout";
-import { Button, Drawer, DrawerCloseButton, DrawerContent, DrawerOverlay, Icon, Image } from "@chakra-ui/react";
+import { Button, DrawerCloseTrigger, Icon, Image } from "@chakra-ui/react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import items from "@/config/nav-items";
+import { DrawerBackdrop, DrawerContent, DrawerRoot } from "@/components/ui/drawer";
 
 function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: Dispatch<SetStateAction<boolean>>, NavItems: NavbarItemInfo[]}) {
   const router = useRouter();
   return (
-    <Drawer
-      placement='right'
-      isOpen={isOpen}
-      onClose={() => setOpen(false)}
+    <DrawerRoot
+      open={isOpen}
+      onOpenChange={(e) => setOpen(e.open)}
     >
-      <DrawerOverlay
+      <DrawerBackdrop
         backdropFilter='auto'
         bg='transparent'
         backdropBlur='6px'
@@ -22,7 +22,7 @@ function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: 
       <DrawerContent
         roundedLeft='xl'
         bg='black.90'
-        textColor='white'
+        color='white'
       >
         <Flex justify='space-between' borderBottom='1px' borderColor='white.20' px={5} pt={4} pb={3} mb={2}>
           <Flex>
@@ -34,7 +34,7 @@ function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: 
             />
             <Text fontWeight='extrabold' ml={1} fontSize='2xl'>VOTL Bot</Text>
           </Flex>
-          <DrawerCloseButton px={2} size='xl' pos='inherit' />
+          <DrawerCloseTrigger px={2} fontSize='xl' pos='inherit' />
         </Flex>
         <VStack spacing={2} alignItems='start'>
           {NavItems.filter((a) => !a.external).map((item, i) => (
@@ -82,9 +82,9 @@ function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: 
           ))}
         </VStack>
       </DrawerContent>
-    </Drawer>
+    </DrawerRoot>
   );
-};
+}
 
 function Header({ children }: {children?: ReactNode}) {
   const [isOpen, setOpen] = useState(false);
@@ -150,14 +150,14 @@ function Header({ children }: {children?: ReactNode}) {
               py={2}
               px={3}
               bg='transparent'
-              textColor='white'
+              color='white'
               textAlign='center'
               hideFrom='lg'
               _hover={{
                 bg: 'blue.400.20'
               }}
             >
-              <Icon as={isOpen ? FaTimes : FaBars} size='lg' />
+              <Icon as={isOpen ? FaTimes : FaBars} fontSize='lg' />
             </Button>
             <Link
               href="https://discord.com/oauth2/authorize?client_id=916830010290085978&permissions=8&scope=applications.commands+bot"
@@ -211,6 +211,6 @@ function Header({ children }: {children?: ReactNode}) {
       />
     </>
   );
-};
+}
 
 export default Header;

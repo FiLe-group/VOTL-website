@@ -1,12 +1,13 @@
 // Chakra Imports
-import { Breadcrumb, BreadcrumbItem, Flex, Icon, SkeletonText, Tag, Text } from '@chakra-ui/react';
+import {Flex, Icon, Tag, Text} from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { useActiveSidebarItem } from '@/utils/router';
 import { IoHome } from 'react-icons/io5';
 import { FaChevronRight as ChevronRightIcon } from 'react-icons/fa';
 import { navbarBreakpoint } from '@/theme/breakpoints';
 import { common } from '@/config/translations/common';
-import Link from 'next/link';
+import {SkeletonText} from "@/components/ui/skeleton";
+import {BreadcrumbLink, BreadcrumbRoot} from "@/components/ui/breadcrumb";
 
 export function DefaultNavbar() {
   const activeItem = useActiveSidebarItem();
@@ -37,7 +38,7 @@ export function DefaultNavbar() {
         [navbarBreakpoint]: '0',
       }}
     >
-      <Breadcrumb
+      <BreadcrumbRoot
         fontSize="sm"
         separator={
           <Icon
@@ -48,21 +49,22 @@ export function DefaultNavbar() {
         }
       >
         {breadcrumb.map((item, i) => (
-          <BreadcrumbItem key={i}>
-            <Tag
-              as={Link}
-              href={item.href}
+          <BreadcrumbLink key={i}>
+            <Tag.Root
+              asChild
               gap={1}
               rounded="full"
               color="blue.100"
               bg="blue.500.2"
             >
-              {item.icon}
-              <Text>{item.text}</Text>
-            </Tag>
-          </BreadcrumbItem>
+              <link href={item.href}>
+                {item.icon}
+                <Tag.Label>{item.text}</Tag.Label>
+              </link>
+            </Tag.Root>
+          </BreadcrumbLink >
         ))}
-      </Breadcrumb>
+      </BreadcrumbRoot>
       <Text color="TextPrimary" fontWeight="bold" fontSize='2xl' mb={2}>
         {activeItem?.name || <SkeletonText w="full" noOfLines={2} />}
       </Text>

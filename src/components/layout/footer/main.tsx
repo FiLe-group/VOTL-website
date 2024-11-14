@@ -3,12 +3,12 @@ import { Icon, Image, chakra } from "@chakra-ui/react";
 import { FaDiscord, FaGithub } from "react-icons/fa";
 
 const FooterLink = chakra(Link, {
-  baseStyle: {
-    textColor: 'white.50',
+  base: {
+    color: 'white.50',
     transition: 'all',
     transitionDuration: '200ms',
     _hover: {
-      textColor:'white', 
+      color:'white',
       textDecor:'underline'
     }
   },
@@ -40,14 +40,14 @@ export default function Footer() {
             href="https://discord.gg/25K5S55wrU"
             target="_blank"
           >
-            <Icon as={FaDiscord} mr={1} size='30px'/>
+            <Icon as={FaDiscord} mr={1} fontSize='30px'/>
             Discord
           </FooterLink>
           <FooterLink
             href="https://github.com/FileEditor97/VOTL"
             target="_blank"
           >
-            <Icon as={FaGithub} mr={1} size={'30px'}/>
+            <Icon as={FaGithub} mr={1} fontSize='30px'/>
             GitHub
           </FooterLink>
         </VStack>

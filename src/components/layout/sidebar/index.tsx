@@ -1,19 +1,27 @@
 import {
-  Drawer,
-  DrawerBody,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
+  Box,
   Flex,
   Spacer,
 } from '@chakra-ui/react';
 import { BottomCard, SidebarContent } from './SidebarContent';
-import { AnimatePresence, motion } from 'framer-motion';
 import { usePageStore } from '@/stores';
 import { sidebarBreakpoint } from '@/theme/breakpoints';
 import { ReactNode } from 'react';
+import {DrawerBackdrop, DrawerBody, DrawerCloseTrigger, DrawerContent, DrawerRoot} from "@/components/ui/drawer";
+import {keyframes} from "@emotion/react";
+
+const slideIn = keyframes`
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+`;
+
+const slideOut = keyframes`
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-100px); opacity: 0; }
+`;
 
 export function Sidebar({ sidebar }: { sidebar?: ReactNode }) {
+  const animate = sidebar == null ? slideIn : slideOut;
   return (
     <Flex
       direction="column"
@@ -25,17 +33,12 @@ export function Sidebar({ sidebar }: { sidebar?: ReactNode }) {
       overflowX="hidden"
       overflowY="auto"
     >
-      <AnimatePresence mode='wait' initial={false}>
-        <motion.div
-          key={sidebar == null ? 'default' : 'new'}
-          initial={{ x: '100px', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: '-100px', opacity: 0 }}
-          transition={{ duration: 0.2, ease: 'easeInOut' }}
-        >
-          {sidebar ?? <SidebarContent />}
-        </motion.div>
-      </AnimatePresence>
+      <Box
+        key={sidebar == null ? 'default' : 'new'}
+        animation={`${animate} 0.2s ease-in-out`}
+      >
+        {sidebar ?? <SidebarContent />}
+      </Box>
       <Spacer />
       <BottomCard />
     </Flex>
@@ -46,10 +49,13 @@ export function SidebarResponsive({ sidebar }: { sidebar?: ReactNode }) {
   const [isOpen, setOpen] = usePageStore((s) => [s.sidebarIsOpen, s.setSidebarIsOpen]);
 
   return (
-    <Drawer isOpen={isOpen} onClose={() => setOpen(false)}>
-      <DrawerOverlay />
+    <DrawerRoot
+      open={isOpen}
+      onOpenChange={(e) => setOpen(e.open)}
+    >
+      <DrawerBackdrop />
       <DrawerContent w="285px" maxW="285px" bg="CardBackground">
-        <DrawerCloseButton
+        <DrawerCloseTrigger
           zIndex="3"
           mt={3}
           onClick={() => setOpen(false)}
@@ -64,6 +70,6 @@ export function SidebarResponsive({ sidebar }: { sidebar?: ReactNode }) {
           </Flex>
         </DrawerBody>
       </DrawerContent>
-    </Drawer>
+    </DrawerRoot>
   );
 }

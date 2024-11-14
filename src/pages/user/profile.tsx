@@ -31,7 +31,6 @@ const ProfilePage: NextPageWithLayout = () => {
   const logout = useLogoutMutation();
   const t = profile.useTranslations();
 
-  const { colorMode, setColorMode } = useColorMode();
   const { lang, setLang } = useLang();
   const [devMode, setDevMode] = useSettingsStore((s) => [s.devMode, s.setDevMode]);
 

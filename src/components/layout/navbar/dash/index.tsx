@@ -1,4 +1,4 @@
-import { Flex, useColorModeValue } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { navbarBreakpoint } from '@/theme/breakpoints';
 import { ReactNode } from 'react';
 
@@ -6,13 +6,11 @@ import { UserMenu } from '@/components/menu/UserMenu';
 import { SidebarTrigger } from '@/components/SidebarTrigger';
 
 export function Navbar({ links, children }: { links?: ReactNode; children: ReactNode }) {
-  const navbarBg = useColorModeValue('rgba(244, 247, 254, 0.2)', 'rgba(8, 8, 28, 0.5)');
-
   return (
     <Flex
       direction="row"
       mx="auto"
-      bg={navbarBg}
+      bg="rgba(8, 8, 28, 0.5)"
       backdropFilter="blur(20px)"
       borderRadius={{ [navbarBreakpoint]: '16px' }}
       lineHeight="25.6px"

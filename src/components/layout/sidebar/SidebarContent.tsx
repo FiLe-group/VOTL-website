@@ -1,15 +1,12 @@
 import {
-  Avatar,
-  Box,
-  Card,
-  CardBody,
+  Box, Card,
   Flex,
   Heading,
   HStack,
   IconButton,
   Spacer,
   Stack,
-  Text,
+  Text, VisuallyHidden,
   VStack,
 } from '@chakra-ui/react';
 import { useActiveSidebarItem, SidebarItemInfo } from '@/utils/router';
@@ -24,6 +21,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { SidebarItem } from './SidebarItem';
 import items from '@/config/sidebar-items';
+import {Avatar} from "@/components/ui/avatar";
 
 export function SidebarContent() {
   const [filter, setFilter] = useState('');
@@ -41,11 +39,11 @@ export function SidebarContent() {
       }),
     [guilds.data, filter]
   );
-
+// TODO: wtf VisuallyHidden ???????
   return (
     <>
       <VStack align="center" py="2rem" m={3} bg="Brand" rounded="xl">
-        <Heading size="lg" fontWeight={600} color="white">
+        <Heading fontSize="lg" fontWeight={600} color="white">
           {config.name}
         </Heading>
       </VStack>
@@ -59,7 +57,9 @@ export function SidebarContent() {
               value: filter,
               onChange: (e) => setFilter(e.target.value),
             }}
-          />
+          >
+            <VisuallyHidden />
+          </SearchBar>
         </Box>
         <Flex direction="column" px="10px" gap={3}>
           {filteredGuilds == null ? (
@@ -85,16 +85,18 @@ export function BottomCard() {
   if (user == null) return <></>;
 
   return (
-    <Card pos="sticky" left={0} bottom={0} w="full" py={2}>
-      <CardBody as={HStack}>
-        <Avatar src={avatarUrl(user)} name={user.username} size="sm" />
+    <Card.Root pos="sticky" left={0} bottom={0} w="full" py={2}>
+      <Card.Body as={HStack}>
+        <Avatar src={avatarUrl(user)} name={user.username} fontSize="sm" />
         <Text fontWeight="600">{user.username}</Text>
         <Spacer />
         <Link href="/user/profile">
-          <IconButton icon={<SettingsIcon />} aria-label="settings" />
+          <IconButton aria-label="settings">
+            <SettingsIcon />
+          </IconButton>
         </Link>
-      </CardBody>
-    </Card>
+      </Card.Body>
+    </Card.Root>
   );
 }
 
