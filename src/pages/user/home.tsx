@@ -1,8 +1,5 @@
 import {
-  Button,
   Card,
-  CardHeader,
-  Avatar,
   Flex,
   SimpleGrid,
   Skeleton,
@@ -13,7 +10,8 @@ import { useGuilds } from '@/api/hooks';
 import { NextPageWithLayout } from '@/pages/_app';
 import DashLayout from '@/components/layout/dash';
 import { iconUrl } from '@/api/discord';
-import Link from 'next/link';
+import {Avatar} from "@/components/ui/avatar";
+import {Button} from "@/components/ui/button";
 
 const HomePage: NextPageWithLayout = () => {
   return <GuildSelect />;
@@ -28,12 +26,14 @@ export function GuildSelect() {
         {guilds.data
           ?.filter((guild) => config.guild.filter(guild))
           .map((guild) => (
-            <Card key={guild.id} variant="primary" as={Link} href={`/guilds/${guild.id}`}>
-              <CardHeader as={Flex} flexDirection="row" gap={3}>
-                <Avatar src={iconUrl(guild)} name={guild.name} size="md" />
-                <Text>{guild.name}</Text>
-              </CardHeader>
-            </Card>
+            <Card.Root key={guild.id} variant="primary" asChild>
+              <link href={`/guilds/${guild.id}`}>
+                <Card.Header as={Flex} flexDirection="row" gap={3}>
+                  <Avatar src={iconUrl(guild)} name={guild.name} fontSize="md" />
+                  <Text>{guild.name}</Text>
+                </Card.Header>
+              </link>
+            </Card.Root>
           ))}
       </SimpleGrid>
     );

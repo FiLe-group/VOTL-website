@@ -19,7 +19,7 @@ const schema = z.object({
 type ExampleSettings = z.infer<typeof schema>;
 
 /**
- * Exmaple for using react-hook-form with built-in components
+ * Example for using react-hook-form with built-in components
  */
 const GuildSettingsPage: NextPageWithLayout = () => {
   const { watch, register, control, formState, handleSubmit } = useForm<ExampleSettings>({

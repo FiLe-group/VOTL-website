@@ -57,7 +57,7 @@ export interface ModuleConfig<K extends keyof CustomModule> {
    */
   useRender: UseFormRender<CustomModule[K]>;
   /**
-   * Render skeleton before featrue is loaded
+   * Render skeleton before feature is loaded
    */
   useSkeleton?: () => ReactNode;
 }

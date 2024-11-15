@@ -2,7 +2,6 @@ import { z } from "zod";
 import { ReportModule, UseFormRender } from "../types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { channel } from "diagnostics_channel";
 import { SimpleGrid } from "@chakra-ui/layout";
 import { ChannelSelectForm } from "@/components/forms/ChannelSelect";
 import { TextAreaForm } from "@/components/forms/TextAreaField";

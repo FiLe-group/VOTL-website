@@ -33,14 +33,14 @@ const PrivacyPage: NextPageWithLayout = () => {
       
         <Text id="infocollect" as='h2' fontWeight='bold' textColor='white' mt={4}>1. WHAT INFORMATION DO WE COLLECT?</Text>
         <Text as='h3' fontWeight='bold' textColor='white' mt={2}>Information we may collect using the Bot</Text>
-        <Text>We collect information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us. We also collect information provided by Discord services about your interraction with our Services. The information we collect may include the following:</Text>
+        <Text>We collect information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us. We also collect information provided by Discord services about your interaction with our Services. The information we collect may include the following:</Text>
         <UnorderedList pl={4}>
           <ListItem>User IDs, tags and usernames (for functionality)</ListItem>
           <ListItem>Server IDs (for functionality)</ListItem>
           <ListItem>Channel IDs (for functionality)</ListItem>
           <ListItem>Role IDs (for functionality)</ListItem>
           <ListItem>Webhook IDs and tokens (for functionality)</ListItem>
-          <ListItem>Message ID, it's content and attachment name (for functionality; is usually innaccesable, message contents is stored for maximum of 1 week)</ListItem>
+          <ListItem>Message ID, it's content and attachment name (for functionality; is usually inaccessible, message contents is stored for maximum of 1 week)</ListItem>
           <ListItem>SteamIDs (Exclusively for UnionTeam's bot, provided via third-party; for functionality)</ListItem>
           <ListItem>Any user supplied content that can include text (for functionality)</ListItem>
         </UnorderedList>

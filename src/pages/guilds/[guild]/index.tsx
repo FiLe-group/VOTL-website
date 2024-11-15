@@ -1,4 +1,4 @@
-import { Center, Flex, Heading, SimpleGrid, Text, Button, Icon } from '@chakra-ui/react';
+import {Center, Flex, Heading, SimpleGrid, Text, Icon} from '@chakra-ui/react';
 import { LoadingPanel } from '@/components/panel/LoadingPanel';
 import { QueryStatus } from '@/components/panel/QueryPanel';
 import { config } from '@/config/common';
@@ -13,6 +13,7 @@ import { ModuleItem } from '@/components/module/ModuleItem';
 import type { CustomGuildInfo } from '@/config/types/custom-types';
 import { NextPageWithLayout } from '@/pages/_app';
 import getGuildLayout from '@/components/layout/guild/GetGuildLayout';
+import {Button} from "@/components/ui/button";
 
 const GuildPage: NextPageWithLayout = () => {
   const t = view.useTranslations();
@@ -37,7 +38,7 @@ function GuildPanel({ guild: id, info }: { guild: string; info: CustomGuildInfo 
     <Flex direction="column" gap={5}>
       <Banner imageLink={info.bannerUrl ? `url('${info.bannerUrl}')` : 'https://imgur.com/eVV0GLl.png'} />
       <Flex direction="column" gap={5} mt={3}>
-        <Heading size="md">{t.modules}</Heading>
+        <Heading fontSize="md">{t.modules}</Heading>
         <SimpleGrid columns={{ base: 1, md: 2, '2xl': 3 }} gap={3}>
           {getModules().map((module) => (
             <ModuleItem
@@ -66,14 +67,14 @@ function NotJoined({ guild }: { guild: string }) {
         {t.error['not found description']}
       </Text>
       <Button
+        asChild
         variant="blue"
-        leftIcon={<FaRobot />}
         px={6}
         as="a"
-        href={`${config.inviteUrl}&guild_id=${guild}`}
-        target="_blank"
       >
-        {t.bn.invite}
+        <a href={`${config.inviteUrl}&guild_id=${guild}`} target="_blank">
+          <FaRobot /> {t.bn.invite}
+        </a>
       </Button>
     </Center>
   );
