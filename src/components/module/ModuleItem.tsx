@@ -1,5 +1,5 @@
 import { Box, Center, Flex, Text } from '@chakra-ui/layout';
-import { Button, ButtonGroup, Card, CardBody, CardFooter } from '@chakra-ui/react';
+import {Button, CardBody, CardFooter, CardRoot} from '@chakra-ui/react';
 import { IdModule } from '@/utils/common';
 import { IoOpen, IoOptions } from 'react-icons/io5';
 import { useEnableModuleMutation } from '@/api/hooks';
@@ -19,7 +19,7 @@ export function ModuleItem({
   const mutation = useEnableModuleMutation();
 
   return (
-    <Card variant="primary">
+    <CardRoot variant="primary">
       <CardBody as={Flex} direction="row" gap={3}>
         <Center
           bg={enabled ? 'blue.700' : 'blue.500.2'}
@@ -40,9 +40,9 @@ export function ModuleItem({
           </Text>
         </Box>
       </CardBody>
-      <CardFooter as={ButtonGroup} mt={3}>
+      <CardFooter mt={3}>
         <Button
-          size={{ base: 'sm', md: 'md' }}
+          fontSize={{ base: 'sm', md: 'md' }}
           disabled={mutation.isPending}
           {...(enabled
             ? {
@@ -59,6 +59,6 @@ export function ModuleItem({
               })}
         />
       </CardFooter>
-    </Card>
+    </CardRoot>
   );
 }

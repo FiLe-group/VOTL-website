@@ -7,7 +7,7 @@ export function LoadingPanel(props: CenterProps) {
   return (
     <Center w="full" h="full" {...props}>
       <VStack>
-        <Spinner size="lg" />
+        <Spinner fontSize="lg" />
         <Text color="TextPrimary">{t.loading}</Text>
       </VStack>
     </Center>

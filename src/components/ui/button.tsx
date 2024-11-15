@@ -1,8 +1,7 @@
 import {
   AbsoluteCenter,
   Button as ChakraButton,
-  ButtonProps as ChakraButtonProps,
-  Span,
+  ButtonProps as ChakraButtonProps, Span,
   Spinner,
 } from "@chakra-ui/react"
 import { forwardRef } from "react"

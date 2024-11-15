@@ -1,7 +1,6 @@
 import { RiErrorWarningFill as WarningIcon } from 'react-icons/ri';
 import { Box, Flex, Heading, Spacer, Text } from '@chakra-ui/layout';
-import { ButtonGroup, Button, Icon } from '@chakra-ui/react';
-import { SlideFade } from '@chakra-ui/react';
+import {Group, Icon} from '@chakra-ui/react';
 import { ModuleConfig, UseFormRenderResult, CustomModule } from '@/config/types';
 import { IoSave } from 'react-icons/io5';
 import { useEnableModuleMutation, useUpdateModuleMutation } from '@/api/hooks';
@@ -9,6 +8,8 @@ import { useEnableModuleMutation, useUpdateModuleMutation } from '@/api/hooks';
 import { Params } from '@/pages/guilds/[guild]/modules/[module]';
 import { feature as view } from '@/config/translations/feature';
 import { useRouter } from 'next/router';
+import {Button} from "@/components/ui/button";
+import {keyframes} from "@emotion/react";
 
 export function UpdateModulePanel({
   module,
@@ -41,11 +42,11 @@ export function UpdateModulePanel({
           </Heading>
           <Text color="TextSecondary">{config.description}</Text>
         </Box>
-        <ButtonGroup mt={3}>
-          <Button variant="danger" isLoading={enableMutation.isPending} onClick={onDisable}>
+        <Group attached mt={3}>
+          <Button variant="danger" loading={enableMutation.isPending} onClick={onDisable}>
             <view.T text={(e) => e.bn.disable} />
           </Button>
-        </ButtonGroup>
+        </Group>
       </Flex>
 
       {result.component}
@@ -64,10 +65,21 @@ function Savebar({
   const t = view.useTranslations();
   const breakpoint = 'sm';
 
+  const slideFadeIn = keyframes`
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
   return (
     <Flex
-      as={SlideFade}
-      in={canSave}
+      as={Box}
+      animation={canSave ? `${slideFadeIn} 0.4s ease-in-out` : undefined}
       bg="CardBackground"
       rounded="3xl"
       zIndex="sticky"
@@ -92,21 +104,20 @@ function Savebar({
         {t.unsaved}
       </Text>
       <Spacer />
-      <ButtonGroup isDisabled={isLoading} size={{ base: 'sm', [breakpoint]: 'md' }}>
+      <Group attached fontSize={{ base: 'sm', [breakpoint]: 'md' }}>
         <Button
           type="submit"
-          variant="action"
+          variant="secondary" //action
           rounded="full"
-          leftIcon={<IoSave />}
-          isLoading={isLoading}
+          loading={isLoading}
           onClick={onSubmit}
         >
-          {t.bn.save}
+          <IoSave /> {t.bn.save}
         </Button>
         <Button rounded="full" onClick={reset}>
           {t.bn.discard}
         </Button>
-      </ButtonGroup>
+      </Group>
     </Flex>
   );
 }

@@ -31,7 +31,6 @@ const themeConfig = defineConfig({
     slotRecipes: {
       avatar: avatarSlotRecipe,
       card: cardSlotRecipe,
-      input: inputSlotRecipe,
       menu: menuSlotRecipe,
       dialog: dialogSlotRecipe,
       popover: popoverSlotRecipe,
@@ -44,6 +43,7 @@ const themeConfig = defineConfig({
       button: buttonRecipe,
       skeleton: skeletonRecipe,
       textarea: textareaRecipe,
+      input: inputSlotRecipe,
     },
   }
 })

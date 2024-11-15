@@ -1,30 +1,23 @@
 import {
-  Avatar,
   Flex,
   Icon,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
   Text,
-  useColorModeValue,
 } from '@chakra-ui/react';
 import { UserInfo, avatarUrl } from '@/api/discord';
 import { common } from '@/config/translations/common';
-import Link from 'next/link';
 import { useSelfUser } from '@/api/hooks';
 import { useLogoutMutation } from '@/utils/auth/hooks';
-import { dark } from '@/theme/colors';
 import { FaChalkboard, FaRegUser } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
+import {MenuContent, MenuItem, MenuRoot, MenuSeparator, MenuTrigger} from "@/components/ui/menu";
+import {Avatar} from "@/components/ui/avatar";
 
 export function UserMenu({bgColor}: { bgColor: string }) {
   const user = useSelfUser();
 
   return (
-    <Menu>
-      <MenuButton p="0px">
+    <MenuRoot>
+      <MenuTrigger p="0px">
         <Avatar
           _hover={{ cursor: 'pointer' }}
           color="white"
@@ -34,19 +27,19 @@ export function UserMenu({bgColor}: { bgColor: string }) {
           w="40px"
           h="40px"
         />
-      </MenuButton>
+      </MenuTrigger>
       <List user={user} bgColor={bgColor} />
-    </Menu>
+    </MenuRoot>
   );
 }
 
 function List({user, bgColor}: { user: UserInfo, bgColor: string }) {
   const t = common.useTranslations();
-  const borderColor = useColorModeValue('#E6ECFA', 'rgba(135, 140, 189, 0.3)');
+  const borderColor = 'rgba(135, 140, 189, 0.3)';
   const logout = useLogoutMutation();
 
   return (
-    <MenuList boxShadow={dark.shadow} p="0px" mt="10px" borderRadius="20px" bg={bgColor} border="none">
+    <MenuContent boxShadow='colors.shadow' p="0px" mt="10px" borderRadius="20px" bg={bgColor} border="none">
       <Flex w="100%" mb="0px">
         <Text
           ps="20px"
@@ -57,7 +50,7 @@ function List({user, bgColor}: { user: UserInfo, bgColor: string }) {
           borderColor={borderColor}
           fontSize="sm"
           fontWeight="700"
-          color={dark.textColorPrimary}
+          color='colors.textColorPrimary'
         >
           <span aria-label="Hi" role="img">
             👋
@@ -71,36 +64,41 @@ function List({user, bgColor}: { user: UserInfo, bgColor: string }) {
           _focus={{ bg: 'none' }}
           borderRadius="8px"
           px="14px"
-          as={Link}
-          href={`/user/home`}
+          asChild
+          value="go-home"
         >
-          <Icon as={FaChalkboard} mr={2} />
-          <Text fontSize="sm">{t.dashboard}</Text>
+          <link href={`/user/home`}>
+            <Icon as={FaChalkboard} mr={2} />
+            <Text fontSize="sm">{t.dashboard}</Text>
+          </link>
         </MenuItem>
         <MenuItem
-          _hover={{ bg: 'none' }}
-          _focus={{ bg: 'none' }}
+          _hover={{bg: 'none'}}
+          _focus={{bg: 'none'}}
           borderRadius="8px"
           px="14px"
-          as={Link}
-          href={`/user/profile`}
+          asChild
+          value="go-profile"
         >
-          <Icon as={FaRegUser} mr={2} />
-          <Text fontSize="sm">{t.profile}</Text>
+          <link href={`/user/profile`}>
+            <Icon as={FaRegUser} mr={2}/>
+            <Text fontSize="sm">{t.profile}</Text>
+          </link>
         </MenuItem>
-        <MenuDivider />
+        <MenuSeparator />
         <MenuItem
-          _hover={{ bg: 'none' }}
-          _focus={{ bg: 'none' }}
+          _hover={{bg: 'none'}}
+          _focus={{bg: 'none'}}
           color="red.400"
           borderRadius="8px"
           onClick={() => logout.mutate()}
           px="14px"
+          value="go-logout"
         >
           <Icon as={FiLogOut} mr={2} />
           <Text fontSize="sm">{t.logout}</Text>
         </MenuItem>
       </Flex>
-    </MenuList>
+    </MenuContent>
   );
 }
