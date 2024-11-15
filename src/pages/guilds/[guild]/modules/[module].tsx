@@ -1,6 +1,5 @@
-import { Icon } from '@chakra-ui/react';
+import {Icon, useRecipe} from '@chakra-ui/react';
 import { Center, Heading, Text } from '@chakra-ui/layout';
-import { Button } from '@chakra-ui/react';
 import { LoadingPanel } from '@/components/panel/LoadingPanel';
 import { modules } from '@/config/modules';
 import { CustomModule, ModuleConfig } from '@/config/types';
@@ -11,6 +10,8 @@ import { feature as view } from '@/config/translations/feature';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from '@/pages/_app';
 import getGuildLayout from '@/components/layout/guild/GetGuildLayout';
+import {Button} from "@/components/ui/button";
+import {buttonRecipe} from "@/theme/components/button";
 
 export type Params = {
   guild: string;
@@ -37,6 +38,9 @@ function NotEnabled() {
   const { guild, module } = useRouter().query as Params;
   const enable = useEnableModuleMutation();
 
+  const recipe = useRecipe({ recipe: buttonRecipe })
+  const styles = recipe({ variant: "action" })
+
   return (
     <Center flexDirection="column" h="full" gap={1}>
       <Text fontSize="xl" fontWeight="600">
@@ -45,9 +49,9 @@ function NotEnabled() {
       <Text color="TextSecondary">{t.error['not enabled description']}</Text>
       <Button
         mt={3}
-        isLoading={enable.isPending}
+        loading={enable.isPending}
         onClick={() => enable.mutate({ enabled: true, guild, module })}
-        variant="action"
+        css={styles}
         px={6}
       >
         {t.bn.enable}

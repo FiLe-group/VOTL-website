@@ -1,9 +1,9 @@
 import { FiSettings as SettingsIcon } from 'react-icons/fi';
 import { Flex, Heading, Text } from '@chakra-ui/layout';
-import { Button, ButtonGroup, Image } from '@chakra-ui/react';
+import {Group} from '@chakra-ui/react';
 import { guild as view } from '@/config/translations/guild';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import {Button} from "@/components/ui/button";
 
 export function Banner({imageLink}: { imageLink: string}) {
   const { guild } = useRouter().query as { guild: string };
@@ -27,9 +27,8 @@ export function Banner({imageLink}: { imageLink: string}) {
         {t.banner.title}
       </Heading>
       <Text color="whiteAlpha.800">{t.banner.description}</Text>
-      <ButtonGroup mt={3}>
+      <Group mt={3}>
         <Button
-          leftIcon={<SettingsIcon />}
           color="white"
           bg="whiteAlpha.300"
           _hover={{
@@ -38,12 +37,14 @@ export function Banner({imageLink}: { imageLink: string}) {
           _active={{
             bg: 'whiteAlpha.400',
           }}
-          as={Link}
-          href={`/guilds/${guild}/settings`}
+          asChild
         >
-          {t.bn.settings}
+          <link href={`/guilds/${guild}/settings`}>
+            <SettingsIcon /> {t.bn.settings}
+          </link>
+
         </Button>
-      </ButtonGroup>
+      </Group>
     </Flex>
   );
 }

@@ -1,5 +1,4 @@
-import { deleteCookie, setCookie } from "cookies-next";
-import { OptionsType } from "cookies-next/lib/types";
+import {deleteCookie, OptionsType, setCookie} from "cookies-next";
 import { IncomingMessage } from "http";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextApiRequestCookies } from "next/dist/server/api-utils";

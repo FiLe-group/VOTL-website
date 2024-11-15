@@ -8,12 +8,14 @@ import Data from '@public/commandlist.json'
 import { NextPageWithLayout } from "./_app";
 import AppLayout from "@/components/layout/app";
 import { Box, Divider, Flex, HStack, ListItem, StackDivider, Text, UnorderedList, VStack } from "@chakra-ui/layout";
-import { Button, Icon, useRadio, useRadioGroup } from "@chakra-ui/react";
-import { FaCaretDown, FaCheck, FaCrown, FaDice, FaInfoCircle, FaList, FaPhone, FaPhoneAlt, FaQuestion, FaServer, FaShieldAlt, FaTicketAlt, FaUser, FaUserShield } from "react-icons/fa";
+import { Icon } from "@chakra-ui/react";
+import { FaCaretDown, FaCheck, FaCrown, FaDice, FaInfoCircle, FaList, FaPhoneAlt, FaQuestion, FaServer, FaShieldAlt, FaTicketAlt, FaUser, FaUserShield } from "react-icons/fa";
 import { FaGear, FaGears, FaXmark } from "react-icons/fa6";
 import { HiBadgeCheck } from "react-icons/hi";
 import { MdOutlineWebhook } from "react-icons/md";
 import { PiArrowBendDownRight } from "react-icons/pi";
+import {Button} from "@/components/ui/button";
+import {RadioGroup, Radio} from "@/components/ui/radio";
 
 const commands = Data;
 
@@ -128,7 +130,7 @@ function CollapsedCommand({ lang, cmd }: {lang: string, cmd: Command}) {
         transitionDuration='200ms'
         bg='transparent'
         _hover={{bg:'transparent'}}
-        textColor='white'
+        color='white'
         display='inline-flex'
         flex={1}
         whiteSpace='wrap'
@@ -227,7 +229,7 @@ function HelpBox() {
         w='full'
         bg='transparent'
         _hover={{bg:'transparent'}}
-        textColor='white'
+        color='white'
       >
         <HStack spacing={0} justifyContent='normal' w='full'>
           <Icon as={FaQuestion} mr={2} />
@@ -272,28 +274,23 @@ const CommandsPage: NextPageWithLayout = () => {
   const [category, setCategory] = useState(defaultCategory);
   
   function LanguageBox() {
-    const { getRadioProps, getRootProps } = useRadioGroup({
-      name: 'languages',
-      onChange: setLanguage,
-      defaultValue: 'none'
-    })
-
-    function getProps(value: string) {
-      return getRadioProps({value: value});
-    }
-  
     return (
-      <HStack spacing={1} {...getRootProps()} >
-        {languages.map((lang) => {
-          const { state, getInputProps, getRadioProps } = useRadio(getProps(lang.name));
-  
-          return (
-            <Box as='label' key={lang.name}>
-              <input {...getInputProps()} />
+      <RadioGroup
+        name='lang'
+        onValueChange={({ value }) => {
+          setLanguage(value)
+        }}
+        defaultValue={defaultLanguage}
+      >
+        <HStack spacing={1} >
+          {languages.map((lang) => (
+            <Radio
+              key={lang.name}
+              value={lang.name}
+            >
               <Box
-                {...getRadioProps()}
                 //bg={state.isChecked?'#52525288':(state.isHovered?'#52525244':'transparent')}
-                bg={state.isHovered?'#52525244':'transparent'}
+                bg={language === lang.name ?'#52525244':'transparent'}
                 rounded='sm'
                 cursor='pointer'
                 py={1}
@@ -304,36 +301,31 @@ const CommandsPage: NextPageWithLayout = () => {
               >
                 <span className={`fi ${lang.flag}`}/>
               </Box>
-            </Box>
-          );
-        })}
-      </HStack>
+            </Radio>
+          ))}
+        </HStack>
+      </RadioGroup>
     )
   }
 
   function CategoryBox() {
-    const { getRadioProps, getRootProps } = useRadioGroup({
-      name: 'categories',
-      onChange: setCategory,
-      defaultValue: 'none'
-    })
-
-    function getProps(value: string) {
-      return getRadioProps({value: value});
-    }
-  
     return (
-      <VStack rounded='sm' bgColor='#26262688' py={1} spacing={0} align='inherit' {...getRootProps()}>
-        {categories.map((cat) => {
-          const { state, getInputProps, getRadioProps } = useRadio(getProps(cat.value));
-  
-          return (
-            <Box as='label' key={cat.value}>
-              <input {...getInputProps()} />
-              <Box 
-                {...getRadioProps()}
+      <RadioGroup
+        name='category'
+        onValueChange={({ value }) => {
+          setCategory(value)
+        }}
+        defaultValue={defaultLanguage}
+      >
+        <VStack rounded='sm' bgColor='#26262688' py={1} spacing={0} align='inherit' >
+          {categories.map((cat) => (
+            <Radio
+              key={cat.value}
+              value={cat.value}
+            >
+              <Box
                 //bg={state.isChecked?'#52525288':(state.isHovered?'#52525244':'transparent')}
-                bg={state.isHovered?'#52525244':'transparent'}
+                bg={category === cat.value?'#52525244':'transparent'}
                 rounded='sm'
                 px={3}
                 mx={2}
@@ -356,10 +348,10 @@ const CommandsPage: NextPageWithLayout = () => {
                   </Box>
                 </HStack>
               </Box>
-            </Box>
-          );
-        })}
-      </VStack>
+            </Radio>
+          ))}
+        </VStack>
+      </RadioGroup>
     )
   }
 
@@ -371,7 +363,7 @@ const CommandsPage: NextPageWithLayout = () => {
     }
     return commands.filter(cmd => cmd.category.name === category);
   }
-  var filteredCmds = useMemo(getFilteredCmds, [category, commands]);
+  const filteredCmds = useMemo(getFilteredCmds, [category, commands]);
 
   return (
     <>
