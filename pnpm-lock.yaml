@@ -12,8 +12,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       flag-icons:
-        specifier: ^7.2.3
-        version: 7.2.3
+        specifier: ^7.3.2
+        version: 7.3.2
       next:
         specifier: ^14.2.23
         version: 14.2.23(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1298,8 +1298,8 @@ packages:
     resolution: {integrity: sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==}
     engines: {node: '>=8'}
 
-  flag-icons@7.2.3:
-    resolution: {integrity: sha512-X2gUdteNuqdNqob2KKTJTS+ZCvyWeLCtDz9Ty8uJP17Y4o82Y+U/Vd4JNrdwTAjagYsRznOn9DZ+E/Q52qbmqg==}
+  flag-icons@7.3.2:
+    resolution: {integrity: sha512-QkaZ6Zvai8LIjx+UNAHUJ5Dhz9OLZpBDwCRWxF6YErxIcR16jTkIFm3bFu54EkvKQy4+wicW+Gm7/0631wVQyQ==}
 
   for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -3971,7 +3971,7 @@ snapshots:
       locate-path: 5.0.0
       path-exists: 4.0.0
 
-  flag-icons@7.2.3: {}
+  flag-icons@7.3.2: {}
 
   for-each@0.3.3:
     dependencies:

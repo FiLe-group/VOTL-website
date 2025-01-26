@@ -756,8 +756,8 @@
 			"ru": "Категория модерации"
 		},
 		"usage": {
-			"en-GB": "modstats [@User] [start date] [end date]",
-			"ru": "modstats [@Юзер] [дата начала] [дата окончания]"
+			"en-GB": "modstats [@User] [start date] [end date] [as text?]",
+			"ru": "modstats [@Юзер] [дата начала] [дата окончания] [как текст?]"
 		},
 		"name": "modstats",
 		"description": {
@@ -897,6 +897,50 @@
 		},
 		"guildOnly": true,
 		"child": []
+	},
+	{
+		"access": 5,
+		"module": {
+			"en-GB": "Moderation category",
+			"ru": "Категория модерации"
+		},
+		"usage": {
+			"en-GB": "",
+			"ru": ""
+		},
+		"name": "modreport",
+		"description": {
+			"en-GB": "Automatic moderation reports",
+			"ru": "Автоматические отчеты модерации"
+		},
+		"category": {
+			"name": "moderation",
+			"en-GB": "Moderation",
+			"ru": "Модерация"
+		},
+		"guildOnly": true,
+		"child": [
+			{
+				"description": {
+					"en-GB": "Setup automatic moderation reports",
+					"ru": "Настройка автоматических отчетов модерации"
+				},
+				"usage": {
+					"en-GB": "setup <#Channel> <period> <@Roles> [first report]",
+					"ru": "setup <#Канал> <интервал<@Роли> [первый отчет]"
+				}
+			},
+			{
+				"description": {
+					"en-GB": "Delete automatic moderation reports creation",
+					"ru": "Удалить автоматическое создание отчетов модерации"
+				},
+				"usage": {
+					"en-GB": "delete",
+					"ru": "удалить"
+				}
+			}
+		]
 	},
 	{
 		"access": 0,
@@ -1572,7 +1616,7 @@
 				},
 				"usage": {
 					"en-GB": "settings [delete pings] [other roles] [role tickets support] [allow close] [transcripts]",
-					"ru": "settings [удалять пинги] [другие роли] [пинги запроса ролей] [разрешать удалять] [транскрипты]"
+					"ru": "settings [удалять пинги] [другие роли] [поддержка тикетов] [разрешить закрытие] [транскрипт]"
 				}
 			}
 		]
@@ -1648,13 +1692,13 @@
 			"ru": "Верификация"
 		},
 		"usage": {
-			"en-GB": "verifyrole <@Role>",
-			"ru": "verifyrole <@Роль>"
+			"en-GB": "",
+			"ru": ""
 		},
 		"name": "verifyrole",
 		"description": {
-			"en-GB": "Assign server role for verification",
-			"ru": "Назначить роль для верификации"
+			"en-GB": "Manage verification roles",
+			"ru": "Управление ролями верификации"
 		},
 		"category": {
 			"name": "verification",
@@ -1662,7 +1706,48 @@
 			"ru": "Верификация"
 		},
 		"guildOnly": true,
-		"child": []
+		"child": [
+			{
+				"description": {
+					"en-GB": "Assign role for verification",
+					"ru": "Назначить роль для верификации"
+				},
+				"usage": {
+					"en-GB": "verify <@Role>",
+					"ru": "verify <@Роль>"
+				}
+			},
+			{
+				"description": {
+					"en-GB": "Set additional roles to be set to user on verification completion",
+					"ru": "Установить дополнительные роли, которые будут выданы пользователю при завершении верификации"
+				},
+				"usage": {
+					"en-GB": "additional set <@Role> [@Role] [@Role]",
+					"ru": "additional set <@Роль> [@Роль] [@Роль]"
+				}
+			},
+			{
+				"description": {
+					"en-GB": "Clear all additional roles",
+					"ru": "Сбросить все дополнительные роли"
+				},
+				"usage": {
+					"en-GB": "additional clear",
+					"ru": "additional clear"
+				}
+			},
+			{
+				"description": {
+					"en-GB": "View all additional roles",
+					"ru": "Просмотреть все дополнительные роли"
+				},
+				"usage": {
+					"en-GB": "additional view",
+					"ru": "additional view"
+				}
+			}
+		]
 	},
 	{
 		"access": 0,
