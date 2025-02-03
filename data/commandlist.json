@@ -396,6 +396,16 @@
 					"en-GB": "role_whitelist <enable?>",
 					"ru": "role_whitelist <включено?>"
 				}
+			},
+			{
+				"description": {
+					"en-GB": "Manage leveling settings (to view settings - don't select options)",
+					"ru": "Управление настройками уровней (чтобы просмотреть настройки - не выбирайте опции)"
+				},
+				"usage": {
+					"en-GB": "levels [enable?] [voice enable?]",
+					"ru": "levels [включено?] [голосовой включен?]"
+				}
 			}
 		]
 	},
@@ -937,7 +947,7 @@
 				},
 				"usage": {
 					"en-GB": "delete",
-					"ru": "удалить"
+					"ru": "delete"
 				}
 			}
 		]
@@ -2073,5 +2083,169 @@
 		},
 		"guildOnly": true,
 		"child": []
+	},
+	{
+		"access": 0,
+		"module": {
+			"en-GB": "Leveling",
+			"ru": "Уровни"
+		},
+		"usage": {
+			"en-GB": "profile [@User] [id]",
+			"ru": "profile [@Юзер] [id]"
+		},
+		"name": "profile",
+		"description": {
+			"en-GB": "Get user profile",
+			"ru": "Получить профиль пользователя"
+		},
+		"category": {
+			"name": "levels",
+			"en-GB": "Leveling",
+			"ru": "Уровни"
+		},
+		"guildOnly": true,
+		"child": []
+	},
+	{
+		"access": 0,
+		"module": {
+			"en-GB": "Leveling",
+			"ru": "Уровни"
+		},
+		"usage": {
+			"en-GB": "leaderboard [type]",
+			"ru": "leaderboard [тип]"
+		},
+		"name": "leaderboard",
+		"description": {
+			"en-GB": "View levels leaderboard",
+			"ru": "Просмотреть таблицу лидеров"
+		},
+		"category": {
+			"name": "levels",
+			"en-GB": "Leveling",
+			"ru": "Уровни"
+		},
+		"guildOnly": true,
+		"child": []
+	},
+	{
+		"access": 5,
+		"module": {
+			"en-GB": "",
+			"ru": ""
+		},
+		"usage": {
+			"en-GB": "",
+			"ru": ""
+		},
+		"name": "level_roles",
+		"description": {
+			"en-GB": "Manage leveling roles",
+			"ru": "Управление ролями уровней"
+		},
+		"category": {
+			"name": "levels",
+			"en-GB": "Leveling",
+			"ru": "Уровни"
+		},
+		"guildOnly": true,
+		"child": [
+			{
+				"description": {
+					"en-GB": "Set role for achieved level",
+					"ru": "Задать роль для достигнутого уровня"
+				},
+				"usage": {
+					"en-GB": "set <level> <@Role>",
+					"ru": "set <уровень> <@Роль>"
+				}
+			},
+			{
+				"description": {
+					"en-GB": "Remove roles from level",
+					"ru": "Убрать роли с уровня"
+				},
+				"usage": {
+					"en-GB": "remove <level>",
+					"ru": "remove <уровень>"
+				}
+			},
+			{
+				"description": {
+					"en-GB": "View all levels",
+					"ru": "Показать все уровни"
+				},
+				"usage": {
+					"en-GB": "view",
+					"ru": "view"
+				}
+			}
+		]
+	},
+	{
+		"access": 5,
+		"module": {
+			"en-GB": "",
+			"ru": ""
+		},
+		"usage": {
+			"en-GB": "",
+			"ru": ""
+		},
+		"name": "level_exempt",
+		"description": {
+			"en-GB": "Manage exempt channels for leveling",
+			"ru": "Управление каналами исключения"
+		},
+		"category": {
+			"name": "levels",
+			"en-GB": "Leveling",
+			"ru": "Уровни"
+		},
+		"guildOnly": true,
+		"child": [
+			{
+				"description": {
+					"en-GB": "Add channel to leveling exemption",
+					"ru": "Добавить канал в список исключений"
+				},
+				"usage": {
+					"en-GB": "add <#Channel>",
+					"ru": "add <#Канал>"
+				}
+			},
+			{
+				"description": {
+					"en-GB": "Remove channel from leveling exemption",
+					"ru": "Убрать канал из исключений"
+				},
+				"usage": {
+					"en-GB": "remove <#Channel>",
+					"ru": "remove <#Канал>"
+				}
+			},
+			{
+				"description": {
+					"en-GB": "Remove all exempt channels",
+					"ru": "Удалить все исключенные каналы"
+				},
+				"usage": {
+					"en-GB": "clear",
+					"ru": "clear"
+				}
+			},
+			{
+				"description": {
+					"en-GB": "View all exemptions",
+					"ru": "Показать все исключения"
+				},
+				"usage": {
+					"en-GB": "view",
+					"ru": "view"
+				}
+			}
+		]
 	}
 ]
