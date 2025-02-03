@@ -63,6 +63,12 @@ const categories = [
     size: 0
   },
   {
+    name: "Leveling",
+    value: "levels",
+    icon: "fa fa-ranking-star",
+    size: 0
+  },
+  {
     name: "Other",
     value: "other",
     icon: "fa fa-circle-info",
