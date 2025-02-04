@@ -3,9 +3,9 @@ import { middleware_hasServerSession } from './server';
 
 export const withAuth = (authUrl: string, middleware: NextMiddleware): NextMiddleware => {
   return (req, evt) => {
-    const loggedin = middleware_hasServerSession(req);
+    const logged = middleware_hasServerSession(req);
 
-    if (!loggedin) {
+    if (!logged) {
       const url = req.nextUrl.clone();
       url.pathname = authUrl;
 

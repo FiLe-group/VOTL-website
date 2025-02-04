@@ -1,7 +1,7 @@
 "use client"
 
 import { Avatar as ChakraAvatar } from "@chakra-ui/react"
-import { forwardRef } from "react"
+import React, { forwardRef } from "react"
 
 type ImageProps = React.ImgHTMLAttributes<HTMLImageElement>
 

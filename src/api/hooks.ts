@@ -1,4 +1,4 @@
-import { CustomModule, CustomGuildInfo } from '../config/types';
+import { CustomModule, CustomGuildInfo } from '@/config/types';
 import { QueryClient, useMutation, useQuery, useSuspenseQuery } from '@tanstack/react-query';
 import { UserInfo, getGuild, getGuilds, fetchUserInfo, fetchUserInfoSafe } from '@/api/discord';
 import {

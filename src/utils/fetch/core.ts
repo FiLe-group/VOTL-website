@@ -37,7 +37,7 @@ export async function callReturn<T>(url: string, init: ReturnOptions<T>): Promis
 
   if (!res.ok) {
     if (init.allowed?.[res.status] != null) {
-      return await init.allowed[res.status](res);
+      return init.allowed[res.status](res);
     } else {
       await handleError(res, options);
     }

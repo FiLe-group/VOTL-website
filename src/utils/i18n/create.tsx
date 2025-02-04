@@ -1,5 +1,5 @@
-import { ReactElement, ReactNode } from 'react';
-import { Translation, TranslationModel } from './translations';
+import {ReactElement, ReactNode} from 'react';
+import {Translation, TranslationModel} from './translations';
 
 export type I18nConfig<Languages extends string, Model extends TranslationModel> = {
   useTranslations: () => Translation<Model>;
@@ -19,16 +19,16 @@ export type I18nProvider<Languages extends string> = {
   }): ReactElement;
 };
 
-export type TranslationofConfig<T> = T extends I18nConfig<never, infer Keys>
+export type TranslationOfConfig<T> = T extends I18nConfig<never, infer Keys>
   ? Translation<Keys>
   : never;
 
 /**
- * A type-safe light-weight implmentation of i18n
+ * A type-safe light-weight implementation of i18n
  */
 export function initI18n<Languages extends string>(config: {
   /**
-   * get and subscribe current langauge
+   * get and subscribe current language
    */
   useLang: () => Languages;
 }): I18nProvider<Languages> {
@@ -57,9 +57,7 @@ export function createI18n<Model extends TranslationModel, Languages extends str
     translations: translations,
     useTranslations() {
       const lang = provider.useLang();
-      const translation = translations[lang];
-
-      return translation;
+      return translations[lang];
     },
     T({ text }) {
       const lang = provider.useLang();

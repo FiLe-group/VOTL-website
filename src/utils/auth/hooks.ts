@@ -24,7 +24,7 @@ export async function logout() {
 
   await client.invalidateQueries({queryKey: Keys.login});
   if (Router.asPath == '/') {
-    await Router.reload()
+    Router.reload()
   } else {
     await Router.push('/');
   }

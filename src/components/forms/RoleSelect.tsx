@@ -36,7 +36,7 @@ function render(role: Role): Option {
   };
 }
 
-export const RoleSelect = forwardRef<SelectInstance<Option, false>, Props>((props, ref) => {
+export const RoleSelect = forwardRef<SelectInstance<Option>, Props>((props, ref) => {
   const { value, onChange, ...rest } = props;
   const { guild } = useRouter().query as Params;
   const rolesQuery = useGuildRolesQuery(guild);

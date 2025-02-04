@@ -1,4 +1,4 @@
-import { Box, Flex, Text, VStack } from "@chakra-ui/layout";
+import { Flex, Text, VStack } from "@chakra-ui/layout";
 import { Button, Icon, Image, Spinner } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";

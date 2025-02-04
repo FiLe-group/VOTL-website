@@ -4,7 +4,7 @@ import {
   ButtonProps as ChakraButtonProps, Span,
   Spinner,
 } from "@chakra-ui/react"
-import { forwardRef } from "react"
+import React, { forwardRef } from "react"
 
 interface ButtonLoadingProps {
   loading?: boolean

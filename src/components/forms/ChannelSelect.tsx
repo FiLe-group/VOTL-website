@@ -79,7 +79,7 @@ type Props = Override<
   }
 >;
 
-export const ChannelSelect = forwardRef<SelectInstance<Option, false>, Props>(
+export const ChannelSelect = forwardRef<SelectInstance<Option>, Props>(
   ({ value, onChange, ...rest }, ref) => {
     const guild = useRouter().query.guild as string;
     const channelsQuery = useGuildChannelsQuery(guild);

@@ -28,6 +28,7 @@ export type GuildChannel = {
 /**
  * Get custom guild info on from backend
  *
+ * @param session session token
  * @param guild Guild ID
  * @return Guild info, or null if bot hasn't joined the guild
  */

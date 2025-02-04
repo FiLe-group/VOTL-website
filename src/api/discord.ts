@@ -25,6 +25,7 @@ export type Guild = {
 
 export type IconHash = string;
 
+// noinspection JSUnusedGlobalSymbols
 export enum PermissionFlags {
   CREATE_INSTANT_INVITE = 1 << 0,
   KICK_MEMBERS = 1 << 1,
@@ -69,6 +70,7 @@ export enum PermissionFlags {
   MODERATE_MEMBERS = 1099511627776,
 }
 
+// noinspection JSUnusedGlobalSymbols
 export enum ChannelTypes {
   GUILD_TEXT = 0,
   DM = 1,
