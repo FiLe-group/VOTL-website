@@ -7,15 +7,23 @@ import { Category, Command, LanguageData } from "@/utils/router";
 import Data from '@public/commandlist.json'
 import { NextPageWithLayout } from "./_app";
 import AppLayout from "@/components/layout/app";
-import { Box, Divider, Flex, HStack, ListItem, StackDivider, Text, UnorderedList, VStack } from "@chakra-ui/layout";
-import { Icon } from "@chakra-ui/react";
+import {
+  Icon,
+  Box,
+  Flex,
+  HStack,
+  Text,
+  List,
+  VStack,
+  StackSeparator, Separator
+} from "@chakra-ui/react";
 import { FaCaretDown, FaCheck, FaCrown, FaDice, FaInfoCircle, FaList, FaPhoneAlt, FaQuestion, FaServer, FaShieldAlt, FaTicketAlt, FaUser, FaUserShield } from "react-icons/fa";
 import { FaGear, FaGears, FaXmark } from "react-icons/fa6";
 import { HiBadgeCheck } from "react-icons/hi";
 import { MdOutlineWebhook } from "react-icons/md";
 import { PiArrowBendDownRight } from "react-icons/pi";
 import {Button} from "@/components/ui/button";
-import {RadioGroup, Radio} from "@/components/ui/radio";
+import {RadioCardItem, RadioCardRoot} from "@/components/ui/radio-card";
 
 const commands = Data;
 
@@ -23,61 +31,61 @@ const categories: Category[] = [
   {
     title: "All",
     value: "",
-    icon: <Icon as={FaList} boxSize='20px'/>,
+    icon: <FaList />,
     size: 0
   },
   {
     title: "Moderation",
     value: "moderation",
-    icon: <Icon as={FaShieldAlt} boxSize='20px' />,
+    icon: <FaShieldAlt />,
     size: 0
   },
   {
     title: "Voice",
     value: "voice",
-    icon: <Icon as={FaPhoneAlt} boxSize='20px' />,
+    icon: <FaPhoneAlt />,
     size: 0
   },
   {
     title: "Server",
     value: "guild",
-    icon: <Icon as={FaServer} boxSize='20px' />,
+    icon: <FaServer />,
     size: 0
   },
   {
     title: "Roles",
     value: "roles",
-    icon: <Icon as={FaUser} boxSize='20px' />,
+    icon: <FaUser />,
     size: 0
   },
   {
     title: "Verification",
     value: "verification",
-    icon: <Icon as={HiBadgeCheck} boxSize='20px' />,
+    icon: <HiBadgeCheck />,
     size: 0
   },
   {
     title: "Ticketing",
     value: "ticketing",
-    icon: <Icon as={FaTicketAlt} boxSize='20px' />,
+    icon: <FaTicketAlt />,
     size: 0
   },
   {
     title: "Webhook",
     value: "webhook",
-    icon: <Icon as={MdOutlineWebhook} boxSize='20px' />,
+    icon: <MdOutlineWebhook />,
     size: 0
   },
   {
     title: "Game",
     value: "games",
-    icon: <Icon as={FaDice} boxSize='20px' />,
+    icon: <FaDice />,
     size: 0
   },
   {
     title: "Other",
     value: "other",
-    icon: <Icon as={FaInfoCircle} boxSize='20px' />,
+    icon: <FaInfoCircle />,
     size: 0
   }
 ]
@@ -139,9 +147,9 @@ function CollapsedCommand({ lang, cmd }: {lang: string, cmd: Command}) {
           <Box
             as='span'
             rounded='lg'
-            bgColor='blue.500.8'
+            bgColor='blue.500/80'
             border='2px'
-            borderColor='blue.500.8'
+            borderColor='blue.500/80'
             px={2}
             height='auto'
             fontWeight='medium'
@@ -158,10 +166,10 @@ function CollapsedCommand({ lang, cmd }: {lang: string, cmd: Command}) {
         <Icon justifyContent='end' as={FaCaretDown} transform={isExpanded?'rotate(180deg)':'rotate(0deg)'} transitionProperty='transform' transitionDuration='300ms' transitionTimingFunction='ease-in' />
       </Button>
       <Box px={4} {...getCollapseProps()}>
-        <VStack pt={1} spacing={2} align='left'>
+        <VStack pt={1} gap={2} align='left'>
           <Text>
             Module:
-            <Text display='inline' textColor='blue.400' pl={1}>{cmd.module[lang] === "" ? "-" : cmd.module[lang]}</Text>
+            <Text display='inline' color='blue.400' pl={1}>{cmd.module[lang] === "" ? "-" : cmd.module[lang]}</Text>
           </Text>
           <Flex>
             Can be used in DM:
@@ -231,7 +239,7 @@ function HelpBox() {
         _hover={{bg:'transparent'}}
         color='white'
       >
-        <HStack spacing={0} justifyContent='normal' w='full'>
+        <HStack gap={0} justifyContent='normal' w='full'>
           <Icon as={FaQuestion} mr={2} />
           <Text flexGrow={1} textAlign='left'>Command Help</Text>
           <Icon justifyContent='end' as={FaCaretDown} transform={isExpanded?'rotate(180deg)':'rotate(0deg)'} transitionProperty='transform' transitionDuration='300ms' transitionTimingFunction='ease-in'/>
@@ -240,20 +248,20 @@ function HelpBox() {
       <Box px={4} {...getCollapseProps()}>
         <Box mb={2} pt={1}>
           <Text>Default prefix is <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">/</Text></Text>
-          <Divider mt={2}/>
+          <Separator mt={2}/>
         </Box>
         <Text fontWeight='bold'>Syntax</Text>
-        <UnorderedList pb={2}>
-          <ListItem>
+        <List.Root pb={2}>
+          <List.Item>
             <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'<>'}</Text> - Required parameter
-          </ListItem>
-          <ListItem>
+          </List.Item>
+          <List.Item>
             <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'[]'}</Text> - Optional parameter
-          </ListItem>
-          <ListItem>
+          </List.Item>
+          <List.Item>
             <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'A | B'}</Text> - Required parameter
-          </ListItem>
-        </UnorderedList>
+          </List.Item>
+        </List.Root>
       </Box>
     </Box>
   );
@@ -275,16 +283,17 @@ const CommandsPage: NextPageWithLayout = () => {
   
   function LanguageBox() {
     return (
-      <RadioGroup
+      <RadioCardRoot
         name='lang'
-        onValueChange={({ value }) => {
-          setLanguage(value)
+        onValueChange={(value) => {
+          setLanguage(value.value)
         }}
         defaultValue={defaultLanguage}
       >
-        <HStack spacing={1} >
+        <HStack gap={1} >
           {languages.map((lang) => (
-            <Radio
+            <RadioCardItem
+              indicator={false}
               key={lang.name}
               value={lang.name}
             >
@@ -301,57 +310,49 @@ const CommandsPage: NextPageWithLayout = () => {
               >
                 <span className={`fi ${lang.flag}`}/>
               </Box>
-            </Radio>
+            </RadioCardItem>
           ))}
         </HStack>
-      </RadioGroup>
+      </RadioCardRoot>
     )
   }
 
   function CategoryBox() {
     return (
-      <RadioGroup
+      <RadioCardRoot
+        align='center'
+        orientation="horizontal"
         name='category'
-        onValueChange={({ value }) => {
-          setCategory(value)
+        onValueChange={(value) => {
+          setCategory(value.value)
         }}
         defaultValue={defaultLanguage}
+        variant='subtle'
       >
-        <VStack rounded='sm' bgColor='#26262688' py={1} spacing={0} align='inherit' >
+        <VStack rounded='sm' bgColor='#26262688' py={1} gap={0} align='inherit' >
           {categories.map((cat) => (
-            <Radio
-              key={cat.value}
-              value={cat.value}
-            >
-              <Box
-                //bg={state.isChecked?'#52525288':(state.isHovered?'#52525244':'transparent')}
-                bg={category === cat.value?'#52525244':'transparent'}
-                rounded='sm'
-                px={3}
-                mx={2}
-                my={1}
-                h={10}
-                cursor='pointer'
-                _focusVisible={{
-                  boxShadow: 'outline',
-                }}
-              >
-                <HStack h='full' spacing={0}>
-                  <Box minW='56px' h='24px'>
+            <RadioCardItem
+              label={
+                <Flex gap={3}>
+                  <Icon mr={6} fontSize='20px'>
                     {cat.icon}
-                  </Box>
-                  <Box flexGrow={1} whiteSpace='nowrap' overflow='hidden'>
+                  </Icon>
+                  <Box flexGrow={1}>
                     {cat.title}
                   </Box>
-                  <Box justifyContent='flex-end' minW='56px' textAlign='right'>
+                  <Box justifyContent='flex-end' textAlign='right'>
                     {cat.size}
                   </Box>
-                </HStack>
-              </Box>
-            </Radio>
+                </Flex>
+              }
+              indicator={false}
+              key={cat.value}
+              value={cat.value}
+              mx={2}
+            />
           ))}
         </VStack>
-      </RadioGroup>
+      </RadioCardRoot>
     )
   }
 
@@ -376,7 +377,7 @@ const CommandsPage: NextPageWithLayout = () => {
           <Icon as={FaGears} boxSize='20px' color='blue.400' mr={2}/>
           <Text fontSize='xl'>Commands</Text>
         </HStack>
-        <Text fontSize='sm' textColor='white.50' mb={5}>
+        <Text fontSize='sm' color='white/50' mb={5}>
           You can get information about the commands of the VOTL bot.
         </Text>
 
@@ -401,7 +402,7 @@ const CommandsPage: NextPageWithLayout = () => {
             </StickyBox>
           </Box>
           <Box flexBasis={{base:'100%', md:'67%', lg:'75%'}} flexGrow={1} mt={4} pl={{md:4}}>
-            <VStack rounded='sm' bgColor='#26262688' align='inherit' py={2} divider={<StackDivider borderColor='#828282' />}>
+            <VStack rounded='sm' bgColor='#26262688' align='inherit' py={2} separator={<StackSeparator borderColor='#828282' />}>
               {filteredCmds.map((fcmd, i) => (
                 <Box key={i} borderY={6}>
                   <CollapsedCommand key={fcmd.name} lang={language} cmd={fcmd} />

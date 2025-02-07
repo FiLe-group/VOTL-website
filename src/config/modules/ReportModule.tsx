@@ -2,7 +2,7 @@ import { z } from "zod";
 import { ReportModule, UseFormRender } from "../types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SimpleGrid } from "@chakra-ui/layout";
+import { SimpleGrid } from "@chakra-ui/react";
 import { ChannelSelectForm } from "@/components/forms/ChannelSelect";
 import { TextAreaForm } from "@/components/forms/TextAreaField";
 import { SwitchFieldForm } from "@/components/forms/SwitchField";

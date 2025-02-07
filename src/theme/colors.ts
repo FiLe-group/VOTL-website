@@ -2,14 +2,12 @@ import {defineTokens} from "@chakra-ui/react";
 
 export const colors = defineTokens.colors({
   globalBg: {value: '#0f0f0f'},
-  globalGradient: {value: 'linear(to-b, blue.600, transparent)'},
-  brand: {value: 'blue.700'},
-  textColorPrimary: {value: 'white'},
-  textColorSecondary: {value: 'white.60'},
+  brand: {value: '{colors.blue.700}'},
+  textPrimary: {value: 'white'},
+  textSecondary: {value: '{colors.white/60}'},
   cardBg: {value: '#080e2c'},
   shadow: {value: '7px 10px 30px rgba(60, 60, 60, 0.3)'},
   blue: {
-    gradient: {value: 'rgba(51, 136, 234, 0.2)'},
     900: {value: 'rgba(30, 58, 138)'},
     800: {value: 'rgba(30, 64, 175)'},
     700: {value: 'rgba(29, 78, 216)'},
@@ -145,14 +143,6 @@ export const colors = defineTokens.colors({
     700: {value: '#1d2343'},
     800: {value: '#080e2c'},
     900: {value: '#08081c'},
-  },
-  white: {
-    75: {value: 'rgba(255, 255, 255, .75)'},
-    60: {value: 'rgba(255, 255, 255, .60)'},
-    50: {value: 'rgba(255, 255, 255, .50)'},
-    30: {value: 'rgba(255, 255, 255, .30)'},
-    20: {value: 'rgba(255, 255, 255, .20)'},
-    5: {value: 'rgba(255, 255, 255, .05)'},
   },
   neutral: {
     800: {value: 'rgba(38, 38, 38, .50)'},

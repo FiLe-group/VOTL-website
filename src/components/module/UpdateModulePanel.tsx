@@ -1,6 +1,5 @@
 import { RiErrorWarningFill as WarningIcon } from 'react-icons/ri';
-import { Box, Flex, Heading, Spacer, Text } from '@chakra-ui/layout';
-import {Group, Icon} from '@chakra-ui/react';
+import {Group, Icon, Box, Flex, Heading, Spacer, Text} from '@chakra-ui/react';
 import { ModuleConfig, UseFormRenderResult, CustomModule } from '@/config/types';
 import { IoSave } from 'react-icons/io5';
 import { useEnableModuleMutation, useUpdateModuleMutation } from '@/api/hooks';

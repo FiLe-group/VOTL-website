@@ -1,11 +1,10 @@
 import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import { NavbarItemInfo } from "@/utils/router";
-import { Box, Flex, HStack, Link, Text, VStack } from "@chakra-ui/layout";
-import { Button, DrawerCloseTrigger, Icon, Image } from "@chakra-ui/react";
+import { Button, Icon, Image, Box, Link, HStack, VStack, Flex, Text } from "@chakra-ui/react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import items from "@/config/nav-items";
-import { DrawerBackdrop, DrawerContent, DrawerRoot } from "@/components/ui/drawer";
+import {DrawerBackdrop, DrawerCloseTrigger, DrawerContent, DrawerRoot} from "@/components/ui/drawer";
 
 function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: Dispatch<SetStateAction<boolean>>, NavItems: NavbarItemInfo[]}) {
   const router = useRouter();
@@ -15,40 +14,37 @@ function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: 
       onOpenChange={(e) => setOpen(e.open)}
     >
       <DrawerBackdrop
-        backdropFilter='auto'
+        backdropFilter='blur(8px)'
         bg='transparent'
-        backdropBlur='6px'
       />
       <DrawerContent
         roundedLeft='xl'
-        bg='black.90'
+        bg='black/90'
         color='white'
       >
-        <Flex justify='space-between' borderBottom='1px' borderColor='white.20' px={5} pt={4} pb={3} mb={2}>
-          <Flex>
-            <Image
-              boxSize='32px'
-              rounded='full'
-              src="/img/logo.png"
-              alt="VOTL bot logo"
-            />
-            <Text fontWeight='extrabold' ml={1} fontSize='2xl'>VOTL Bot</Text>
-          </Flex>
-          <DrawerCloseTrigger px={2} fontSize='xl' pos='inherit' />
+        <Flex justify='space-between' borderBottom='2px' borderColor='white' px={5} pt={4} pb={3} mb={2}>
+          <Image
+            boxSize='32px'
+            rounded='full'
+            src="/img/logo.png"
+            alt="VOTL bot logo"
+          />
+          <Text fontWeight='extrabold' ml={1} fontSize='2xl' marginEnd="auto" alignSelf='center'>VOTL Bot</Text>
+          <DrawerCloseTrigger px={2} pos='inherit' bg='transparent' />
         </Flex>
-        <VStack spacing={2} alignItems='start'>
+        <VStack gap={2} alignItems='start'>
           {NavItems.filter((a) => !a.external).map((item, i) => (
             <Link
               key={i}
               href={item.href}
               p={4}
               w='100vh'
-              backgroundColor={router.asPath === item.href ? 'white.5' : 'transparent'}
+              backgroundColor={router.asPath === item.href ? 'white/5' : 'transparent'}
               transition='all'
               transitionDuration='200ms'
-              textColor='white.75'
+              color='white/75'
               textDecor='none'
-              _hover={{textColor: 'white', textDecor: 'underline'}}
+              _hover={{color: 'white', textDecor: 'underline'}}
             >
               <Flex alignContent='center'>
                 <Box fontSize='xl' width={30}>
@@ -68,12 +64,12 @@ function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: 
               backgroundColor='transparent'
               transition='all'
               transitionDuration='200ms'
-              textColor='white.75'
+              color='white/75'
               textDecor='none'
-              _hover={{textColor: 'white', textDecor: 'underline'}}
+              _hover={{color: 'white', textDecor: 'underline'}}
             >
               <Flex alignContent='center'>
-              <Box fontSize='xl' width={30}>
+                <Box fontSize='xl' width={30}>
                   {item.icon}
                 </Box>
                 <Text display='inline'>{item.name}</Text>
@@ -94,7 +90,7 @@ function Header({ children }: {children?: ReactNode}) {
     <>
       <header>
         <Flex maxW='7xl' px={5} py={5} mx='auto' align='center' justify='space-between'>
-          <HStack spacing={6}>
+          <HStack gap={6}>
             <Link href="/" _hover={{ textDecoration: "none" }}>
               <HStack>
                 <Image
@@ -102,12 +98,12 @@ function Header({ children }: {children?: ReactNode}) {
                   borderRadius='full'
                   boxSize='48px'
                 />
-                <Text hideBelow='sm' fontSize='xl' display='inline-block' whiteSpace='nowrap' textColor='white' fontWeight='600'>
+                <Text hideBelow='sm' fontSize='xl' display='inline-block' whiteSpace='nowrap' color='white' fontWeight='600'>
                   <Text color='blue.400' as='span'>VOTL</Text> Bot
                 </Text>
               </HStack>
             </Link>
-            <HStack hideBelow='lg' align='center' spacing={5}>
+            <HStack hideBelow='lg' align='center' gap={5}>
               {items.filter((a) => !a.external).map((item, i) => (
                 <Link key={i} href={item.href} _hover={{textDecoration:'none'}}>
                   <Text
@@ -117,9 +113,9 @@ function Header({ children }: {children?: ReactNode}) {
                     transition='all'
                     transitionDuration='200ms'
                     fontWeight='500'
-                    textColor={router.asPath === item.href ? 'blue.500' : 'white.75'}
+                    color={router.asPath === item.href ? 'blue.500' : 'white/75'}
                     borderColor={router.asPath === item.href ? 'blue.500' : 'transparent'}
-                    _hover={router.asPath === item.href ? {} : {textColor: 'white'}}
+                    _hover={router.asPath === item.href ? {} : {color: 'white'}}
                   >
                     {item.name}
                   </Text>
@@ -134,9 +130,9 @@ function Header({ children }: {children?: ReactNode}) {
                     transition='all'
                     transitionDuration='200ms'
                     fontWeight='500'
-                    textColor='white.75'
+                    color='white/75'
                     borderColor='transparent'
-                    _hover={{textColor: 'white'}}
+                    _hover={{color: 'white'}}
                   >
                     {item.name}
                   </Text>
@@ -144,7 +140,7 @@ function Header({ children }: {children?: ReactNode}) {
               ))}
             </HStack>
           </HStack>
-          <HStack justify='center' spacing={2} pos='relative'>
+          <HStack justify='center' gap={2} pos='relative'>
             <Button
               onClick={() => setOpen(!isOpen)}
               py={2}
@@ -159,8 +155,8 @@ function Header({ children }: {children?: ReactNode}) {
             >
               <Icon as={isOpen ? FaTimes : FaBars} fontSize='lg' />
             </Button>
-            <Link
-              href="https://discord.com/oauth2/authorize?client_id=916830010290085978&permissions=8&scope=applications.commands+bot"
+            <Button
+              asChild
               hideBelow='sm'
               w='auto'
               px={8}
@@ -168,37 +164,50 @@ function Header({ children }: {children?: ReactNode}) {
               alignItems='center'
               boxShadow='0 10px 15px -3px rgba(103, 117, 138, 0.2)'
               rounded='xl'
-              bgGradient='linear(to-tl, gray.500, gray.700)'
-              textColor='white'
+              borderWidth={0}
+              bgGradient='to-r'
+              gradientFrom='gray.500'
+              gradientTo='gray.700'
+              color='white'
               transitionProperty='opacity'
               transitionDuration='300ms'
               _hover={{
                 opacity: 0.8
               }}
             >
-              Invite
-            </Link>
-            
+              <a href="https://discord.com/oauth2/authorize?client_id=916830010290085978&permissions=8&scope=applications.commands+bot">
+                Invite
+              </a>
+            </Button>
             {children ? children : (
-							<Link
-								href="/api/auth/login"
+							<Button
+                asChild
+                borderWidth={0}
 								w='auto'
 								px={8}
 								py={2.5}
 								alignItems='center'
 								boxShadow='0 10px 15px -3px rgba(55, 122, 242, 0.2)'
 								rounded='xl'
-								bgGradient='linear(to-tl, blue.500, blue.700)'
-								textColor='white'
+                bgGradient='to-tl'
+                gradientFrom='blue.500'
+                gradientTo='blue.700'
+                color='white'
 								transitionProperty='opacity'
 								transitionDuration='300ms'
 								_hover={{
 									opacity: 0.8
 								}}
 							>
-								<Text hideFrom='520px'>Login</Text>
-								<Text hideBelow='519px'>Login with Discord</Text>
-							</Link>
+								<a href="/api/auth/login" >
+                  <Text hideFrom='620px'>
+                    Login
+                  </Text>
+                  <Text hideBelow='619px'>
+                    Login with Discord
+                  </Text>
+                </a>
+							</Button>
 						)}
           </HStack>
         </Flex>

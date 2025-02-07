@@ -50,7 +50,7 @@ function List({user, bgColor}: { user: UserInfo, bgColor: string }) {
           borderColor={borderColor}
           fontSize="sm"
           fontWeight="700"
-          color='colors.textColorPrimary'
+          color='colors.textPrimary'
         >
           <span aria-label="Hi" role="img">
             👋

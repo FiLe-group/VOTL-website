@@ -39,7 +39,7 @@ export const inputSlotRecipe = defineRecipe({
 
         fontSize: '2xl',
         fontWeight: '600',
-        color: 'colors.textColorPrimary',
+        color: 'colors.textPrimary',
         borderBottomColor: 'navy.600',
       },
       main,

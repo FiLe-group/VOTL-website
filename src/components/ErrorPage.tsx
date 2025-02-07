@@ -1,5 +1,4 @@
-import { Flex, Text, VStack } from "@chakra-ui/layout";
-import { Button, Icon, Image, Spinner } from "@chakra-ui/react";
+import { Button, Icon, Image, Spinner, Flex, Text, VStack } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -15,12 +14,12 @@ function ErrorPage({ code, message }: { code: number, message: string }) {
         <title>{`${code} | VOTL bot`}</title>
       </Head>
 
-      <VStack py={20} maxW='7xl' spacing={0}>
+      <VStack py={20} maxW='7xl' gap={0}>
         <Flex>
           <Image w="400" src="/img/monkey.gif" />
         </Flex>
         <Text fontSize='4xl' fontWeight='extrabold'>{code}</Text>
-        <Text fontSize='xl' fontWeight='thin' textColor='#AAAAAA'>
+        <Text fontSize='xl' fontWeight='thin' color='#AAAAAA'>
           {message}
         </Text>
         <Button
@@ -30,7 +29,9 @@ function ErrorPage({ code, message }: { code: number, message: string }) {
           px={7}
           rounded='xl'
           boxShadow='0 10px 15px -3px rgba(103, 117, 138, 0.2)'
-          bgGradient='linear(to-bl, blue.900, blue.700)'
+          bgGradient='to-bl'
+          gradientFrom='blue.900'
+          gradientTo='blue.700'
           transitionProperty='opacity'
           transitionDuration='300ms'
           _hover={{

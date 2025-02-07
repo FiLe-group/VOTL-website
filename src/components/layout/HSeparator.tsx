@@ -1,4 +1,4 @@
-import { HStack, Box, Text } from '@chakra-ui/layout';
+import { HStack, Box, Text } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 export function HSeparator({ children }: { children: ReactNode }) {

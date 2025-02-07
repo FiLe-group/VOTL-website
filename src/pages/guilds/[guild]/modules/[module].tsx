@@ -1,5 +1,4 @@
-import {Icon, useRecipe} from '@chakra-ui/react';
-import { Center, Heading, Text } from '@chakra-ui/layout';
+import {Icon, useRecipe, Center, Heading, Text} from '@chakra-ui/react';
 import { LoadingPanel } from '@/components/panel/LoadingPanel';
 import { modules } from '@/config/modules';
 import { CustomModule, ModuleConfig } from '@/config/types';
@@ -11,7 +10,6 @@ import { useRouter } from 'next/router';
 import { NextPageWithLayout } from '@/pages/_app';
 import getGuildLayout from '@/components/layout/guild/GetGuildLayout';
 import {Button} from "@/components/ui/button";
-import {buttonRecipe} from "@/theme/components/button";
 
 export type Params = {
   guild: string;
@@ -38,8 +36,8 @@ function NotEnabled() {
   const { guild, module } = useRouter().query as Params;
   const enable = useEnableModuleMutation();
 
-  const recipe = useRecipe({ recipe: buttonRecipe })
-  const styles = recipe({ variant: "action" })
+  const recipe = useRecipe({ key:"button" })
+  const styles = recipe({ variant: "secondary" })
 
   return (
     <Center flexDirection="column" h="full" gap={1}>

@@ -1,7 +1,7 @@
-import { Flex, Grid, Spacer, Text, VStack } from '@chakra-ui/layout';
 import {
   Image,
   Box, Card,
+  Flex, Grid, Spacer, Text, VStack
 } from '@chakra-ui/react';
 import { avatarUrl, bannerUrl } from '@/api/discord';
 import { SelectField } from '@/components/forms/SelectField';

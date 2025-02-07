@@ -5,9 +5,11 @@ export const globalCss = defineGlobalStyles({
     "--global-font-mono": "fonts.mono",
     "--global-font-body": "fonts.body",
   },
-  body: {
+  "html, body": {
     fontWeight: 500,
-    color: "colors.textPrimary",
-    bg: "colors.backgroundPrimary",
+    color: "var(--chakra-colors-text-primary)",
+    backgroundColor: "var(--chakra-colors-global-bg)",
+    minHeight: "100vh",
+    width: "100%",
   }
 })

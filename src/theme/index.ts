@@ -1,4 +1,4 @@
-import { createSystem, defaultBaseConfig, defineConfig } from "@chakra-ui/react"
+import {createSystem, defaultConfig, defineConfig} from "@chakra-ui/react"
 import { breakpoints } from "./breakpoints"
 import { globalCss } from "./global-css"
 import {fonts} from "@/theme/fonts";
@@ -27,6 +27,9 @@ const themeConfig = defineConfig({
     tokens: {
       fonts,
       colors,
+      gradients: {
+        global: {value: 'linear-gradient(to bottom, {colors.blue.600}, transparent)'},
+      }
     },
     slotRecipes: {
       avatar: avatarSlotRecipe,
@@ -48,4 +51,4 @@ const themeConfig = defineConfig({
   }
 })
 
-export const system = createSystem(defaultBaseConfig, themeConfig)
+export const system = createSystem(defaultConfig, themeConfig)

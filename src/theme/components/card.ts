@@ -1,11 +1,11 @@
-import { cardAnatomy } from '@chakra-ui/anatomy';
 import { defineSlotRecipe } from '@chakra-ui/react';
+import {cardAnatomy} from "@chakra-ui/react/anatomy";
 
 export const cardSlotRecipe = defineSlotRecipe({
-  slots: cardAnatomy.keys,
+  slots: cardAnatomy.keys(),
   base: {
-    container: {
-      color: "colors.textColorPrimary",
+    root: {
+      color: "colors.textPrimary",
       bg: "colors.cardBg",
       p: 'var(--card-padding)',
     },
@@ -26,7 +26,7 @@ export const cardSlotRecipe = defineSlotRecipe({
   variants: {
     variant: {
       primary: {
-        container: {
+        root: {
           rounded: '2xl',
         },
       },

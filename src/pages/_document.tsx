@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" suppressHydrationWarning>
       <Head>
         <meta name="robots" content="index,nofollow" />
         <meta name="googlebot" content="index,nofollow" />

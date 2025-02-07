@@ -1,4 +1,3 @@
-import { Box, HStack } from '@chakra-ui/layout';
 import {
   chakraComponents,
   ChakraStylesConfig,
@@ -9,6 +8,7 @@ import {
   SelectInstance,
 } from 'chakra-react-select';
 import { forwardRef, ReactNode } from 'react';
+import {Box, HStack} from "@chakra-ui/react";
 
 const customComponents = {
   SingleValue: ({ children, ...props }: any) => {

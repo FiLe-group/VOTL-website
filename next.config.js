@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-export default {
+module.exports = {
   reactStrictMode: true,
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',
