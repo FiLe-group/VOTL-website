@@ -89,9 +89,9 @@ function Header({ children }: {children?: ReactNode}) {
   return (
     <>
       <header>
-        <Flex maxW='7xl' px={5} py={5} mx='auto' align='center' justify='space-between'>
+        <Flex maxW='7xl' px={{md:3,base:0}} py={5} mx='auto' align='center' justify='space-between'>
           <HStack gap={6}>
-            <Link href="/" _hover={{ textDecoration: "none" }}>
+            <Link href="/" _hover={{ textDecoration: "none" }} _focus={{outline: 'none'}}>
               <HStack>
                 <Image
                   src="/img/logo-small.png"
@@ -105,7 +105,7 @@ function Header({ children }: {children?: ReactNode}) {
             </Link>
             <HStack hideBelow='lg' align='center' gap={5}>
               {items.filter((a) => !a.external).map((item, i) => (
-                <Link key={i} href={item.href} _hover={{textDecoration:'none'}}>
+                <Link key={i} href={item.href} _hover={{textDecoration:'none'}} _focus={{outline: 'none'}}>
                   <Text
                     display='inline'
                     pb={2}
@@ -122,7 +122,7 @@ function Header({ children }: {children?: ReactNode}) {
                 </Link>
               ))}
               {items.filter((a) => a.external).map((item, i) => (
-                <Link key={i} target='_blank' href={item.href} _hover={{textDecoration:'none'}}>
+                <Link key={i} target='_blank' href={item.href} _hover={{textDecoration:'none'}} _focus={{outline: 'none'}}>
                   <Text
                     display='inline'
                     pb={2}

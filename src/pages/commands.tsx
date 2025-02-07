@@ -15,7 +15,7 @@ import {
   Text,
   List,
   VStack,
-  StackSeparator, Separator
+  StackSeparator, Separator, RadioGroup
 } from "@chakra-ui/react";
 import { FaCaretDown, FaCheck, FaCrown, FaDice, FaInfoCircle, FaList, FaPhoneAlt, FaQuestion, FaServer, FaShieldAlt, FaTicketAlt, FaUser, FaUserShield } from "react-icons/fa";
 import { FaGear, FaGears, FaXmark } from "react-icons/fa6";
@@ -23,7 +23,6 @@ import { HiBadgeCheck } from "react-icons/hi";
 import { MdOutlineWebhook } from "react-icons/md";
 import { PiArrowBendDownRight } from "react-icons/pi";
 import {Button} from "@/components/ui/button";
-import {RadioCardItem, RadioCardRoot} from "@/components/ui/radio-card";
 
 const commands = Data;
 
@@ -142,6 +141,7 @@ function CollapsedCommand({ lang, cmd }: {lang: string, cmd: Command}) {
         display='inline-flex'
         flex={1}
         whiteSpace='wrap'
+        _focus={{outline:'none'}}
       >
         <Flex flexGrow={1} display='inherit' align='start'>
           <Box
@@ -233,14 +233,15 @@ function HelpBox() {
       <Button
         {...getToggleProps()}
         py={3}
-        px={6}
+        px={4}
         w='full'
         bg='transparent'
         _hover={{bg:'transparent'}}
         color='white'
+        _focus={{outline:'none'}}
       >
         <HStack gap={0} justifyContent='normal' w='full'>
-          <Icon as={FaQuestion} mr={2} />
+          <Icon as={FaQuestion} mr={2} fontSize='12px' />
           <Text flexGrow={1} textAlign='left'>Command Help</Text>
           <Icon justifyContent='end' as={FaCaretDown} transform={isExpanded?'rotate(180deg)':'rotate(0deg)'} transitionProperty='transform' transitionDuration='300ms' transitionTimingFunction='ease-in'/>
         </HStack>
@@ -251,7 +252,7 @@ function HelpBox() {
           <Separator mt={2}/>
         </Box>
         <Text fontWeight='bold'>Syntax</Text>
-        <List.Root pb={2}>
+        <List.Root as='ul' listStyleType="circle" pb={2} pl={4}>
           <List.Item>
             <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'<>'}</Text> - Required parameter
           </List.Item>
@@ -259,7 +260,7 @@ function HelpBox() {
             <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'[]'}</Text> - Optional parameter
           </List.Item>
           <List.Item>
-            <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'A | B'}</Text> - Required parameter
+            <Text _before={{content:`"\\A0"`}} _after={{content:`"\\A0"`}} className="code-blue">{'A | B'}</Text> - Provide either
           </List.Item>
         </List.Root>
       </Box>
@@ -275,84 +276,83 @@ function getFilteredCmdsByCategory(cat: Category) {
 }
 
 const CommandsPage: NextPageWithLayout = () => {
-  const defaultLanguage = 'en-GB';
-  const defaultCategory = '';
-
-  const [language, setLanguage] = useState(defaultLanguage);
-  const [category, setCategory] = useState(defaultCategory);
+  const [language, setLanguage] = useState('en-GB');
+  const [category, setCategory] = useState('');
   
   function LanguageBox() {
     return (
-      <RadioCardRoot
+      <RadioGroup.Root
+        asChild
         name='lang'
         onValueChange={(value) => {
           setLanguage(value.value)
         }}
-        defaultValue={defaultLanguage}
       >
-        <HStack gap={1} >
+        <HStack gap='4px'>
           {languages.map((lang) => (
-            <RadioCardItem
-              indicator={false}
+            <RadioGroup.Item
               key={lang.name}
               value={lang.name}
+              _hover={{
+                bgColor: '#52525244'
+              }}
+              bg={language === lang.name?'#52525288':'transparent'}
+              cursor='pointer'
+              p={2}
             >
-              <Box
-                //bg={state.isChecked?'#52525288':(state.isHovered?'#52525244':'transparent')}
-                bg={language === lang.name ?'#52525244':'transparent'}
-                rounded='sm'
-                cursor='pointer'
-                py={1}
-                px={2}
-                _focusVisible={{
-                  boxShadow: 'outline',
-                }}
-              >
+              <RadioGroup.ItemText asChild fontSize='16px'>
                 <span className={`fi ${lang.flag}`}/>
-              </Box>
-            </RadioCardItem>
+              </RadioGroup.ItemText>
+              <RadioGroup.ItemHiddenInput />
+            </RadioGroup.Item>
           ))}
         </HStack>
-      </RadioCardRoot>
+      </RadioGroup.Root>
     )
   }
 
   function CategoryBox() {
     return (
-      <RadioCardRoot
-        align='center'
+      <RadioGroup.Root
+        asChild
         orientation="horizontal"
         name='category'
         onValueChange={(value) => {
           setCategory(value.value)
         }}
-        defaultValue={defaultLanguage}
-        variant='subtle'
       >
-        <VStack rounded='sm' bgColor='#26262688' py={1} gap={0} align='inherit' >
+        <VStack rounded='sm' bgColor='#26262688' py={2} gap='6px' align='inherit' >
           {categories.map((cat) => (
-            <RadioCardItem
-              label={
-                <Flex gap={3}>
-                  <Icon mr={6} fontSize='20px'>
+            <RadioGroup.Item
+              key={cat.value}
+              value={cat.value}
+              mx={2}
+              px={3}
+              py={2}
+              _hover={{
+                bgColor: '#52525244'
+              }}
+              bg={category === cat.value?'#52525288':'transparent'}
+              cursor='pointer'
+            >
+              <RadioGroup.ItemText asChild>
+                <HStack gap={3} flexGrow={1}>
+                  <Icon mr={6} fontSize='18px'>
                     {cat.icon}
                   </Icon>
                   <Box flexGrow={1}>
                     {cat.title}
                   </Box>
-                  <Box justifyContent='flex-end' textAlign='right'>
+                  <Box justifyContent='flex-end' textAlign='right' minW='56px'>
                     {cat.size}
                   </Box>
-                </Flex>
-              }
-              indicator={false}
-              key={cat.value}
-              value={cat.value}
-              mx={2}
-            />
+                </HStack>
+              </RadioGroup.ItemText>
+              <RadioGroup.ItemHiddenInput />
+            </RadioGroup.Item>
           ))}
         </VStack>
-      </RadioCardRoot>
+      </RadioGroup.Root>
     )
   }
 

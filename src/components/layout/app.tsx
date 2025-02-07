@@ -20,7 +20,7 @@ export default function AppLayout({
       </Box>
       <Box transition='all' transitionDuration='200ms' zIndex='10' pos='absolute' inset={0} px={5} h='100vh' maxW='7xl' w='full' mx='auto'>
         <QueryStatus query={query} loading={<LoadingPanel />} usermenu={<UserMenu bgColor='#333333' />}>
-          <Box display='block' px={[3, 0]}>
+          <Box display='block'>
             {children}
           </Box>
           <Footer />
