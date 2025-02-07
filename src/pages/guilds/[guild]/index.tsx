@@ -63,7 +63,7 @@ function NotJoined({ guild }: { guild: string }) {
       <Text fontSize="xl" fontWeight="600">
         {t.error['not found']}
       </Text>
-      <Text textAlign="center" color="TextSecondary">
+      <Text textAlign="center" color="textSecondary">
         {t.error['not found description']}
       </Text>
       <Button

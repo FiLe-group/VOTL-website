@@ -1,4 +1,4 @@
-import { Center, StackProps, HStack, Text } from '@chakra-ui/layout';
+import { Center, StackProps, HStack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
@@ -39,14 +39,15 @@ export function SidebarItem({
 function CardItem({ active, href, ...props }: { href: string; active: boolean } & StackProps) {
   return (
     <HStack
-      as={Link}
-      href={href}
+      asChild
       rounded="xl"
       p={2}
-      color={active ? 'TextPrimary' : 'TextSecondary'}
+      color={active ? 'textPrimary' : 'textSecondary'}
       bg={active ? 'whiteAlpha.100' : undefined}
       cursor="pointer"
       {...props}
-    />
+    >
+      <Link href={href} />
+    </HStack>
   );
 }

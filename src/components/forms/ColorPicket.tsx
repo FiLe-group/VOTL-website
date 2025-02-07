@@ -75,7 +75,7 @@ export const ColorPickerForm: ControlledInput<ColorPickerFormProps, ColorPickerP
             flex={1}
           >
             {value == null && (
-              <Text fontSize="sm" color="TextSecondary">
+              <Text fontSize="sm" color="textSecondary">
                 No Color
               </Text>
             )}

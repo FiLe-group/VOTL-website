@@ -1,6 +1,6 @@
 "use client"
 
-import { Flex, Spacer } from '@chakra-ui/layout';
+import { Flex, Spacer } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import {
   Controller,

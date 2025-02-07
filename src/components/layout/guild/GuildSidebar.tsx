@@ -1,6 +1,5 @@
 import { FaChevronLeft } from 'react-icons/fa';
-import { Flex, HStack, Text, VStack } from '@chakra-ui/layout';
-import { Icon, IconButton } from '@chakra-ui/react';
+import { Icon, IconButton, Flex, HStack, Text, VStack } from '@chakra-ui/react';
 import { getModules } from '@/utils/common';
 import { IoSettings } from 'react-icons/io5';
 import { useGuildPreview } from '@/api/hooks';
@@ -21,16 +20,18 @@ export function InGuildSidebar() {
 
   return (
     <Flex direction="column" gap={2} p={3}>
-      <HStack as={Link} cursor="pointer" mb={2} href={`/guilds/${guildId}`}>
-        <IconButton
-          display={{ base: 'none', [sidebarBreakpoint]: 'block' }}
-          aria-label="back"
-        >
-          <Icon verticalAlign="middle" as={FaChevronLeft} />
-        </IconButton>
-        <Text fontSize="lg" fontWeight="600" maxW='90%'>
-          {guild?.name}
-        </Text>
+      <HStack asChild cursor="pointer" mb={2}>
+        <Link href={`/guilds/${guildId}`}>
+          <IconButton
+            display={{ base: 'none', [sidebarBreakpoint]: 'block' }}
+            aria-label="back"
+          >
+            <Icon verticalAlign="middle" as={FaChevronLeft} />
+          </IconButton>
+          <Text fontSize="lg" fontWeight="600" maxW='90%'>
+            {guild?.name}
+          </Text>
+        </Link>
       </HStack>
       <VStack align="stretch">
         <SidebarItem

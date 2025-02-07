@@ -1,8 +1,7 @@
 import { Calendar, CalendarProps } from 'react-calendar';
 import { ControlledInput } from './types';
-import {Icon, Input, useRecipe} from '@chakra-ui/react';
+import {Icon, Input, useRecipe, Text} from '@chakra-ui/react';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import { Text } from '@chakra-ui/layout';
 import { AiTwotoneCalendar as CalendarIcon } from 'react-icons/ai';
 import { useController } from 'react-hook-form';
 import {FormCard} from "@/components/forms/Form";

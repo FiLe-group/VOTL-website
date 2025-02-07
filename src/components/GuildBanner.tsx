@@ -1,6 +1,5 @@
 import { FiSettings as SettingsIcon } from 'react-icons/fi';
-import { Flex, Heading, Text } from '@chakra-ui/layout';
-import {Group} from '@chakra-ui/react';
+import {Group, Flex, Heading, Text} from '@chakra-ui/react';
 import { guild as view } from '@/config/translations/guild';
 import { useRouter } from 'next/router';
 import {Button} from "@/components/ui/button";
@@ -42,7 +41,6 @@ export function Banner({imageLink}: { imageLink: string}) {
           <link href={`/guilds/${guild}/settings`}>
             <SettingsIcon /> {t.bn.settings}
           </link>
-
         </Button>
       </Group>
     </Flex>

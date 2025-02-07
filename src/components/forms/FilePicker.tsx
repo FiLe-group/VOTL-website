@@ -1,5 +1,4 @@
-import { Box, Center, Flex, Text, VStack } from '@chakra-ui/layout';
-import { Icon, Image } from '@chakra-ui/react';
+import { Icon, Image, Box, Center, Flex, Text, VStack } from '@chakra-ui/react';
 import { ComponentProps } from 'react';
 import Dropzone, { DropzoneOptions } from 'react-dropzone';
 import { FaFile } from 'react-icons/fa';
@@ -83,11 +82,11 @@ function FilePreview({ file }: { file: File }) {
           <Icon as={FaFile} color="white" />
         </Center>
       )}
-      <VStack align="start" flex={1} spacing="3px">
-        <Text fontSize="md" fontWeight="600" color="TextPrimary">
+      <VStack align="start" flex={1} gap="3px">
+        <Text fontSize="md" fontWeight="600" color="textPrimary">
           {file.name}
         </Text>
-        <Text fontSize="sm" color="TextSecondary">
+        <Text fontSize="sm" color="textSecondary">
           {Math.round(file.size/102.4)/10} Kb
         </Text>
       </VStack>

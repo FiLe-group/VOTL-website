@@ -1,6 +1,5 @@
 import { FaChevronLeft as ChevronLeftIcon } from 'react-icons/fa';
-import { Box, Flex, Text } from '@chakra-ui/layout';
-import {Collapsible, Icon} from '@chakra-ui/react';
+import {Collapsible, Icon, Box, Flex, Text} from '@chakra-ui/react';
 import { iconUrl } from '@/api/discord';
 import { useGuildPreview } from '@/api/hooks';
 import { ReactElement } from 'react';
@@ -18,13 +17,14 @@ export default function GuildNavbar({ back }: { back?: boolean }) {
     <Flex w="full" direction="row" alignItems="center">
       <HorizontalCollapse in={back ?? false}>
         <Box
-          as={Link}
-          href={`/guilds/${selected}`}
+          asChild
           display={{ base: 'flex', [sidebarBreakpoint]: 'none' }}
           pr={3}
           py={3}
         >
-          <Icon aria-label="back" as={ChevronLeftIcon} my="auto" fontSize="lg" />
+          <Link href={`/guilds/${selected}`}>
+            <Icon aria-label="back" as={ChevronLeftIcon} my="auto" fontSize="lg" />
+          </Link>
         </Box>
       </HorizontalCollapse>
       {guild == null ? (

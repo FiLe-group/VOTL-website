@@ -73,7 +73,7 @@ const ProfilePage: NextPageWithLayout = () => {
               <Form fontSize="md" fontWeight="medium" m={0}>
                 {t.language}
               </Form>
-              <Text color="TextSecondary">{t['language description']}</Text>
+              <Text color="textSecondary">{t['language description']}</Text>
             </Box>
             <SelectField
               value={{

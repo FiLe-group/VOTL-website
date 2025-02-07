@@ -65,7 +65,7 @@ export function DefaultNavbar() {
           </BreadcrumbLink >
         ))}
       </BreadcrumbRoot>
-      <Text color="TextPrimary" fontWeight="bold" fontSize='2xl' mb={2}>
+      <Text color="textPrimary" fontWeight="bold" fontSize='2xl' mb={2}>
         {activeItem?.name || <SkeletonText w="full" noOfLines={2} />}
       </Text>
     </Flex>

@@ -35,7 +35,7 @@ export function SearchBar(
           _active={{}}
           onClick={onSearch}
         >
-          <Icon as={SearchIcon} color="TextPrimary" width="15px" height="15px" />
+          <Icon as={SearchIcon} color="textPrimary" width="15px" height="15px" />
         </IconButton>
       }
       endElement={
@@ -51,7 +51,7 @@ export function SearchBar(
           _active={{}}
           onClick={onSearch}
         >
-          <Icon as={SearchIcon} color="TextPrimary" width="15px" height="15px" />
+          <Icon as={SearchIcon} color="textPrimary" width="15px" height="15px" />
         </IconButton>
       }
     >
@@ -59,7 +59,7 @@ export function SearchBar(
         css={styles}
         fontSize="sm"
         bg="navy.900"
-        color="TextPrimary"
+        color="textPrimary"
         fontWeight="500"
         _placeholder={{ color: 'gray.400', fontSize: '14px' }}
         borderRadius="30px"

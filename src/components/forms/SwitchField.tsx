@@ -30,7 +30,7 @@ export const SwitchFieldForm: ControlledInput<{}, boolean> = ({
           <FieldLabel fontSize={{ base: '16px', md: 'lg' }} fontWeight="medium" mb={0}>
             {control.label}
           </FieldLabel>
-          <Text fontSize={{ base: 'sm', md: 'md' }} color="TextSecondary">
+          <Text fontSize={{ base: 'sm', md: 'md' }} color="textSecondary">
             {control.description}
           </Text>
         </Box>
@@ -59,7 +59,7 @@ export function SwitchField(
         <FieldLabel htmlFor={id} fontSize="md" fontWeight="medium" mb={0}>
           {label}
         </FieldLabel>
-        <Text color="TextSecondary">{desc}</Text>
+        <Text color="textSecondary">{desc}</Text>
       </Box>
       <Switch css={styles} id={id} {...rest} />
     </Flex>

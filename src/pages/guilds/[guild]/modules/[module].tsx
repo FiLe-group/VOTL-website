@@ -44,7 +44,7 @@ function NotEnabled() {
       <Text fontSize="xl" fontWeight="600">
         {t.error['not enabled']}
       </Text>
-      <Text color="TextSecondary">{t.error['not enabled description']}</Text>
+      <Text color="textSecondary">{t.error['not enabled description']}</Text>
       <Button
         mt={3}
         loading={enable.isPending}
@@ -65,7 +65,7 @@ function NotFound() {
     <Center flexDirection="column" gap={2} h="full">
       <Icon as={BsSearch} w="50px" h="50px" />
       <Heading size="lg">{t.error['not found']}</Heading>
-      <Text color="TextSecondary">{t.error['not found description']}</Text>
+      <Text color="textSecondary">{t.error['not found description']}</Text>
     </Center>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
+import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 import { RoleSelectForm } from '@/components/forms/RoleSelect';
 import getGuildLayout from '@/components/layout/guild/GetGuildLayout';
 import { NextPageWithLayout } from '@/pages/_app';

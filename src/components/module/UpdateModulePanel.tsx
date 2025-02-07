@@ -39,7 +39,7 @@ export function UpdateModulePanel({
           <Heading fontSize="2xl" fontWeight="600">
             {config.name}
           </Heading>
-          <Text color="TextSecondary">{config.description}</Text>
+          <Text color="textSecondary">{config.description}</Text>
         </Box>
         <Group attached mt={3}>
           <Button variant="danger" loading={enableMutation.isPending} onClick={onDisable}>
