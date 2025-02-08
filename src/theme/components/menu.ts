@@ -1,16 +1,16 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const menuSlotRecipe = defineSlotRecipe({
-  slots: ['item', 'list'],
+  slots: ['item', 'content'],
   base: {
     item: {
       _hover: {
-        bg: "colors.cardBg",
+        bg: "{colors.cardBg}",
       },
       bg: 'transparent',
     },
-    list: {
-      bg: "colors.globalBg",
+    content: {
+      bg: "{colors.globalBg}",
     }
   }
 });

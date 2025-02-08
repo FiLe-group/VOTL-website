@@ -5,8 +5,8 @@ export const cardSlotRecipe = defineSlotRecipe({
   slots: cardAnatomy.keys(),
   base: {
     root: {
-      color: "colors.textPrimary",
-      bg: "colors.cardBg",
+      color: "{colors.textPrimary}",
+      bg: "{colors.cardBg}",
       p: 'var(--card-padding)',
     },
     header: {

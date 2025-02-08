@@ -14,7 +14,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
       },
     },
     dialog: {
-      bg: 'navy.900',
+      bg: '{colors.navy.900}',
     }
   }
 });

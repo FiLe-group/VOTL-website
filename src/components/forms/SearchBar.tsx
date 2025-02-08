@@ -1,7 +1,7 @@
 import {
   Icon, IconButton,
   Input,
-  InputProps, useRecipe,
+  InputProps,
 } from '@chakra-ui/react';
 import { AiOutlineSearch as SearchIcon } from 'react-icons/ai';
 import { common } from '@/config/translations/common';
@@ -16,53 +16,33 @@ export function SearchBar(
   const t = common.useTranslations();
   const { input, onSearch, ...rest } = props;
 
-  const recipe = useRecipe({ key: "input" })
-  const styles = recipe({variant:"search"})
-
   return (
     <InputGroup
       {...rest}
-      startElement={
-        <IconButton
-          color="colorPalette.fg"
-          bgColor={{
-            _hover: "colorPalette.subtle",
-            _expanded: "colorPalette.subtle"
-          }}
-          aria-label="search"
-          bg="inherit"
-          borderRadius="inherit"
-          _active={{}}
-          onClick={onSearch}
-        >
-          <Icon as={SearchIcon} color="textPrimary" width="15px" height="15px" />
-        </IconButton>
-      }
       endElement={
         <IconButton
-          color="colorPalette.fg"
-          bgColor={{
-            _hover: "colorPalette.subtle",
-            _expanded: "colorPalette.subtle"
-          }}
+          color="blue.500"
           aria-label="search"
           bg="inherit"
           borderRadius="inherit"
-          _active={{}}
           onClick={onSearch}
+          _hover={{bgColor:"white/10"}}
+          rounded='3xl'
         >
           <Icon as={SearchIcon} color="textPrimary" width="15px" height="15px" />
         </IconButton>
       }
     >
       <Input
-        css={styles}
+        outline="4px solid"
+        outlineColor="whiteAlpha.400"
+        _focus={{outlineColor: 'whiteAlpha.700'}}
+        rounded="xl"
         fontSize="sm"
         bg="navy.900"
         color="textPrimary"
         fontWeight="500"
         _placeholder={{ color: 'gray.400', fontSize: '14px' }}
-        borderRadius="30px"
         placeholder={`${t.search}...`}
         onKeyDown={(e) => {
           if (e.key === 'Enter') onSearch?.();

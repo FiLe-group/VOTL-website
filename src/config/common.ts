@@ -2,7 +2,7 @@ import { PermissionFlags } from '@/api/discord';
 import { AppConfig } from './types';
 
 export const config: AppConfig = {
-  name: 'VOTL bot',
+  name: 'VOTL Bot',
   icon:
     '/img/logo-small.png',
   inviteUrl:

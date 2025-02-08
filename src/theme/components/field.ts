@@ -5,7 +5,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
     base: {
         root: {
             direction: 'column',
-            bg: 'CardBackground',
+            bg: '{colors.cardBg}',
             rounded: '3xp',
             p: '5',
             boxShadow: 'md',
@@ -23,7 +23,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
                 base: 'sm',
                 md: 'md',
             },
-            color: 'TextSecondary',
+            color: '{colors.textSecondary}',
             mb: 2,
         }
     }

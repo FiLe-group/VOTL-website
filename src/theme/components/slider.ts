@@ -6,7 +6,7 @@ export const sliderSlotRecipe = defineSlotRecipe({
     variant: {
       main: {
         thumb: {
-          bg: 'blue.400',
+          bg: '{colors.blue.400}',
         },
       }
     }

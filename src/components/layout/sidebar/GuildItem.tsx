@@ -1,4 +1,4 @@
-import {Card, Flex, Skeleton, Text} from '@chakra-ui/react';
+import {Card, Flex, Link, Skeleton, Text} from '@chakra-ui/react';
 import { Guild, iconUrl } from '@/api/discord';
 import {Avatar} from "@/components/ui/avatar";
 
@@ -14,17 +14,18 @@ export function GuildItem({
   return (
     <Card.Root
       asChild
-      bg={active ? 'Brand' : 'MainBackground'}
-      color={active ? 'white' : undefined}
+      bg={active ? 'brand' : 'globalBg'}
+      color='white'
       cursor="pointer"
       rounded="xl"
+      border='none'
     >
-      <link href={href}>
-        <Card.Body as={Flex} direction="column" gap={3}>
+      <Link href={href}>
+        <Card.Body as={Flex} direction="column" gap={3} alignItems='center'>
           <Avatar name={guild.name} src={iconUrl(guild)} />
-          <Text fontWeight="600">{guild.name}</Text>
+          <Text fontWeight="600" textAlign='center'>{guild.name}</Text>
         </Card.Body>
-      </link>
+      </Link>
     </Card.Root>
   );
 }
@@ -32,11 +33,9 @@ export function GuildItem({
 export function GuildItemsSkeleton() {
   return (
     <>
-      <Skeleton h="124px" rounded="xl" />
-      <Skeleton h="124px" rounded="xl" />
-      <Skeleton h="124px" rounded="xl" />
-      <Skeleton h="124px" rounded="xl" />
-      <Skeleton h="124px" rounded="xl" />
+      <Skeleton h="124px" rounded="xl" bg='whiteAlpha.400'/>
+      <Skeleton h="124px" rounded="xl" bg='whiteAlpha.400'/>
+      <Skeleton h="124px" rounded="xl" bg='whiteAlpha.400'/>
     </>
   );
 }

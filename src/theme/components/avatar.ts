@@ -1,24 +1,24 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const avatarSlotRecipe = defineSlotRecipe({
-  slots: ["container"],
+  slots: ["root"],
   base: {
-    container: {
-      bg: 'blue.300.2',
+    root: {
+      bg: '{colors.blue.300/2}',
       color: 'white',
     },
   },
   variants: {
     variant: {
-      border: {
-        container: {
+      outline: {
+        root: {
           border: 'auto',
           borderWidth: 10,
-          borderColor: 'navy.800',
+          borderColor: '{colors.navy.800}',
         },
       },
-      normal: {
-        container: {
+      subtle: {
+        root: {
           border: 0,
         },
       },

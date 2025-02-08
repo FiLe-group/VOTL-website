@@ -4,7 +4,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
   slots: ['content'],
   base: {
     content: {
-      bg: 'navy.900',
+      bg: '{colors.navy.900}',
       rounded: 'xl',
       boxShadow: 'normal',
     }

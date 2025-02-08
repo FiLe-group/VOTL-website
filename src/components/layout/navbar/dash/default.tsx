@@ -1,5 +1,5 @@
 // Chakra Imports
-import {Flex, Icon, Tag, Text} from '@chakra-ui/react';
+import {Flex, Icon, Link, Tag, Text} from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { useActiveSidebarItem } from '@/utils/router';
 import { IoHome } from 'react-icons/io5';
@@ -55,12 +55,12 @@ export function DefaultNavbar() {
               gap={1}
               rounded="full"
               color="blue.100"
-              bg="blue.500.2"
+              bg="blue.500/20"
             >
-              <link href={item.href}>
+              <Link href={item.href}>
                 {item.icon}
                 <Tag.Label>{item.text}</Tag.Label>
-              </link>
+              </Link>
             </Tag.Root>
           </BreadcrumbLink >
         ))}

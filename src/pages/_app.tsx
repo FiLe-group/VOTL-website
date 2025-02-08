@@ -1,7 +1,7 @@
 import "@/styles/global.css";
 import Head from "next/head";
 
-import { ReactNode } from "react";
+import {ReactNode, StrictMode} from "react";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -21,13 +21,15 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((c) => c);
 
   return (
-    <ChakraProvider value={system}>
-      <Head>
-        <title>Voice of the Lord</title>
-      </Head>
-      <QueryClientProvider client={client}>
-        {getLayout(<Component {...pageProps} />)}
-      </QueryClientProvider>
-    </ChakraProvider>
+    <StrictMode>
+      <ChakraProvider value={system}>
+        <Head>
+          <title>Voice of the Lord</title>
+        </Head>
+        <QueryClientProvider client={client}>
+          {getLayout(<Component {...pageProps} />)}
+        </QueryClientProvider>
+      </ChakraProvider>
+    </StrictMode>
   );
 }

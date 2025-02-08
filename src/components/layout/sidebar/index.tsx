@@ -6,7 +6,7 @@ import {
 import { BottomCard, SidebarContent } from './SidebarContent';
 import { usePageStore } from '@/stores';
 import { sidebarBreakpoint } from '@/theme/breakpoints';
-import { ReactNode } from 'react';
+import {ReactNode, useCallback} from 'react';
 import {DrawerBackdrop, DrawerBody, DrawerCloseTrigger, DrawerContent, DrawerRoot} from "@/components/ui/drawer";
 import {keyframes} from "@emotion/react";
 
@@ -27,7 +27,7 @@ export function Sidebar({ sidebar }: { sidebar?: ReactNode }) {
       direction="column"
       display={{ base: 'none', [sidebarBreakpoint]: 'flex' }}
       flexShrink={0}
-      bg="CardBackground"
+      bg="cardBg"
       w="300px"
       h="100%"
       overflowX="hidden"
@@ -46,21 +46,27 @@ export function Sidebar({ sidebar }: { sidebar?: ReactNode }) {
 }
 
 export function SidebarResponsive({ sidebar }: { sidebar?: ReactNode }) {
-  const [isOpen, setOpen] = usePageStore((s) => [s.sidebarIsOpen, s.setSidebarIsOpen]);
+  const isOpen = usePageStore((s) => s.sidebarIsOpen);
+  const setOpen = usePageStore((s) => s.setSidebarIsOpen);
+
+  const handleOpenChange = useCallback((e: { open: boolean }) => {
+    setOpen(e.open);
+  }, [setOpen]);
 
   return (
     <DrawerRoot
       open={isOpen}
-      onOpenChange={(e) => setOpen(e.open)}
+      onOpenChange={handleOpenChange}
     >
       <DrawerBackdrop />
-      <DrawerContent w="285px" maxW="285px" bg="CardBackground">
+      <DrawerContent w="285px" maxW="285px" bg="cardBg">
         <DrawerCloseTrigger
           zIndex="3"
           mt={3}
+          mr={1}
           onClick={() => setOpen(false)}
-          _focus={{ boxShadow: 'none' }}
-          _hover={{ boxShadow: 'none' }}
+          _focus={{ boxShadow: 'none', outline: 0 }}
+          _hover={{ boxShadow: 'none', outline: 0, bgColor: 'white/20' }}
         />
         <DrawerBody maxW="285px" px="0rem" pb="0">
           <Flex direction="column" height="100%" overflow="auto">

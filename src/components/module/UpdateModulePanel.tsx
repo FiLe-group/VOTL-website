@@ -79,7 +79,7 @@ function Savebar({
     <Flex
       as={Box}
       animation={canSave ? `${slideFadeIn} 0.4s ease-in-out` : undefined}
-      bg="CardBackground"
+      bg="cardBg"
       rounded="3xl"
       zIndex="sticky"
       pos="sticky"

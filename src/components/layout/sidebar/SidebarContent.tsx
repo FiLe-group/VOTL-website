@@ -1,5 +1,6 @@
 import {
-  Box, Card,
+  Box,
+  Card,
   Flex,
   Heading,
   HStack,
@@ -42,7 +43,7 @@ export function SidebarContent() {
 // TODO: wtf VisuallyHidden ???????
   return (
     <>
-      <VStack align="center" py="2rem" m={3} bg="Brand" rounded="xl">
+      <VStack align="center" py="2rem" m={3} bg="brand" rounded="xl">
         <Heading fontSize="lg" fontWeight={600} color="white">
           {config.name}
         </Heading>
@@ -50,7 +51,7 @@ export function SidebarContent() {
 
       <Stack direction="column" mb="auto">
         <Items />
-        <Box px="10px">
+        <Box px="10px" mb={3}>
           <SearchBar
             w="full"
             input={{
@@ -85,7 +86,14 @@ export function BottomCard() {
   if (user == null) return <></>;
 
   return (
-    <Card.Root pos="sticky" left={0} bottom={0} w="full" py={2}>
+    <Card.Root
+      pos="sticky" left={0} bottom={0}
+      w="full" py={2}
+      bgColor='cardBg'
+      borderColor='white/20'
+      borderBottomWidth={0}
+      roundedBottom='0'
+    >
       <Card.Body as={HStack}>
         <Avatar src={avatarUrl(user)} name={user.username} fontSize="sm" />
         <Text fontWeight="600">{user.username}</Text>

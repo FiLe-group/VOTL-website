@@ -35,12 +35,12 @@ export const buttonRecipe = defineRecipe({
       },
       blue: {
         boxShadow: '0 7px 10px -3px rgba(103, 117, 138, 0.2)',
-        bg: 'blue.700',
+        bg: '{colors.blue.700}',
         _hover: {
-          bg: 'blue.900',
+          bg: '{colors.blue.900}',
         },
         _active: {
-          bg: 'blue.900',
+          bg: '{colors.blue.900}',
         },
       }
     },

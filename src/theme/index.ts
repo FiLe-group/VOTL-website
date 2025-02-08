@@ -14,7 +14,6 @@ import {sliderSlotRecipe} from "@/theme/components/slider";
 import {switchSlotRecipe} from "@/theme/components/switch";
 import {tabsSlotRecipe} from "@/theme/components/tabs";
 import {buttonRecipe} from "@/theme/components/button";
-import {skeletonRecipe} from "@/theme/components/skeleton";
 import {textareaRecipe} from "@/theme/components/textarea";
 
 const themeConfig = defineConfig({
@@ -44,7 +43,6 @@ const themeConfig = defineConfig({
     },
     recipes: {
       button: buttonRecipe,
-      skeleton: skeletonRecipe,
       textarea: textareaRecipe,
       input: inputSlotRecipe,
     },

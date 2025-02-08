@@ -32,13 +32,13 @@ function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: 
           <Text fontWeight='extrabold' ml={1} fontSize='2xl' marginEnd="auto" alignSelf='center'>VOTL Bot</Text>
           <DrawerCloseTrigger px={2} pos='inherit' bg='transparent' />
         </Flex>
-        <VStack gap={2} alignItems='start'>
+        <VStack gap={2} alignItems='start' as='nav' aria-label='Mobile Navigation'>
           {NavItems.filter((a) => !a.external).map((item, i) => (
             <Link
               key={i}
               href={item.href}
               p={4}
-              w='100vh'
+              w='100%'
               backgroundColor={router.asPath === item.href ? 'white/5' : 'transparent'}
               transition='all'
               transitionDuration='200ms'
@@ -46,7 +46,7 @@ function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: 
               textDecor='none'
               _hover={{color: 'white', textDecor: 'underline'}}
             >
-              <Flex alignContent='center'>
+              <Flex alignItems='center'>
                 <Box fontSize='xl' width={30}>
                   {router.asPath === item.href ? item.activeIcon : item.icon}
                 </Box>
@@ -59,6 +59,7 @@ function MobileNavbar({ isOpen, setOpen, NavItems }: {isOpen: boolean, setOpen: 
               key={i}
               href={item.href}
               target='_blank'
+              rel='noopener noreferrer'
               p={4}
               w='100vh'
               backgroundColor='transparent'

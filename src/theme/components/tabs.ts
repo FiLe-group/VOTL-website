@@ -1,9 +1,9 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const tabsSlotRecipe = defineSlotRecipe({
-  slots: ['tabpanel'],
+  slots: ['tablist'],
   base: {
-    tabpanel: {
+    tablist: {
       px: 0,
       pb: 0,
     }

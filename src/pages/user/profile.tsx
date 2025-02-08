@@ -40,7 +40,7 @@ const ProfilePage: NextPageWithLayout = () => {
             rounded="2xl"
           />
         ) : (
-          <Box bg="Brand" rounded="2xl" css={{ "& aspectRatio": '1100 / 440' }} />
+          <Box bg="brand" rounded="2xl" css={{ "& aspectRatio": '1100 / 440' }} />
         )}
         <VStack mt="-50px" ml="40px" align="start">
           <Avatar
@@ -48,7 +48,7 @@ const ProfilePage: NextPageWithLayout = () => {
             name={user.username}
             w="100px"
             h="100px"
-            ringColor="CardBackground"
+            ringColor="cardBg"
             ring="6px"
           />
           <Text fontWeight="600" fontSize="2xl">

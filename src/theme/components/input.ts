@@ -5,7 +5,7 @@ const main = {
   fontSize: 'sm',
   p: '20px',
   color: 'white',
-  bg: 'navy.800',
+  bg: '{colors.navy.800}',
   _placeholder: {
     color: 'secondaryGray.600',
   },
@@ -24,7 +24,7 @@ export const inputSlotRecipe = defineRecipe({
       outlineColor: 'whiteAlpha.900',
     },
     _focusVisible: {
-      outlineColor: 'blue.400',
+      outlineColor: '{colors.blue.400}',
     },
     transitionProperty: 'outline',
     borderColor: 'transparent'
@@ -33,20 +33,20 @@ export const inputSlotRecipe = defineRecipe({
     variant: {
       flushed: {
         _focus: {
-          borderColor: 'colors.brand',
+          borderColor: '{colors.brand}',
           boxShadow: 'none',
         },
 
         fontSize: '2xl',
         fontWeight: '600',
-        color: 'colors.textPrimary',
-        borderBottomColor: 'navy.600',
+        color: '{colors.textPrimary}',
+        borderBottomColor: '{colors.navy.600}',
       },
       main,
       focus: {
         ...main,
         _focus: {
-          borderColor: 'blue.400',
+          borderColor: '{colors.blue.400}',
         },
       },
       auth: {

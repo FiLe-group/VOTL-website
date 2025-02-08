@@ -1,5 +1,5 @@
 import { FiSettings as SettingsIcon } from 'react-icons/fi';
-import {Group, Flex, Heading, Text} from '@chakra-ui/react';
+import {Group, Flex, Heading, Text, Link} from '@chakra-ui/react';
 import { guild as view } from '@/config/translations/guild';
 import { useRouter } from 'next/router';
 import {Button} from "@/components/ui/button";
@@ -14,7 +14,7 @@ export function Banner({imageLink}: { imageLink: string}) {
       px={{ base: 5, lg: 8 }}
       py={{ base: 5, lg: 7 }}
       rounded="2xl"
-      bgColor="Brand"
+      bgColor="brand"
       bgImage={imageLink}
       bgRepeat='no-repeat'
       bgSize="cover"
@@ -38,9 +38,9 @@ export function Banner({imageLink}: { imageLink: string}) {
           }}
           asChild
         >
-          <link href={`/guilds/${guild}/settings`}>
+          <Link href={`/guilds/${guild}/settings`}>
             <SettingsIcon /> {t.bn.settings}
-          </link>
+          </Link>
         </Button>
       </Group>
     </Flex>

@@ -1,7 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { navbarBreakpoint } from '@/theme/breakpoints';
 import { ReactNode } from 'react';
-
 import { UserMenu } from '@/components/menu/UserMenu';
 import { SidebarTrigger } from '@/components/SidebarTrigger';
 
@@ -32,7 +31,7 @@ function NavbarLinksBox({ children }: { children?: ReactNode }) {
       justify="end"
       align="center"
       direction="row"
-      bg="CardBackground"
+      bg="cardBg"
       p="10px"
       borderRadius="30px"
       boxShadow="normal"
@@ -40,7 +39,7 @@ function NavbarLinksBox({ children }: { children?: ReactNode }) {
       {children ?? (
         <>
           <SidebarTrigger />
-          <UserMenu bgColor="#333333" />
+          <UserMenu />
         </>
       )}
     </Flex>

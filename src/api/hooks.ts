@@ -52,9 +52,11 @@ export function useGuilds() {
   const accessToken = useAccessToken();
 
   return useQuery({
-    queryKey: ['user_guilds'],
+    queryKey: ['user_guilds', accessToken],
     queryFn: () => getGuilds(accessToken as string),
-    enabled: accessToken != null
+    enabled: Boolean(accessToken),
+    staleTime: 5*60*1000, // 5 minutes
+    gcTime: 30*60*1000, // 30 minutes
   });
 }
 

@@ -1,7 +1,7 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const switchSlotRecipe = defineSlotRecipe({
-  slots: ['thumb', 'track'],
+  slots: ['thumb', 'control'],
   base: {
     thumb: {
       fontWeight: 400,
@@ -10,7 +10,7 @@ export const switchSlotRecipe = defineSlotRecipe({
       h: '16px',
       _checked: { transform: 'translate(20px, 0px)' },
     },
-    track: {
+    control: {
       display: 'flex',
       alignItems: 'center',
       boxSizing: 'border-box',
@@ -21,9 +21,9 @@ export const switchSlotRecipe = defineSlotRecipe({
       _focus: {
         boxShadow: 'none',
       },
-      bg: 'navy.700',
+      bg: '{colors.navy.700}',
       _checked: {
-        bg: "colors.brand",
+        bg: "{colors.brand}",
       },
     },
   },

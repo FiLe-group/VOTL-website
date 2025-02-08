@@ -5,7 +5,7 @@ export const textareaRecipe = defineRecipe({
     fontWeight: 400,
     borderRadius: '8px',
     fontSize: 'md',
-    bg: "colors.globalBg",
+    bg: "{colors.globalBg}",
     rounded: 'lg',
     border: 0,
     _focus: { boxShadow: 'none' },
@@ -13,10 +13,10 @@ export const textareaRecipe = defineRecipe({
   variants: {
     variant: {
       main: {
-        bg: 'navy.800',
+        bg: '{colors.navy.800}',
         border: '2px solid',
         color: 'white',
-        borderColor: 'navy.600',
+        borderColor: '{colors.navy.600}',
         borderRadius: '16px',
         fontSize: 'sm',
         p: '20px',

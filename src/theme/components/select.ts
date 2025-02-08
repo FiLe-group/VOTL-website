@@ -1,11 +1,11 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const selectSlotRecipe = defineSlotRecipe({
-  slots: ['field'],
+  slots: ['content'],
   variants: {
     variant: {
       outline: {
-        field: {
+        content: {
           //border: '3px',
           //borderColor: 'whiteAlpha.300',
           bg: 'inherit',

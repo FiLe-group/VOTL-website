@@ -13,10 +13,10 @@ export function SidebarTrigger() {
           as={IoMenuOutline}
           color='white'
           my="auto"
-          mx='10px'
-          w="30px"
-          h="30px"
-          //p='5px'
+          mr='10px'
+          px='10px'
+          w="50px"
+          h="50px"
           _hover={{ cursor: 'pointer' }}
         />
       </Flex>
