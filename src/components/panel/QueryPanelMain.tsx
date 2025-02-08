@@ -9,9 +9,6 @@ export function QueryStatus({
   children,
 }: {
   query: UseQueryResult;
-  /**
-   * element to display when loading
-   */
   loading: ReactNode;
   usermenu: ReactNode;
   children: ReactNode;

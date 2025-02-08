@@ -6,11 +6,7 @@ import { QueryStatus } from "../panel/QueryPanelMain";
 import { UserMenu } from "../menu/UserMenu";
 import { useSelfUserQuerySafe } from "@/api/hooks";
 
-export default function AppLayout({
-  children
-}: {
-  children: ReactNode;
-}) {
+export default function AppLayout({children}: { children: ReactNode; }) {
 	const query = useSelfUserQuerySafe();
 
   return (

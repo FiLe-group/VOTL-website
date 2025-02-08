@@ -20,7 +20,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     const { name, src, srcSet, loading, icon, fallback, children, borderRadius, ...rest } =
       props
     return (
-      <ChakraAvatar.Root ref={ref} shape='rounded' {...rest}>
+      <ChakraAvatar.Root ref={ref} {...rest}>
         <ChakraAvatar.Fallback name={name}>
           {fallback || icon}
         </ChakraAvatar.Fallback>
@@ -28,5 +28,5 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
         {children}
       </ChakraAvatar.Root>
     )
-  },
+  }
 )
