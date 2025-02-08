@@ -23,11 +23,7 @@ export async function logout() {
   });
 
   await client.invalidateQueries({queryKey: Keys.login});
-  if (Router.asPath == '/') {
-    Router.reload()
-  } else {
-    await Router.push('/');
-  }
+  Router.reload()
 }
 
 type SessionResult =
@@ -57,7 +53,9 @@ type SessionResultTemp =
 export function useSession(): SessionResult {
   const { isError, isLoading, data } = useQuery({
     queryKey: Keys.login,
-    queryFn: () => auth()
+    queryFn: () => auth(),
+    staleTime: 5*1000,
+    gcTime: 5*1000
   });
 
   if (isError)
@@ -118,6 +116,10 @@ export function useAccessToken() {
 export function useLogoutMutation() {
   return useMutation({
     mutationKey: ['logout'],
-    mutationFn: () => logout()
+    mutationFn: () => logout(),
+    onSuccess: async () => {
+      await client.invalidateQueries({queryKey: Keys.login});
+      Router.reload();
+    }
   });
 }

@@ -35,7 +35,7 @@ export function DefaultNavbar() {
       }}
       mt={{
         base: '8px',
-        [navbarBreakpoint]: '0',
+        [navbarBreakpoint]: 0,
       }}
     >
       <BreadcrumbRoot
@@ -56,6 +56,11 @@ export function DefaultNavbar() {
               rounded="full"
               color="blue.100"
               bg="blue.500/20"
+              shadow='none'
+              _hover={{
+                bg: "blue.500/50",
+                textDecor: 'none'
+              }}
             >
               <Link href={item.href}>
                 {item.icon}

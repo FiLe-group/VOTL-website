@@ -21,7 +21,10 @@ const tokenSchema = z.object({
 
 const options: OptionsType = {
   httpOnly: true,
-  maxAge: 60 * 60 * 24 * 30,
+  maxAge: 10 * 24*60*60, // 10 days
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'lax',
+  path: '/'
 };
 
 export type AccessToken = z.infer<typeof tokenSchema>;
@@ -37,9 +40,16 @@ export function getServerSession(
     cookies: NextApiRequestCookies;
   }
 ) {
-  const raw = req.cookies == null ? null : req.cookies[TokenCookie];
+  try {
+    const raw = req.cookies?.[TokenCookie];
+    if (!raw) return {success: false} as const;
 
-  return tokenSchema.safeParse(raw == null ? raw : JSON.parse(raw));
+    const parsed = JSON.parse(raw);
+    return tokenSchema.safeParse(parsed);
+  } catch (error) {
+    console.error('Error parsing session: ', error);
+    return {success: false} as const;
+  }
 }
 
 export function setServerSession(req: NextApiRequest, res: NextApiResponse, data: AccessToken) {
@@ -50,7 +60,7 @@ export function setServerSession(req: NextApiRequest, res: NextApiResponse, data
 export async function removeSession(req: NextApiRequest, res: NextApiResponse) {
   const session = getServerSession(req);
 
-  if (session.success) {
+  if (session.success && 'data' in session) {
 		// @ts-ignore
     deleteCookie(TokenCookie, { req, res, ...options });
     await revokeToken(session.data.access_token);

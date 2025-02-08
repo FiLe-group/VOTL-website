@@ -36,13 +36,12 @@ export default function DashLayout({
             height="100%"
             overflow="auto"
             w="full"
-            maxWidth={{ base: '100%', xl: 'calc( 100% - 290px )' }}
             maxHeight="100%"
           >
             <Box
               top={0}
               mx="auto"
-              maxW="1200px"
+              maxW={{ base: '100%', [navbarBreakpoint]: '90%', [sidebarBreakpoint]: '85%' }}
               zIndex="sticky"
               pos="sticky"
               w="full"
@@ -54,7 +53,7 @@ export default function DashLayout({
             <Box
               mx="auto"
               w="full"
-              maxW="1200px"
+              maxW="85%"
               flex={1}
               my={{ base: '30px', [sidebarBreakpoint]: '50px' }}
               px={{ base: '24px', [navbarBreakpoint]: '30px' }}

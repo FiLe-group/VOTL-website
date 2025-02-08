@@ -19,6 +19,10 @@ export function SidebarItem({
       p={2}
       color={active ? 'textPrimary' : 'textSecondary'}
       bg={active ? 'whiteAlpha.100' : undefined}
+      _hover={{
+        shadow: 'inset 0 0 2px 1px {white/10}',
+        textDecor: 'none'
+      }}
       cursor="pointer"
     >
       <Link href={href}>

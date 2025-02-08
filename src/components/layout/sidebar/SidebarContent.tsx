@@ -40,7 +40,6 @@ export function SidebarContent() {
       }),
     [guilds.data, filter]
   );
-// TODO: wtf VisuallyHidden ???????
   return (
     <>
       <VStack align="center" py="2rem" m={3} bg="brand" rounded="xl">
@@ -112,7 +111,7 @@ function Items() {
   const active = useActiveSidebarItem();
 
   return (
-    <Flex direction="column" px="10px" gap={0}>
+    <Flex direction="column" px="10px" gap={1}>
       {items
         .filter((item) => !item.hidden)
         .map((route: SidebarItemInfo, index: number) => (

@@ -15,10 +15,12 @@ export function GuildItem({
     <Card.Root
       asChild
       bg={active ? 'brand' : 'globalBg'}
-      color='white'
-      cursor="pointer"
       rounded="xl"
       border='none'
+      _hover={{
+        shadow: 'inset 0 0 10px 4px {white/10}',
+        textDecor: 'none'
+      }}
     >
       <Link href={href}>
         <Card.Body as={Flex} direction="column" gap={3} alignItems='center'>
