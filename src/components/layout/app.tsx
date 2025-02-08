@@ -19,7 +19,7 @@ export default function AppLayout({
         <Box bgImage='{gradients.global}' opacity='25%' height='500px' zIndex='10' top={0} pos='absolute' w='full'/>
       </Box>
       <Box transition='all' transitionDuration='200ms' zIndex='10' pos='absolute' inset={0} px={5} h='100vh' maxW='7xl' w='full' mx='auto'>
-        <QueryStatus query={query} loading={<LoadingPanel />} usermenu={<UserMenu bgColor='#333333' />}>
+        <QueryStatus query={query} loading={<LoadingPanel />} usermenu={<UserMenu />}>
           <Box display='block'>
             {children}
           </Box>
