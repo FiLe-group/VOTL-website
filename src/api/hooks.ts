@@ -56,7 +56,7 @@ export function useGuilds() {
     queryFn: () => getGuilds(accessToken as string),
     enabled: Boolean(accessToken),
     staleTime: 5*60*1000, // 5 minutes
-    gcTime: 30*60*1000, // 30 minutes
+    gcTime: 20*60*1000, // 20 minutes
   });
 }
 
@@ -67,20 +67,22 @@ export function useSelfUserQuery() {
     queryKey: ['users', 'me'],
     queryFn: () => fetchUserInfo(accessToken!!),
     enabled: accessToken != null,
-    staleTime: Infinity
+    staleTime: 10*60*1000, // 10 minutes
+    gcTime: 60*60*1000 // 1 hour
   });
 }
 
 export function useSelfUserQuerySafe() {
   const { status, session } = useSessionTemp();
 
-  const accessToken = status == 'unauthenticated' ? '0' : session?.access_token;
+  const accessToken = status == 'unauthenticated' ? 0 : session?.access_token!!;
 
   return useQuery<UserInfo>({
     queryKey: ['users', 'me'],
     queryFn: () => fetchUserInfoSafe(accessToken!!),
     enabled: accessToken != null,
-    staleTime: Infinity
+    staleTime: 10*60*1000, // 10 minutes
+    gcTime: 60*60*1000 // 1 hour
   });
 }
 

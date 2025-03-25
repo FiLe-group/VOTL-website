@@ -8,7 +8,7 @@ export const config: AppConfig = {
   inviteUrl:
     'https://discord.com/oauth2/authorize?client_id=397461072342417408&permissions=8&integration_type=0&scope=bot+applications.commands',
   guild: {
-    //filter guilds that user has no permissions to manage it
+    //filter guilds that user has no permissions to manage
     filter: (guild) => (Number(guild.permissions) & PermissionFlags.ADMINISTRATOR) !== 0,
   },
 };

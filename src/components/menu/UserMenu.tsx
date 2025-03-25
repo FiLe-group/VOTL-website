@@ -1,7 +1,7 @@
 import {Icon, Link, Text} from '@chakra-ui/react';
 import { UserInfo, avatarUrl } from '@/api/discord';
 import { common } from '@/config/translations/common';
-import { useSelfUser } from '@/api/hooks';
+import {useSelfUser} from '@/api/hooks';
 import { useLogoutMutation } from '@/utils/auth/hooks';
 import { FaChalkboard, FaRegUser } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';

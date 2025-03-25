@@ -1,4 +1,9 @@
-import {deleteCookie, OptionsType, setCookie} from "cookies-next";
+import {
+  deleteCookie,
+  getCookie,
+  OptionsType,
+  setCookie,
+} from "cookies-next/client";
 import { IncomingMessage } from "http";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextApiRequestCookies } from "next/dist/server/api-utils";
@@ -45,6 +50,7 @@ export function getServerSession(
     if (!raw) return {success: false} as const;
 
     const parsed = JSON.parse(raw);
+    console.log(parsed);
     return tokenSchema.safeParse(parsed);
   } catch (error) {
     console.error('Error parsing session: ', error);

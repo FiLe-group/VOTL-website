@@ -11,7 +11,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useActiveSidebarItem, SidebarItemInfo } from '@/utils/router';
-import { useGuilds, useSelfUserQuery } from '@/api/hooks';
+import {useGuilds, useSelfUser} from '@/api/hooks';
 import { SearchBar } from '@/components/forms/SearchBar';
 import { useMemo, useState } from 'react';
 import { config } from '@/config/common';
@@ -81,7 +81,7 @@ export function SidebarContent() {
 }
 
 export function BottomCard() {
-  const user = useSelfUserQuery().data;
+  const user = useSelfUser();
   if (user == null) return <></>;
 
   return (

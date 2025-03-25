@@ -37,7 +37,7 @@ const TosPage: NextPageWithLayout = () => {
         <Text>We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the 'Content'), as well as the trademarks, service marks, and logos contained therein (the 'Marks').</Text>
         <Text as='h3' fontWeight='bold' color='white' mt={2}>Your use of our Services</Text>
         <Text>Subject to your compliance with these Legal Terms, including the '<Link color='white' href={"#prohibited"}>PROHIBITED ACTIVITIES</Link>' section below, we grant you a non-exclusive, non-transferable, revocable license to</Text>
-        <List.Root pl={4}>
+        <List.Root pl={4} listStyle='circle'>
           <List.Item>access the Services; and</List.Item>
           <List.Item>download or print a copy of any portion of the Content to which you have properly gained access.</List.Item>
         </List.Root>
@@ -48,7 +48,7 @@ const TosPage: NextPageWithLayout = () => {
         <Text>Please review this section and the '<Link color='white' href={"#prohibited"}>PROHIBITED ACTIVITIES</Link>' section carefully prior to using our Services to understand the (a) rights you give us and (b) obligations you have when you post or upload any content through the Services.</Text>
         <Text><b>Submissions:</b> By directly sending us any question, comment, suggestion, idea, feedback, or other information about the Services ('Submissions'), you agree to assign to us all intellectual property rights in such Submission. You agree that we shall own this Submission and be entitled to its unrestricted use and dissemination for any lawful purpose, commercial or otherwise, without acknowledgment or compensation to you.</Text>
         <Text><b>You are responsible for what you post or upload:</b> By sending us Submissions through any part of the Services you:</Text>
-        <List.Root pl={4}>
+        <List.Root pl={4} listStyle='circle'>
           <List.Item>confirm that you have read and agree with our '<Link color='white' href={"#prohibited"}>PROHIBITED ACTIVITIES</Link>' and will not post, send, publish, upload, or transmit through the Services any Submission that is illegal, harassing, hateful, harmful, defamatory, obscene, bullying, abusive, discriminatory, threatening to any person or group, sexually explicit, false, inaccurate, deceitful, or misleading;</List.Item>
           <List.Item>to the extent permissible by applicable law, waive any and all moral rights to any such Submission;</List.Item>
           <List.Item>warrant that any such Submission are original to you or that you have the necessary rights and licences to submit such Submissions and that you have full authority to grant us the above-mentioned rights in relation to your Submissions; and</List.Item>
@@ -63,7 +63,7 @@ const TosPage: NextPageWithLayout = () => {
         <TextHeading id="prohibited">4. PROHIBITED ACTIVITIES</TextHeading>
         <Text>You may not access or use the Services for any purpose other than that for which we make the Services available. The Services may not be used in connection with any commercial endeavours except those that are specifically endorsed or approved by us.</Text>
         <Text>As a user of the Services, you agree not to:</Text>
-        <List.Root pl={4}>
+        <List.Root pl={4} listStyle='circle'>
           <List.Item>Systematically retrieve data or other content from the Services to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.</List.Item>
           <List.Item>Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords or tokens.</List.Item>
           <List.Item>Circumvent, disable, or otherwise interfere with security-related features of the Services, including features that prevent or restrict the use or copying of any Content or enforce limitations on the use of the Services and/or the Content contained therein.</List.Item>
