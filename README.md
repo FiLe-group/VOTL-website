@@ -1,7 +1,9 @@
-# Discord Bot React Native Website & Next.js
+# Discord Bot Website and Dashboard (WIP) for VOTL bot
 
-### WEBSITE LINK: https://votl.fileeditor.dev/
+## WEBSITE LINK: https://votl.fileeditor.dev/
 
-Original repo: https://github.com/umutxyp/Discord-Bot-Website  
+### Design elements and inspiration taken from:
+- Main page: https://github.com/umutxyp/Discord-Bot-Website
+- Dashboard: https://github.com/fuma-nama/discord-bot-dashboard-next
 
 Contact me via Discord: *@fileeditor*
