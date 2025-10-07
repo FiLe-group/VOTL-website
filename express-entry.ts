@@ -29,7 +29,7 @@ async function startServer() {
     app.use(devMiddleware)
   }
 
-  app.all('*path', vikeHandler);
+  app.all('/{*path}', vikeHandler);
 
   app.listen(port, (error) => {
     if (error) {

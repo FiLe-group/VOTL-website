@@ -29,7 +29,7 @@ const items: NavbarItemInfo[] = [
   {
     name: "Support",
     icon: <Icon as={FaDiscord}/>,
-    href: "https://discord.gg/25K5S55wrU",
+    href: `${import.meta.env.PUBLIC_ENV__DISCORD_INVITE}`,
     external: true
   },
   {

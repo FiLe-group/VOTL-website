@@ -12,11 +12,13 @@ export async function vikeHandler(req: Request, res: Response) {
 
   if (pageContext.errorWhileRendering) {
     // Install error tracking here, see https://vike.dev/error-tracking
+    console.error(pageContext.errorWhileRendering)
   }
 
   const { httpResponse } = pageContext
   // Early hints, https://vike.dev/preloading#early-hints
   if (res.writeEarlyHints) res.writeEarlyHints({ link: httpResponse.earlyHints.map((e) => e.earlyHintLink) })
+
   httpResponse.headers.forEach(([name, value]) => res.setHeader(name, value))
   res.status(httpResponse.statusCode)
   // HTTP stream, see https://vike.dev/streaming

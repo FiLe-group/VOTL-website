@@ -55,7 +55,7 @@ export default function Footer() {
         <VStack alignItems='left' gap={0} w='fit-content'>
           <LinkHeader>Social</LinkHeader>
           <FooterLink
-            href="https://discord.gg/25K5S55wrU"
+            href={import.meta.env.PUBLIC_ENV__DISCORD_INVITE}
             target="_blank"
           >
             <HStack gap={0}>
@@ -64,7 +64,7 @@ export default function Footer() {
             </HStack>
           </FooterLink>
           <FooterLink
-            href="https://github.com/FileEditor97/VOTL"
+            href="https://github.com/FiLe-group/VOTL"
             target="_blank"
           >
             <HStack gap={0}>
@@ -95,7 +95,7 @@ export default function Footer() {
           {/*  Website hosted on <Link color='blue.400' _hover={{textDecor: 'underline'}} href="https://pages.dev/">Cloudflare</Link>*/}
           {/*</Text>*/}
           <Text>
-            By @fileeditor (<Link color='inherit' textUnderlineOffset='1px' textDecor='underline' _hover={{textDecor: 'underline'}} href="https://github.com/FileEditor97/VOTL-website">Github</Link>)
+            By @fileeditor (<Link color='inherit' textUnderlineOffset='1px' textDecor='underline' _hover={{textDecor: 'underline'}} href="https://github.com/FiLe-group/VOTL-website">Github</Link>)
           </Text>
         </Box>
       </Flex>
