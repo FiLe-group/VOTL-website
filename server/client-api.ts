@@ -6,7 +6,7 @@ export async function apiCommands(): Promise<Command[]> {
   return callReturn<Command[]>(
     Routes.commands,
     {
-      origin: 'https://cdn.fileeditor.dev',
+      origin: 'https://cdn.fileeditor.ovh',
       request: {
         method: 'GET',
         headers: {
