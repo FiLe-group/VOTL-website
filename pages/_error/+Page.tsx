@@ -19,7 +19,7 @@ export default function Page() {
   } else {
     page = ErrorPage({
       code: 500,
-      message: "Oh. It seems there is an Internal Server Error. Please try again later!"
+      message: "Oh. It seems there is an Internal Error. Please try again later!"
     })
   }
 

@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "target": "ES2022",
-    "module": "ESNext",
+    "module": "ES2022",
     "moduleResolution": "Bundler",
     "noEmit": true,
     "lib": [
@@ -17,9 +17,10 @@
     ],
     "types": [
       "vite/client",
-      "vike-react"
+      "vike-react",
+      "./worker-configuration.d.ts"
     ],
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "jsxImportSource": "react",
   },
   "exclude": [

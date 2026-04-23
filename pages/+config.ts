@@ -4,10 +4,11 @@ import type {Config} from "vike/types";
 import vikeReactQuery from "vike-react-query/config";
 import vikeReactZustand from "vike-react-zustand/config";
 
-export default {
+const config: Config = {
   Layout: LayoutBase,
   extends: [vikeReact, vikeReactQuery, vikeReactZustand],
   prerender: true,
+  ssr: false,
 
   queryClientConfig: {
     defaultOptions: {
@@ -22,6 +23,6 @@ export default {
       },
     },
   }
-} satisfies Config;
+};
 
-export {}
+export default config;

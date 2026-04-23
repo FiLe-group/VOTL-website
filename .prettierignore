@@ -1,3 +1,6 @@
+# MacOS
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -83,9 +86,6 @@ web_modules/
 .cache
 .parcel-cache
 
-# firebase-admin service-account
-firebase
-
 # Next.js build output
 .next
 out
@@ -121,21 +121,32 @@ dist
 # TernJS port file
 .tern-port
 
-# Stores VSCode versions used for testing VSCode extensions
+# VSCode
+.vscode/
 .vscode-test
 
 # yarn v2
 .yarn/cache
 .yarn/unplugged
-.yarn/build-state.yml1
+.yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
 
-# Idea
-.idea/
-
-# Other
-.tmp/
-
-# Wrangler
+# Cloudflare
 .wrangler/
+.dev.vars*
+!.dev.vars.example
+!.env.example
+
+# Vercel
+.vercel/
+
+# EdgeOne
+.edgeone/
+
+# Sentry Vite Plugin
+.env.sentry-build-plugin
+
+# aws-cdk
+.cdk.staging
+cdk.out
