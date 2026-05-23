@@ -1,9 +1,12 @@
-import type { Server } from "vike/types";
-import { app } from "./server/hono";
+import { Hono } from 'hono'
+import vike from '@vikejs/hono'
+import type { Server } from 'vike/types'
 
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
-// https://vike.dev/server
+const app = new Hono()
+vike(app) // Attaches Vike
+
 export default {
   fetch: app.fetch,
   prod: {
@@ -15,4 +18,4 @@ export default {
       console.log('Server created.')
     },
   },
-} satisfies Server;
+} satisfies Server
