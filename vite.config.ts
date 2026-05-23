@@ -12,5 +12,8 @@ export default defineConfig({
     }),
     vike(),
     react()
-  ]
+  ],
+  server: {
+    port: 3000,
+  }
 });
