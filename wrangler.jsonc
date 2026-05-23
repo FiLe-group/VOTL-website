@@ -2,5 +2,8 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "compatibility_date": "2026-03-09",
   "name": "votl-website",
-  "main": "vike:server-entry"
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "single-page-application"
+  }
 }
