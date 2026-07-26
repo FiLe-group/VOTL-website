@@ -54,10 +54,14 @@ async function handleError(
   options: Options,
 ) {
   if (!res.ok && (options.errorOnFail ?? true)) {
-    console.log(await res.text());
-    const raw = await res.json().catch(() => {
-      return {reason: 'Failed to parse.'}
-    }) as ApiResponse;
+    const body = await res.text();
+    console.log(body);
+    let raw: ApiResponse;
+    try {
+      raw = JSON.parse(body) as ApiResponse;
+    } catch {
+      raw = {reason: 'Failed to parse.'};
+    }
     throw new Error(raw.reason);
   }
 }
