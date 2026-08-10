@@ -1,5 +1,5 @@
 import {ReactNode, useEffect, useMemo, useState} from "react";
-import {categories, CommandLevel} from "./cmd-data";
+import {categories, CommandLevel, formatPermissionName} from "./cmd-data";
 import {
   Box,
   Button,
@@ -140,7 +140,7 @@ function CommandList({ commands, category, language }: {
                 <Span whiteSpace='wrap' textAlign='left'>{cmd.description[language]}</Span>
               </Box>
               <Flex align="center" maxW="56px" justifyContent='end' gap={4}>
-                {CommandLevel(cmd.access)}
+                {CommandLevel(cmd.permission)}
                 <Icon
                   w={3}
                   as={FaChevronDown}
@@ -156,6 +156,10 @@ function CommandList({ commands, category, language }: {
               <Box>
                 Module:
                 <Text display='inline' color='blue.400' pl={1}>{cmd.module[language] === "" ? "-" : cmd.module[language]}</Text>
+              </Box>
+              <Box>
+                Permission required:
+                <Text display='inline' color='blue.400' pl={1}>{formatPermissionName(cmd.permission)}</Text>
               </Box>
               <Flex>
                 Can be used in DM:

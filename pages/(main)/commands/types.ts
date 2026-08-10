@@ -13,7 +13,7 @@ export interface Command {
       [key: string]: string;
     };
   }[];
-  access: number;
+  permission: string;
   guildOnly: boolean;
   usage: {
     [key: string]: string;

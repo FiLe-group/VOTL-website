@@ -1,5 +1,6 @@
 import {Box, Icon} from "@chakra-ui/react";
 import {
+  FaChartLine,
   FaCrown,
   FaDice, FaInfoCircle,
   FaList,
@@ -7,31 +8,52 @@ import {
   FaServer,
   FaShieldAlt,
   FaTicketAlt,
+  FaTools,
   FaUser,
   FaUserShield
 } from "react-icons/fa";
-import {FaGear} from "react-icons/fa6";
 import {Category, LanguageData} from "./types";
 import {HiBadgeCheck} from "react-icons/hi";
 import {MdOutlineWebhook} from "react-icons/md";
 
-export function CommandLevel(access: number) {
-  switch (access) {
-    case 2:
-      return <Icon as={FaUser} color='green.500' boxSize='20px'/>
-    case 3:
-      return <Icon as={FaUserShield} color='blue.500' boxSize='20px'/>
-    case 5:
-      return <Icon as={FaUserShield} color='yellow.400' boxSize='20px'/>
-    case 7:
-      return <Icon as={FaCrown} color='yellow.600' boxSize='20px'/>
-    case 8:
-      return <Icon as={FaCrown} color='yellow.600' boxSize='20px'/>
-    case 10:
-      return <Icon as={FaGear} color='red.500' boxSize='20px'/>
-    default:
-      return <Box hidden boxSize='20px'/>
+const PERMISSION_NAME_OVERRIDES: {[key: string]: string} = {
+  ADMIN: "Administrator",
+  OWNER: "Guild Owner",
+  DEV: "Developer",
+};
+
+export function formatPermissionName(permission: string): string {
+  if (!permission || permission === "none") return "Everyone";
+  if (PERMISSION_NAME_OVERRIDES[permission]) return PERMISSION_NAME_OVERRIDES[permission];
+
+  return permission
+    .replace(/^CMD_/, "")
+    .toLowerCase()
+    .split("_")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+export function CommandLevel(permission: string) {
+  if (!permission || permission === "none") {
+    return <Box hidden boxSize='20px'/>
   }
+
+  const label = formatPermissionName(permission);
+
+  let icon;
+  switch (permission) {
+    case "OWNER":
+      icon = <Icon as={FaCrown} color='yellow.600' boxSize='20px'/>
+      break;
+    case "ADMIN":
+      icon = <Icon as={FaUserShield} color='yellow.400' boxSize='20px'/>
+      break;
+    default:
+      icon = <Icon as={FaUserShield} color='blue.500' boxSize='20px'/>
+  }
+
+  return <Box as='span' title={label}>{icon}</Box>
 }
 
 export const categories: Category[] = [
@@ -87,6 +109,18 @@ export const categories: Category[] = [
     title: "Game",
     value: "games",
     icon: <FaDice />,
+    size: 0
+  },
+  {
+    title: "Levels",
+    value: "levels",
+    icon: <FaChartLine />,
+    size: 0
+  },
+  {
+    title: "Tools",
+    value: "tools",
+    icon: <FaTools />,
     size: 0
   },
   {
